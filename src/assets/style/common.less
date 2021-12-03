@@ -1,0 +1,231 @@
+body {
+  // 颜色
+
+  // 字体
+  --font-size-xs: 10px;
+  --font-size-sm: 12px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-bg: 18px;
+  --font-size-20: 20px;
+
+  // 行高
+  --line-height-xs: 14px;
+  --line-height-sm: 18px;
+  --line-height-md: 20px;
+  --line-height-lg: 22px;
+  --line-height-bg: 26px;
+
+  // 间距
+  --space: 8px;
+  --space-lg: 16px;
+  --space-bg: 70px;
+
+  font-size: var(--font-size-md);
+  color: #363a44;
+  -webkit-font-smoothing: antialiased;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+  background-color: @bg-color;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+div {
+  box-sizing: border-box;
+}
+img {
+  vertical-align: middle;
+  display: inline-block;
+  width: 100%;
+  height: auto;
+}
+
+// 按钮公共样式
+.rz-button-content.fixed-content {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+}
+
+.rz-button-content {
+  padding: 20px 28px;
+  .van-button__text {
+    font-weight: bold;
+  }
+  .van-button__text {
+    font-size: var(--font-size-md);
+  }
+}
+
+// 表单公共样式
+.form-content {
+  margin-top: 10px;
+  padding-bottom: 84px;
+  .van-field__label,
+  .van-field__value {
+    font-size: var(--font-size-md);
+  }
+  .van-field__label span::after {
+    display: inline-block;
+    content: "*";
+    color: red;
+    font-size: 16px;
+  }
+  .rz-picker {
+    .van-field__value {
+      position: relative;
+    }
+    .van-field__value::after {
+      display: inline-block;
+      width: 7px;
+      height: 12px;
+      position: absolute;
+      top: 7px;
+      right: 0px;
+      content: "";
+      background: url("~@/assets/img/index/arrow-right2.png");
+      background-size: 100% 100%;
+    }
+  }
+  .van-field__word-limit {
+    font-size: var(--font-size-sm);
+  }
+}
+.van-empty__description {
+  font-size: var(--font-size-md) !important;
+}
+.van-list__finished-text,
+.van-pull-refresh__head,
+.van-loading__text {
+  font-size: var(--font-size-md) !important;
+}
+.van-dialog {
+  .van-button__text {
+    font-size: var(--font-size-md) !important;
+  }
+}
+.van-empty__image {
+  // width: 386px !important;
+  // height: 208px !important;
+}
+// 长辈版
+.elder-mod {
+}
+
+// 考试弹窗样式单独修改
+.exam-end-container {
+  width: 260px;
+  border-radius: 4px;
+
+  .van-dialog__message {
+    font-size: var(--font-size-bg) !important;
+  }
+
+  // 考试结束弹窗
+  .exam-end-hint {
+    color: #b3b5b9;
+    font-size: var(--font-size-lg) !important;
+    margin-top: 10px;
+  }
+}

@@ -1,0 +1,35 @@
+<!--
+ * @Author: zhangmin
+ * @Date: 2021-01-31 16:40:05
+ * @LastEditors: zhangmin
+ * @LastEditTime: 2021-09-29 11:12:51
+ * @Description: 文件说明
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>员工码</title>
+    <!-- 浙里办原生zwjsbridge-->
+    <script type="text/javascript" src="//assets.zjzwfw.gov.cn/assets/ZWJSBridge/1.0.1/zwjsbridge.js"></script>
+    <!-- 浙里办人脸识别 -->
+    <!-- <script type="text/javascript" src="https://unibase.zjzwfw.gov.cn/DTHybirdEngine/DtDream/hybridapi.js"></script> -->
+    <!-- 浙里办埋点相关 -->
+    <script> 
+      (function(w, d, s, q) {
+        w[q] = w[q] || [];
+        var f = d.getElementsByTagName(s)[0],j = d.createElement(s);
+        j.async = true;
+        j.id = 'beacon-aplus';
+        j.src = 'https://d.alicdn.com/alilog/mlog/aplus.js?id=202951085';
+        f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'aplus_queue');
+      </script>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>

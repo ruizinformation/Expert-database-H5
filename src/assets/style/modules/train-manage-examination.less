@@ -1,0 +1,198 @@
+// 考试答题样式
+.examination-form-mod {
+  .exam-t {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 44px;
+    background-color: #FFFFFF;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #E8E9EC;
+
+    &-img {
+      width: 17px;
+      height: 17px;
+      margin-right: 16px;
+    }
+
+    &-time {
+      font-size: var(--font-size-lg);
+      color: #363A44;
+      font-weight: 700;
+    }
+
+    &-btn {
+      width: 50px;
+      height: 25px;
+      background-color: #428FFC;
+      border-radius: 12px;
+      font-size: var(--font-size-md);
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0;
+    }
+  }
+
+  .exam-content {
+    position: fixed;
+    top: 44px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 120px); //-44 -68
+    padding: 21px 34px 21px 21px;
+    overflow-y: auto;
+
+    &-title {
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+      color: #363A44;
+      line-height: var(--line-height-lg);
+    }
+
+    &-ans {
+      margin-top: 24px;
+
+      .ans-item {
+        font-size: var(--font-size-lg);
+        margin-bottom: 28px;
+      }
+    }
+  }
+
+  .exam-b {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 68px;
+    line-height: 68px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #E8E8E8;
+    font-size: var(--font-size-lg);
+
+    &-img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .exam-previous {
+      padding-left: 26px;
+      height: 100%;
+
+      .exam-b-img {
+        margin-right: 12px;
+      }
+    }
+
+    .exam-next {
+      padding-right: 26px;
+      height: 100%;
+
+      .exam-b-img {
+        margin-left: 12px;
+        font-size: var(--font-size-lg);
+      }
+    }
+  }
+
+}
+
+
+
+// 考试得分
+.examination-result-mod {
+  padding: 18px 16px;
+
+  .result-wrap {
+    padding: 70px 38px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    font-weight: 700;
+
+    &-t {
+      position: relative;
+      width: 224px;
+      margin: 0 auto;
+
+      &-img {
+        width: 100%;
+        height: auto;
+      }
+
+      &-grade {
+        font-size: var(--font-size-bg);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        .big-word {
+          font-size: 45px;
+        }
+      }
+
+    }
+
+    &-hint {
+      margin-top: 22px;
+      text-align: center;
+      font-size: var(--font-size-lg);
+    }
+
+    &-b {
+      margin-top: 58px;
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+
+      &-item {
+        text-align: center;
+
+        .item-t {
+          font-size: var(--font-size-md);
+          color: #B3B5B9;
+          line-height: var(--line-height-xs);
+        }
+
+        .item-b {
+          font-size: var(--font-size-bg);
+          line-height: var(--line-height-sm);
+          margin-top: 18px;
+        }
+      }
+    }
+  }
+}
+
+
+// 标准版
+.normal-mod {}
+
+// 长辈版
+.elder-mod {
+  .examination-form-mod {
+    .exam-t {
+      &-btn {
+        width: 60px;
+        height: 30px;
+        border-radius: 15px;
+      }
+    }
+
+    .exam-b {
+      &-img {
+        width: 26px;
+        height: 26px;
+      }
+
+    }
+  }
+}

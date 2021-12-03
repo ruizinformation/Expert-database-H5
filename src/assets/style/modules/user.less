@@ -1,0 +1,64 @@
+// 用户基础信息样式
+.basic-info-mod {
+  .basic-info-content {
+    margin-top: 8px;
+    .van-cell {
+      padding: 16px;
+      font-size: var(--font-size-md);
+      .van-cell.van-field {
+        padding: 0;
+        .van-field__control {
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+.company-list-demo {
+  .data-list {
+    padding: 10px 16px;
+    box-sizing: border-box;
+    min-height: 100vh;
+    .data-list-item {
+      background-color: #fff;
+      min-height: 76px;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 13px;
+      padding-right: 35px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+      .company-name {
+        font-size: var(--font-size-lg);
+        line-height: var(--line-height-lg);
+        font-weight: bold;
+        word-break: break-all;
+      }
+      .company-tag {
+        min-width: 68px;
+        margin-left: 20px;
+      }
+      .company-status {
+        background-color: #cbe0ff;
+        font-size: var(--font-size-md);
+        color: #428ffc;
+        padding: 3px 5px;
+        border-radius: 4px;
+        text-align: center;
+        box-sizing: border-box;
+      }
+    }
+  }
+}
+// 标准版
+.normal-mod {
+  .basic-info-mod {
+  }
+}
+// 长辈版
+.elder-mod {
+  .basic-info-mod {
+  }
+}
