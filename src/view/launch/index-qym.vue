@@ -96,20 +96,23 @@ export default {
   },
   mounted(){
     console.log('launch====mounted',this.$route)
-    //  ?entName=七七公司&creditCode=48948665DEREFe567896&frName=天乐&job=工程师&phone=18258290000&userName=七七&token=fwef489ew87f6e4w56f445
-   this.basicInfo=this.$route.query?this.$route.query:{}
-   this.dataForm=this.cloneObject(this.basicInfo)
+    //?entName=七七公司&creditCode=48948665DEREFe567896&frName=天乐&job=工程师&phone=18258290000&userName=七七&token=fwef489ew87f6e4w56f445
+   this.basicInfo=this.$route.query?this.$route.query:{},
+   this.dataForm={entName:"七七公司",creditCode:"48948665DEREFe567896",frName:"天乐",job:"工程师",phone:"18258290000",userName:"七七",token:"fwef489ew87f6e4w56f445"}
+  // this.dataForm=this.cloneObject(this.basicInfo)
    this.init()
   },
   methods: {
     init(){
-      let {creditCode}=this.basicInfo
+      //let {creditCode}=this.basicInfo
+      let creditCode="48948665DEREFe567896"
       if(!creditCode){
         this.$toast('参数错误，请稍后重试！')
         return
       }
       getCompanyInfo({taxNumber:creditCode}).then(data=>{
         console.log('data',data)
+         console.log('data111',this.dataForm)
         if(data){
           // 登录进入主页
           bindCompany(this.dataForm).then(({data})=>{
