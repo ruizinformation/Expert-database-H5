@@ -1,76 +1,52 @@
 <!--
  * @Author: zhangmin
  * @Date: 2021-02-25 10:17:29
- * @LastEditors: wanghongying
- * @LastEditTime: 2021-10-19 17:03:06
- * @Description: 学习平台首页
+ * @LastEditors: zhangmin
+ * @LastEditTime: 2021-10-20 15:12:53
+ * @Description: 学习平台列表
 -->
 <template>
-  <div class="learning-platform">
-    <div class="learning-platform-content">
-      <learning-home v-if="active==0" />
-      <community v-if="active==1" />
-      <learning-list v-if="active==2" />
-    </div>
-    <van-tabbar v-model="active" @change="changeTabbar">
-      <van-tabbar-item>
-        <span>首页</span>
-        <template #icon="props">
-          <img :src="props.active ? icon[0].active : icon[0].inactive" class="tab-icon" />
-        </template>
-      </van-tabbar-item>
-      <van-tabbar-item>
-        <span>学习社区</span>
-        <template #icon="props">
-          <img :src="props.active ? icon[1].active : icon[1].inactive" class="tab-icon" />
-        </template>
-      </van-tabbar-item>
-      <van-tabbar-item>
-        <span>我的学习</span>
-        <template #icon="props">
-          <img :src="props.active ? icon[2].active : icon[2].inactive" class="tab-icon" />
-        </template>
-      </van-tabbar-item>
-    </van-tabbar>
+  <div class="policy-announcement-mod">
+    <van-pull-refresh v-model="refreshing" @refresh="onRefresh" :pulling-text="pullingText" :loosing-text="loosingText" :loading-text="loadingText">
+      <van-list v-model="loading" :finished="finished" :finished-text="finishedText" @load="onLoad" :immediate-check="false">
+        <div class="data-list">
+          <learn-item v-for="(row,rowIndex) in dataList" :key="rowIndex" :data="row" />
+          <van-empty v-if="noData" class="empty-custom-image" description="暂无数据" />
+        </div>
+      </van-list>
+    </van-pull-refresh>
   </div>
 </template>
 
 <script>
-  import LearningHome from './pages/learning-home'
-  import Community from '@/view/modules/community/index.vue'
-  import LearningList from './pages/learning-subject/learning-list.vue'
+import listMixin from '@/mixins/list-mixin.js'
+import LearnItem from '@/components/list-item/learn-item/index.vue'
 
-  export default {
-    components: {
-      LearningHome,
-      Community,
-      LearningList
-    },
-    computed: {
-
-    },
-    data() {
-      return {
-        active: 0,
-        icon: [{
-          active: require('@/assets/img/attendance/tab1-active.png'),
-          inactive: require('@/assets/img/attendance/tab1.png'),
-        }, {
-          active: require('@/assets/img/attendance/tab2-active.png'),
-          inactive: require('@/assets/img/attendance/tab2.png'),
-        }, {
-          active: require('@/assets/img/attendance/tab3-active.png'),
-          inactive: require('@/assets/img/attendance/tab3.png'),
-        }],
-      };
-    },
-    mounted() {
-      this.active = Number(this.$cookie.get('learningActive')) || 0
-    },
-    methods: {
-      changeTabbar(active) {
-        this.$cookie.set('learningActive', active)
+export default {
+  mixins: [listMixin],
+  components: {
+    LearnItem
+  },
+  computed:{
+      
+  },
+  data() {
+    return {
+      getListUrl:'/policy-notice/page',
+      getListAPI:'mgop.ruiztech.staffhome.policynoticepage',
+      autoGet:false,
+      searchForm:{
+        status:1,
+        orderField:'issue_date',
+        order:'desc'
       }
-    },
-  };
+    };
+  },
+  mounted(){
+   this.onLoad()
+  },
+  methods: {
+   
+  },
+};
 </script>

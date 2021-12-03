@@ -3,7 +3,7 @@
  * @Date: 2021-02-25 10:17:29
  * @LastEditors: wanghongying
  * @LastEditTime: 2021-10-27 14:02:14
- * @Description: 政策公告-Item
+ * @Description: 学习平台-Item
 -->
 <template>
   <div class="policy-announcement-item" @click="toPolicyDetail">
@@ -14,7 +14,7 @@
     <div class="policy-title">{{data.title}}</div>
     <div class="policy-sub-title">{{data.description}}</div>
     <div class="policy-foot">
-      <div class="policy-date">发布日期 {{data.issueDate}}</div>
+      <div class="policy-date">浏览量 {{data.issueDate}}</div>
     </div>
     </div>
 
@@ -84,9 +84,9 @@ export default {
   }
   .policy-foot{
     display: flex;
-    justify-content: end;
+    justify-content: start;
     align-items: center;
-    margin-top: 12px;
+    margin-top: 25px;
     color: #B3B5B9;
     font-size: var(--font-size-sm);
   }

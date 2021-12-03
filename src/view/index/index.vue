@@ -19,7 +19,7 @@
           <img :src="props.active ? icon[0].active : icon[0].inactive" class="tab-icon" />
         </template>
       </van-tabbar-item>
-      <van-tabbar-item>
+      <van-tabbar-item badge="5">
         <span>消息</span>
         <template #icon="props">
           <img :src="props.active ? icon[1].active : icon[1].inactive" class="tab-icon" />
@@ -65,7 +65,7 @@
       };
     },
     mounted() {
-      let active=sessionStorage.getItem('homeActive')||0
+      let active=sessionStorage.getItem('homeActive')||1
       this.active=Number(active) 
       this.$forceUpdate()
       // AplusPush()//浙里办埋点

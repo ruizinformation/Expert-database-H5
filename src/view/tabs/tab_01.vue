@@ -7,45 +7,12 @@
 -->
 <template>
   <div class="tab tab_01">
-    <div class="home-bg"></div>
+    <!-- <div class="home-bg"></div> -->
+         <div>
+       <img src="../../assets/img/index/banner.png" alt="">
+     </div>
     <div class="home-container">
-      <div class="home-t">
-        <div class="home-t-head">
-          <div class="home-t-hint">
-            <div>{{userInfo.username}}，</div>
-            <div>欢迎来到员工之家</div>
-          </div>
-          <div class="home-t-mod" @click="onSwitchClick">
-            {{UIStyle=='normal'?'长辈版':'标准版'}}
-            <img src="~@/assets/img/index/arrow-right-white.png" />
-          </div>
-        </div>
 
-        <div class="home-t-func">
-          <van-row class="home-t-func-t">
-            <van-col span="12" class="home-t-func-t-item" @click="showYGM">
-              <img class="func-t-item-icon" src="~@/assets/img/index/index-t1.png" alt="">
-              <div class="func-t-item-name">员工码</div>
-            </van-col>
-            <van-col span="12" class="home-t-func-t-item" @click="toAttendance">
-              <img class="func-t-item-icon" src="~@/assets/img/index/index-t2.png" alt="">
-              <div class="func-t-item-name">考勤打卡</div>
-            </van-col>
-          </van-row>
-          <van-notice-bar class="notice-bar" left-icon="volume-o" :scrollable="false" mode="link">
-            <template #left-icon>
-              <img class="news-icon" src="~@/assets/img/index/news.png" />
-            </template>
-            <van-swipe vertical class="notice-swipe" :autoplay="3000" :show-indicators="false">
-              <van-swipe-item v-for="(msg,mIndex) in messageList" :key="mIndex" @click="toMessageList()">{{msg.content}}</van-swipe-item>
-              <span v-if="messageList.length==0">暂无消息</span>
-            </van-swipe>
-            <!-- <template #right-icon>
-              <img class="right-icon" src="~@/assets/img/index/arrow-right2.png" @click="toMessageList()" />
-            </template> -->
-          </van-notice-bar>
-        </div>
-      </div>
       <div class="home-m">
         <div class="home-m-item" :class="'item_0'+index" v-for="(item,index) in functionList" :key="index" @click="onFunctionClick(item)">
           <img class="home-m-item-bg" :src="item.bg" v-if="UIStyle=='normal'" />
@@ -66,14 +33,6 @@
         </van-pull-refresh>
 
         <van-empty v-if="policyList.length==0" class="empty-custom-image" description="暂无政策公告" />
-
-      </div>
-      <div class="copyright">
-
-        <div class="copyright-row">
-          <span>本服务由浙江政务服务网、</span><span>绍兴市柯桥区大数据中心</span>
-        </div>
-        <div class="copyright-row">服务咨询热线：<span class="highlight" @click="onPhoneNumberClick('0575-88621111')">0575-88621111</span> </div>
 
       </div>
     </div>
@@ -121,23 +80,24 @@ import {getMessageList} from '@/api/home.js'
     data() {
       return {
         functionList: [{
-          name: '政务办理',
+          name: '政策公告',
           bg: require('@/assets/img/index/func-bg1.png'),
           icon: require('@/assets/img/index/func-icon1.png'),
           url: '',
-          route: 'government-handle'
+          route: 'policy-announcement'
         }, {
-          name: '城市服务',
+          name: '服务市场',
           bg: require('@/assets/img/index/func-bg2.png'),
           icon: require('@/assets/img/index/func-icon2.png'),
           url: '',
           route: 'e-keqiao'
         }, {
-          name: '培训平台',
+          name: '专家咨询',
           bg: require('@/assets/img/index/func-bg3.png'),
           icon: require('@/assets/img/index/func-icon3.png'),
           url: '',
-          route: 'train-manage'
+          route: 'expert-list'
+          //route: 'train-manage'
         }, {
           name: '学习平台',
           bg: require('@/assets/img/index/func-bg4.png'),
@@ -174,11 +134,12 @@ import {getMessageList} from '@/api/home.js'
         
          getPolicyNoticePage({page:1,limit:3,status:1, orderField: 'issue_date',
           order: 'desc'}).then(({records})=>{
+            console.log(234334,records)
             if (this.refreshing) {
               this.dataList = [];
               this.refreshing = false;
             }
-          this.policyList=records
+          this.policyList= records
         }).catch(()=>{
          
         })

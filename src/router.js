@@ -155,13 +155,6 @@ const routes = [{
     }
   },
   {
-    name: "learning-platform",
-    component: () => import("./view/modules/learning-platform/index.vue"),
-    meta: {
-      title: "学习平台",
-    }
-  },
-  {
     name: "notice",
     component: () => import("./view/modules/notice/index.vue"),
     meta: {
@@ -301,13 +294,6 @@ const routes = [{
     }
   },
   {
-    name: "learning-detail",
-    component: () => import("./view/modules/learning-platform/pages/learning-subject/learning-detail.vue"),
-    meta: {
-      title: "学习详情",
-    }
-  },
-  {
     name: "new-employee-train",
     component: () => import("./view/modules/train-manage/pages/new-employee-train/index.vue"),
     meta: {
@@ -328,7 +314,41 @@ const routes = [{
       title: "知识库详情",
     }
   },
-
+  {
+    name: "learning-platform",
+    component: () => import("./view/modules/learning-platform/index.vue"),
+    meta: {
+      title: "学习平台",
+    }
+  },
+  {
+    name: "learning-detail",
+    component: () => import("./view/modules/learning-platform/pages/learning-subject/learning-detail.vue"),
+    meta: {
+      title: "学习详情",
+    }
+  },
+  {
+    name: "expert-list",
+    component: () => import("./view/modules/expert-list/index.vue"),
+    meta: {
+      title: "专家库",
+    }
+  },
+  {
+    name: "expert-detail",
+    component: () => import("./view/modules/expert-list/pages/expert-subject/expert-detail.vue"),
+    meta: {
+      title: "专家详情",
+    }
+  },
+  {
+    name: "consulting-online",
+    component: () => import("./view/modules/expert-list/pages/expert-subject/consulting-online.vue"),
+    meta: {
+      title: "在线咨询",
+    }
+  },
 ];
 
 // add route path
