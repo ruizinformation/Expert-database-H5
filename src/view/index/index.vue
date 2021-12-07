@@ -65,7 +65,7 @@
       };
     },
     mounted() {
-      let active=sessionStorage.getItem('homeActive')||1
+      let active=sessionStorage.getItem('homeActive')||0
       this.active=Number(active) 
       this.$forceUpdate()
       // AplusPush()//浙里办埋点

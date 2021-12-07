@@ -1,20 +1,25 @@
-<!--
- * @Author: zhangmin
- * @Date: 2021-02-25 10:17:29
- * @LastEditors: zhangmin
- * @LastEditTime: 2021-10-19 10:43:41
- * @Description: 我的组织
--->
+/*
+ * @Author: chensongbo 
+ * @Date: 2021-12-06 14:15:15 
+ * @Last Modified by: chensongbo
+ * @Last Modified time: 2021-12-06 14:34:56
+ */
+
 <template>
   <div class="company-list-demo">
     <van-pull-refresh v-model="refreshing" @refresh="init" pulling-text="下拉即可刷新..." loosing-text="释放即可刷新..." loading-text="加载中...">
       <van-list>
         <div class="data-list">
           <div class="data-list-item" v-for="(row,rowIndex) in dataList" :key="rowIndex" @click="onItemClick(row)">
-            <div class="company-name">{{row.companyInfo?row.companyInfo.name:''}}</div>
+            <div class="company-name">
+                <van-icon  dot  />
+              <img src="../../../../assets/img/index/headPic.png" alt="">
+            
+              <div>{{row.companyInfo?row.companyInfo.name:''}}</div>
+            </div>
             <div class="company-tag">
-              <div class="company-status" v-if="row.companyId==companyInfo.id">
-                当前组织
+              <div class="company-status">
+                税务专家
               </div>
             </div>
           </div>

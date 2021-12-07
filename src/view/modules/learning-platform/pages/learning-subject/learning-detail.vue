@@ -18,36 +18,16 @@
       <div>
         <span>{{learningDetail.title}}</span>
       </div>
-      <div class="subject-date" v-if="learningDetail.teacherName.length>0">
-        讲师：{{learningDetail.teacherName}}
+      <div class="subject-date">
+        <div>浏览量 1000</div>
+        <div>发布时间 2021-10-22</div>
       </div>
     </div>
-    <van-tabs v-model="active" color="#428FFC" title-active-color="#428FFC" title-inactive-color='#363A44' class="subject-detail-tabs">
-      <van-tab title="详情">
+
         <div class="subject-detail-content">
           <span>课程介绍</span>
           <p>{{learningDetail.content}}</p>
         </div>
-
-      </van-tab>
-      <van-tab title="评论">
-        <div class="comment-main">
-          <div class="comment-list-content">
-            <div v-if="noData" class="empty-text">暂无评论</div>
-            <van-pull-refresh v-else v-model="refreshing" @refresh="onRefresh" :pulling-text="pullingText" :loosing-text="loosingText"
-              :loading-text="loadingText">
-              <van-list v-model="loading" :finished="finished" :finished-text="finishedText" @load="onLoad" :immediate-check="false">
-                <div class="data-list">
-                  <comment-item v-for="(row,rowIndex) in dataList" :key="rowIndex" :data="row" />
-                  <!-- <van-empty v-if="noData" class="empty-custom-image"  description="暂无评论" /> -->
-                </div>
-              </van-list>
-            </van-pull-refresh>
-          </div>
-        </div>
-        <comment-bar ref="commentBar" @commentSend="commentSend" />
-      </van-tab>
-    </van-tabs>
     <TrainCompleteModal ref="trainCompleteModal" :subjectId="detailId" :examStatus="learningDetail.examStatus" :contentType="learningDetail.contentType" />
   </div>
 </template>
@@ -55,16 +35,12 @@
 <script>
 import {getLearningDetail,learningCommentcreate,learningComplete} from "@/api/learning.js";
 import listMixin from '@/mixins/list-mixin.js'
-import CommentItem from '@/components/list-item/comment-item/index.vue'
-import CommentBar from '@/components/comment-bar/index.vue'
 import VideoView from '@/components/video-view/index.vue'
 import TrainCompleteModal from "@/components/train-complete-modal/index.vue";
 
 export default {
   mixins: [listMixin],
   components: {
-   CommentItem,
-   CommentBar,
    VideoView,
    TrainCompleteModal
   },

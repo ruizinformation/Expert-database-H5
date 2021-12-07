@@ -1,9 +1,9 @@
 <!--
- * @Author: zhangmin
- * @Date: 2021-02-25 10:17:29
- * @LastEditors: xuyingchao
- * @LastEditTime: 2021-10-22 12:46:06
- * @Description: 专家咨询首页
+ * @Author: chensongbo 
+ * @Date: 2021-12-06 11:00:49 
+ * @Last Modified by:   chensongbo 
+ * @Last Modified time: 2021-12-06 11:00:49 
+  * @Description: 服务市场首页
 -->
 <template>
   <div class="train-home-mod learning-mod">
@@ -14,14 +14,14 @@
       </van-tabs>
     </div>
             <div class="learning-title">
-          <div class="view-more" >
+          <div class="view-more" @click="showMore">
             更多分类
             <van-icon name="arrow" />
           </div>
         </div>
     <!-- 专家列表 -->
     <div class="train-list-wrapper">
-      <ExpertItem v-for="(item,index) in LearningList" :key="index" :item="item" :type="3"/>
+      <ServeItem v-for="(item,index) in LearningList" :key="index" :item="item" :type="3"/>
       <van-empty v-if="LearningList.length == 0" class="empty-custom-image" description="暂无数据" />
     </div>
   </div>
@@ -29,11 +29,11 @@
 
 <script>
 import {getTypeList,getLearningList} from "@/api/learning.js";
-import ExpertItem from '@/components/list-item/expert-item/index.vue'
+import ServeItem from '@/components/list-item/serve-item/index.vue'
 
 export default {
   components: {
-    ExpertItem
+    ServeItem
   },
   computed: {},
   data() {
@@ -75,13 +75,29 @@ export default {
       let id =  this.typeList[this.active].id
       console.log(id)
       this.getLearningList(id)
+    },
+    showMore(){
+        // 机构类型
+        this.$router.push({
+          name: "serveType-list",
+         //  name: "learning-detail",
+          // query: {
+          //   id: this.type == 3 ? this.item.id : this.item.subjectId,
+          //   scene: this.scene,
+          // },
+        });
     }
   },
 };
 </script>
 <style lang='less' scoped>
-.train-list-wrapper{
-    height: calc(100vh - 110px);
-    overflow-y: scroll;
-}
+// .elder-mod{
+//   .train-list-wrapper{
+//     height: calc(100vh - 330px);
+//   }
+// }
+// .train-list-wrapper{
+//     height: calc(100vh - 300px);
+//     overflow-y: scroll;
+// }
 </style>

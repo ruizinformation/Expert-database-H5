@@ -1,50 +1,38 @@
-<!--
- * @Descripttion: 
- * @version: 
- * @Author: xuyingchao
- * @Date: 2021-10-14 20:49:42
- * @LastEditors: wanghongying
- * @LastEditTime: 2021-10-28 14:26:06
--->
+/*
+ * @Author: chensongbo 
+ * @Date: 2021-12-06 19:34:10 
+ * @Last Modified by: chensongbo
+ * @Last Modified time: 2021-12-06 20:21:38
+ */
+
 <template>
   <div>
-    <!-- 培训/学习课程item -->
-    <div v-if="type == 1 || type == 3" class="train-item" @click="handleDetail">
-      <div class="train-item-img">
-        <img v-if="item.banner" :src="item.banner" />
-        <i v-if="type != 3" :class="[item.type == 1 ? 'online-icon' : '', 'type-icon']">{{
-          item.type == 1 ? "线上" : "线下"
-        }}</i>
+    <!-- 政策通知item -->
+    <!-- <div  class="message-item" @click="handleDetail">
+      <div class="message-info">
+      <div>您有一条新的政策通知</div>
+         <van-icon  dot />
+      <div class="preview">
+        点击查看
+        <img  src="../../../assets/img/index/arrow-right2.png" alt="" srcset="">
       </div>
-      <div class="train-item-info">
-        <h1>{{ item.title }}</h1>
-        <p>{{ item.content }}</p>
-        <span v-if="item.type == 2">时间:{{ item.date }}</span>
-        <i v-if="type != 3" :class="[item.type == 1 ? 'online-icon' : '', 'type-icon']">{{
-          item.type == 1 ? "线上" : "线下"
-        }}</i>
       </div>
-    </div>
-    <!-- 我的培训/我的学习课程item -->
-    <div v-if="type == 2 || type == 4" class="train-item my-train-item" @click="handleDetail">
-      <div class="train-item-img">
-        <img v-if="item.subjectInfo.banner" :src="item.subjectInfo.banner" />
-        <i v-if="type != 4" :class="[item.subjectInfo.type == 1 ? 'online-icon' : '', 'type-icon']">{{
-          item.subjectInfo.type == 1 ? "线上" : "线下"
-        }}</i>
+    </div> -->
+    <!-- 法律咨询item -->
+    <div  class="layer-item" @click="handleDetail">
+       <div class="layer-info">
+      <img src="../../../assets/img/index/headPic.png" alt="" srcset="">
+      <van-icon  badge="99+" />
+      <div class="layer-infomation">
+      <div class="title">
+        王佳丽
       </div>
-      <div class="train-item-info">
-        <h1>{{ item.subjectInfo.title }}</h1>
-        <p>{{ item.subjectInfo.content }}</p>
-        <span v-if="item.subjectInfo.type == 2">时间:{{ item.subjectInfo.date }}</span>
-        <div class="status-row">
-          <i v-if="type != 4" :class="[item.subjectInfo.type == 1 ? 'online-icon' : '', 'type-icon']">{{
-            item.subjectInfo.type == 1 ? "线上" : "线下"
-          }}</i>
-          <i :class="['status-label','status-'+item.status]">{{item.status == 1?'已完成':'未完成'}}</i>
-        </div>
+        <div class="content">
+     消息内容写一下消息内容写一下消息内容写一...
       </div>
-      <span class="remove-btn" @click.stop="handleRemove">删除</span>
+      </div>
+      
+       </div>
     </div>
   </div>
 </template>

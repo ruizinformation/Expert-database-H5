@@ -90,7 +90,7 @@ import {getMessageList} from '@/api/home.js'
           bg: require('@/assets/img/index/func-bg2.png'),
           icon: require('@/assets/img/index/func-icon2.png'),
           url: '',
-          route: 'e-keqiao'
+          route: 'serve-mark'
         }, {
           name: '专家咨询',
           bg: require('@/assets/img/index/func-bg3.png'),

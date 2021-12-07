@@ -276,13 +276,13 @@
       color: @blue;
     }
   }
-  .tab_02 {
+  .tab_03 {
     .user-content {
-      background: linear-gradient(to bottom, #4391fc, #99d2fc);
+      //background: linear-gradient(to bottom, #4391fc, #99d2fc);
       padding: 15px 16px;
       .user-card {
-        background-color: #fff;
-        padding: 10px 15px;
+        background: linear-gradient(0deg, #288CF2, #28A8F2);
+        padding: 12px 15px;
         padding-bottom: 18px;
         border-radius: 4px;
         font-size: var(--font-size-md);
@@ -290,12 +290,19 @@
         justify-content: space-between;
         &-left {
           padding-top: 10px;
-
+          display: flex;
+          justify-content: start;
+          align-items: center;
+          img{
+            width: 67px;
+            height: 67px;
+          }
+          .left-row{padding-left: 25px;color: #fff;font-size: 15px;}
           .left-row.username {
             font-size: var(--font-size-lg);
           }
           .left-row + .left-row {
-            margin-top: 16px;
+            margin-top: 15px;
           }
           .left-row.company {
             margin-top: 18px;
@@ -304,9 +311,8 @@
         &-right {
           display: flex;
           .integral-icon {
-            width: 13px;
-            height: 16px;
-            margin-right: 6px;
+            width: 15px;
+            height: 15px;
           }
           .integral-main {
             display: flex;

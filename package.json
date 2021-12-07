@@ -16,6 +16,7 @@
     "@aligov/jssdk-mgop": "^3.1.7",
     "axios": "^0.21.1",
     "core-js": "^3.4.3",
+    "exif-js": "^2.3.0",
     "pdfh5": "^1.4.0",
     "qrcodejs2": "^0.0.2",
     "qym-sdk": "^1.0.0",

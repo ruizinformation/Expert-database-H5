@@ -9,10 +9,13 @@
   <div class="policy-announcement-detail">
     <div class="detail-main">
       <div class="detail-title">{{info.title}}</div>
-      <div class="detail-date">发布日期 {{info.issueDate}}</div>
-      <div class="detail-main" v-html="info.content"></div>
+      <div class="detail-date">
+         <div> 浏览量 3000</div>
+        <div> 发布日期 {{info.issueDate}}</div>
+        </div>
+      <div class="detail-content" v-html="info.content"></div>
     </div>
-
+<!-- 
     <div class="comment-main">
       <div class="comment-head">评论</div>
       <div class="comment-list-content">
@@ -27,22 +30,22 @@
       </div>
 
     </div>
-    <comment-bar ref="commentBar" @commentSend="commentSend" />
+    <comment-bar ref="commentBar" @commentSend="commentSend" /> -->
   </div>
 </template>
 
 <script>
 import listMixin from '@/mixins/list-mixin.js'
-import CommentItem from '@/components/list-item/comment-item/index.vue'
-import CommentBar from '@/components/comment-bar/index.vue'
+// import CommentItem from '@/components/list-item/comment-item/index.vue'
+// import CommentBar from '@/components/comment-bar/index.vue'
 import {getPolicyInfo,policyCommentcreate} from '@/api/policy-announcement.js'
 
 
 export default {
   mixins: [listMixin],
   components: {
-    CommentItem,
-    CommentBar
+    // CommentItem,
+    // CommentBar
   },
   computed:{
       

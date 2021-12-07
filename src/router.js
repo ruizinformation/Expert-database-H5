@@ -50,13 +50,6 @@ const routes = [{
     },
   },
   {
-    name: "e-keqiao",
-    component: () => import("./view/modules/e-keqiao/index.vue"),
-    meta: {
-      title: "e柯桥",
-    },
-  },
-  {
     name: "list",
     component: () => import("./view/basic/list.vue"),
     meta: {
@@ -98,74 +91,12 @@ const routes = [{
       title: "video预览",
     },
   },
-  {
-    name: "attendance",
-    component: () => import("./view/modules/attendance/index.vue"),
-    meta: {
-      title: "考勤打卡",
-    },
-  },
-  {
-    name: "attendance-detail",
-    component: () => import("./view/modules/attendance/pages/detail.vue"),
-    meta: {
-      title: "考勤明细",
-    }
-  },
-  {
-    name: "attendance-apply-in",
-    component: () => import("./view/modules/attendance/pages/apply-in.vue"),
-    meta: {
-      title: "考勤申请",
-    }
-  },
-  {
-    name: "government-handle",
-    component: () => import("./view/modules/government-handle/index.vue"),
-    meta: {
-      title: "留柯人员补助",
-    }
-  },
-  {
-    name: "bz-apply-form",
-    component: () => import("./view/modules/government-handle/pages/apply-form.vue"),
-    meta: {
-      title: "补助申请",
-    }
-  },
-  {
-    name: "bz-clock-in",
-    component: () => import("./view/modules/government-handle/pages/bz-clock-in.vue"),
-    meta: {
-      title: "在线打卡",
-    }
-  },
-  {
-    name: "bz-progress",
-    component: () => import("./view/modules/government-handle/pages/bz-progress.vue"),
-    meta: {
-      title: "查询进度",
-    }
-  },
+ 
   {
     name: "train-manage",
     component: () => import("./view/modules/train-manage/index.vue"),
     meta: {
       title: "培训平台",
-    }
-  },
-  {
-    name: "notice",
-    component: () => import("./view/modules/notice/index.vue"),
-    meta: {
-      title: "通知公告",
-    }
-  },
-  {
-    name: "community",
-    component: () => import("./view/modules/community/index.vue"),
-    meta: {
-      title: "社区",
     }
   },
   {
@@ -197,13 +128,6 @@ const routes = [{
     }
   },
   {
-    name: "home-message",
-    component: () => import("./view/modules/home-message/index.vue"),
-    meta: {
-      title: "消息列表",
-    }
-  },
-  {
     name: "basic-info",
     component: () => import("./view/modules/user/basic-info/index.vue"),
     meta: {
@@ -211,10 +135,17 @@ const routes = [{
     }
   },
   {
-    name: "company-list",
-    component: () => import("./view/modules/user/company-list/index.vue"),
+    name: "consult-list",
+    component: () => import("./view/modules/user/consult-list/index.vue"),
     meta: {
-      title: "我的组织",
+      title: "我的咨询",
+    }
+  },
+  {
+    name: "reply-list",
+    component: () => import("./view/modules/user/reply-list/index.vue"),
+    meta: {
+      title: "我的回复",
     }
   },
   {
@@ -239,81 +170,13 @@ const routes = [{
     }
   },
   {
-    name: "live",
-    component: () => import("./view/modules/live/index.vue"),
-    meta: {
-      title: "直播平台",
-    }
-  },
-  {
-    name: "live-detail",
-    component: () => import("./view/modules/live/pages/live-detail.vue"),
-    meta: {
-      title: "直播详情",
-    }
-  },
-  {
-    name: "community-form",
-    component: () => import("./view/modules/community/community-form.vue"),
-    meta: {
-      title: "社区",
-    }
-  },
-  {
-    name: "community-detail",
-    component: () => import("./view/modules/community/community-detail.vue"),
-    meta: {
-      title: "社区",
-    }
-  },
-  {
-    name: "notice-detail",
-    component: () => import("./view/modules/notice/notice-detail.vue"),
-    meta: {
-      title: "通知公告",
-    }
-  },
-  {
     name: "subject-list",
     component: () => import("./view/modules/train-manage/pages/train-subject/subject-list.vue"),
     meta: {
       title: "培训列表",
     }
-  }, {
-    name: "knowledge",
-    component: () => import("./view/modules/knowledge/index.vue"),
-    meta: {
-      title: "知识库",
-    }
-  },
-  {
-    name: "knowledge-detail",
-    component: () => import("./view/modules/knowledge/knowledge-detail.vue"),
-    meta: {
-      title: "知识库详情",
-    }
-  },
-  {
-    name: "new-employee-train",
-    component: () => import("./view/modules/train-manage/pages/new-employee-train/index.vue"),
-    meta: {
-      title: "新员工培训",
-    }
-  },
-  {
-    name: "key-positions-train",
-    component: () => import("./view/modules/train-manage/pages/key-positions-train/index.vue"),
-    meta: {
-      title: "关键岗位培训",
-    }
-  },
-  {
-    name: "knowledge-pdf-view",
-    component: () => import("./view/modules/knowledge/pdf-view.vue"),
-    meta: {
-      title: "知识库详情",
-    }
-  },
+  }, 
+  
   {
     name: "learning-platform",
     component: () => import("./view/modules/learning-platform/index.vue"),
@@ -347,6 +210,34 @@ const routes = [{
     component: () => import("./view/modules/expert-list/pages/expert-subject/consulting-online.vue"),
     meta: {
       title: "在线咨询",
+    }
+  },
+  {
+    name: "serve-mark",
+    component: () => import("./view/modules/serve-mark/index.vue"),
+    meta: {
+      title: "服务市场",
+    }
+  },
+  {
+    name: "serveType-list",
+    component: () => import("./view/modules/serve-mark/pages/serve-subject/serveType-list.vue"),
+    meta: {
+      title: "机构类型",
+    }
+  },
+  {
+    name: "serve-detail",
+    component: () => import("./view/modules/serve-mark/pages/serve-subject/serve-detail.vue"),
+    meta: {
+      title: "机构详情",
+    }
+  },
+  {
+    name: "message-list",
+    component: () => import("./view/modules/message-list/index.vue"),
+    meta: {
+      title: "消息",
     }
   },
 ];

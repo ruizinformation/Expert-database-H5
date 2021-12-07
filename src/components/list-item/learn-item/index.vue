@@ -14,7 +14,7 @@
     <div class="policy-title">{{data.title}}</div>
     <div class="policy-sub-title">{{data.description}}</div>
     <div class="policy-foot">
-      <div class="policy-date">浏览量 {{data.issueDate}}</div>
+      <div class="policy-date">浏览量 1000</div>
     </div>
     </div>
 
@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     toPolicyDetail(){
-      this.$router.push({ name: 'policy-announcement-detail', query:{id:this.data.id}})
+      this.$router.push({ name: 'learning-detail', query:{id:2}})
     }
   },
 };
