@@ -6,15 +6,15 @@
  * @Description: 学习平台-Item
 -->
 <template>
-  <div class="policy-announcement-item" @click="toPolicyDetail">
+  <div class="policy-announcement-item" @click="toPolicyDetail(data.id)">
     <div class="item-left">
-       <img  src="../../../assets/img/index/banner.png" alt="">
+       <img  :src="data.annex" alt="">
     </div>
     <div class="item-right">
     <div class="policy-title">{{data.title}}</div>
     <div class="policy-sub-title">{{data.description}}</div>
     <div class="policy-foot">
-      <div class="policy-date">浏览量 1000</div>
+      <div class="policy-date">浏览量 {{data.pv}}</div>
     </div>
     </div>
 
@@ -41,8 +41,8 @@ export default {
    
   },
   methods: {
-    toPolicyDetail(){
-      this.$router.push({ name: 'learning-detail', query:{id:2}})
+    toPolicyDetail(id){
+      this.$router.push({ name: 'learning-detail', query:{id:id}})
     }
   },
 };

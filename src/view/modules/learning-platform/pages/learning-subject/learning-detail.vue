@@ -19,27 +19,27 @@
         <span>{{learningDetail.title}}</span>
       </div>
       <div class="subject-date">
-        <div>浏览量 1000</div>
-        <div>发布时间 2021-10-22</div>
+        <div>浏览量 {{learningDetail.pv}}</div>
+        <div>发布时间 {{learningDetail.createDate}}</div>
       </div>
     </div>
 
         <div class="subject-detail-content">
           <span>课程介绍</span>
-          <p>{{learningDetail.content}}</p>
+          <p>{{learningDetail.description}}</p>
         </div>
     <TrainCompleteModal ref="trainCompleteModal" :subjectId="detailId" :examStatus="learningDetail.examStatus" :contentType="learningDetail.contentType" />
   </div>
 </template>
 
 <script>
-import {getLearningDetail,learningCommentcreate,learningComplete} from "@/api/learning.js";
-import listMixin from '@/mixins/list-mixin.js'
+import {getLearningDetail,learningComplete} from "@/api/learning.js";
+// import listMixin from '@/mixins/list-mixin.js'
 import VideoView from '@/components/video-view/index.vue'
 import TrainCompleteModal from "@/components/train-complete-modal/index.vue";
 
 export default {
-  mixins: [listMixin],
+  //mixins: [listMixin],
   components: {
    VideoView,
    TrainCompleteModal
@@ -62,7 +62,6 @@ export default {
   mounted(){
     let {id}=this.$route.query?this.$route.query:''
     this.detailId=id
-    this.searchForm.subjectId=id
     this.getLearningDetail()
     
   },
@@ -71,18 +70,6 @@ export default {
       getLearningDetail({id:this.detailId}).then(res=>{
         this.learningDetail = res
       })
-    },
-    // 发送评论
-    commentSend({msg}){
-      if(msg){
-        let {subjectId}=this.searchForm
-        learningCommentcreate({content:msg,subjectId}).then(()=>{
-          this.$toast('评论成功，审核通过后显示')
-          this.onRefresh()
-        }).catch(()=>{
-          this.$toast('评论失败，请稍后再试！')
-        })
-      }
     },
     // 开始pdf
     handleStartLearning(){

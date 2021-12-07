@@ -1,8 +1,8 @@
 /*
  * @Author: chensongbo 
  * @Date: 2021-12-06 14:46:27 
- * @Last Modified by:   chensongbo 
- * @Last Modified time: 2021-12-06 14:46:27 
+ * @Last Modified by: chensongbo
+ * @Last Modified time: 2021-12-07 14:24:47
  */
 
 
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { getUserInfo } from "@/api/home.js";
+// import { getUserInfo } from "@/api/home.js";
 
 export default {
   components: {},
@@ -75,9 +75,9 @@ export default {
   },
   mounted() {
     console.log("mounted");
-    getUserInfo().then((data) => {
-      this.userInfo = data;
-    });
+    // getUserInfo().then((data) => {
+    //   this.userInfo = data;
+    // });
   },
   methods: {
     onMenuClick({ route }) {

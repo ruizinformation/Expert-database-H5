@@ -8,13 +8,13 @@
 <template>
   <div class="policy-announcement-item" @click="toPolicyDetail">
     <div class="item-left">
-       <img  src="../../../assets/img/index/banner.png" alt="">
+       <img  :src="data.banner" alt="">
     </div>
     <div class="item-right">
     <div class="policy-title">{{data.title}}</div>
     <div class="policy-sub-title">{{data.description}}</div>
     <div class="policy-foot">
-      <div class="policy-date">发布日期 {{data.issueDate}}</div>
+      <div class="policy-date">发布日期 {{data.createDate}}</div>
     </div>
     </div>
 

@@ -15,15 +15,14 @@
     </div>
     <!-- 培训列表 -->
     <div class="train-list-wrapper">
-      <MessageItem v-for="(item,index) in LearningList" :key="index" :item="item" :type="3"/>
-      <van-empty v-if="LearningList.length == 0" class="empty-custom-image" description="暂无数据" />
+      <MessageItem v-for="(item,index) in MessageList" :key="index" :item="item" :type="3"/>
+      <van-empty v-if="MessageList.length == 0" class="empty-custom-image" description="暂无数据" />
     </div>
   </div>
 </template>
 
 <script>
-import { getBanner,getPublicMsg } from "@/api/train.js";
-import {getTypeList,getLearningList} from "@/api/learning.js";
+import {getMessagePolicyList,getMessageLayerList} from "@/api/learning.js";
 import MessageItem from '@/components/list-item/message-item/index.vue'
 
 export default {
@@ -33,54 +32,33 @@ export default {
   computed: {},
   data() {
     return {
-      bannerList: [],
-      msgList:[],
-      LearningList:[],
+      MessageList:[],
       typeList:[{id:1,name:"政策通知"},{id:2,name:"法律咨询"}],
       active:''
     };
   },
   mounted() {
-    //this.getLearningMsg()
-    this.getLearningList(1)
+    //this.getMessageList()
   },
   methods: {
-    //获取banner/公告消息
-    getLearningMsg() {
-      // 获取tab类型
-      getTypeList().then(res=>{
-        this.typeList = res
-        this.getLearningList(res[0].id)
-      })
-      // 获取banner
-      getBanner({ 
-        type: 2,
-        orderField: 'sort',
-        order: 'asc'
-      }).then((res) => {
-        this.bannerList = res;
-      });
-      // 公告
-      getPublicMsg({limit:3,page:1,type:2}).then(res=>{
-        if(res.records.length == 0){
-            this.msgList = [{title:'暂无公告'}]
-          }else{
-            this.msgList = res.records
-          }
-      })
-      
-    },
-    // 获取学习列表
-    getLearningList(id){
+    // 获取消息列表
+    getMessageList(typeId){
       let query = {
         limit:8,
         page:1,
-        typeId:id
       }
-      getLearningList(query).then(res=>{
+      if(typeId==1){
+     getMessagePolicyList(query).then(res=>{
         console.log(res)
-        this.LearningList = res
+        this.MessageList = res.records
       })
+      }else{
+      getMessageLayerList(query).then(res=>{
+        console.log(res)
+        this.MessageList = res.records
+      }) 
+      }
+ 
     },
     // 点击公告 跳转公告列表
     handleClickNotice(){

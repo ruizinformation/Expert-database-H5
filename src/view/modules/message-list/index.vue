@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 17:06:39 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-06 17:06:59
+ * @Last Modified time: 2021-12-07 17:26:09
  */
 
 <template>
@@ -19,16 +19,16 @@
             <van-icon name="arrow" />
           </div>
         </div>
-    <!-- 专家列表 -->
+    <!-- 消息列表 -->
     <div class="train-list-wrapper">
-      <ServeItem v-for="(item,index) in LearningList" :key="index" :item="item" :type="3"/>
-      <van-empty v-if="LearningList.length == 0" class="empty-custom-image" description="暂无数据" />
+      <ServeItem v-for="(item,index) in messageList" :key="index" :item="item" :type="3"/>
+      <van-empty v-if="messageList.length == 0" class="empty-custom-image" description="暂无数据" />
     </div>
   </div>
 </template>
 
 <script>
-import {getTypeList,getLearningList} from "@/api/learning.js";
+import {getMessagePolicyList} from "@/api/learning.js";
 import ServeItem from '@/components/list-item/serve-item/index.vue'
 
 export default {
@@ -46,28 +46,19 @@ export default {
     };
   },
   mounted() {
-    this.getLearningMsg()
+    this.geMessagePolicyList()
   },
   methods: {
-    //获取banner/公告消息
-    getLearningMsg() {
-      // 获取tab类型
-      getTypeList().then(res=>{
-        this.typeList = res
-        this.getLearningList(res[0].id)
-      })
-      
-    },
     // 获取学习列表
-    getLearningList(id){
+    geMessagePolicyList(id){
       let query = {
         limit:8,
         page:1,
         typeId:id
       }
-      getLearningList(query).then(res=>{
+      getMessagePolicyList(query).then(res=>{
         console.log(res)
-        this.LearningList = res
+        this.messageList = res.records
       })
     },
     // tab切换

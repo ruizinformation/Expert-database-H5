@@ -32,12 +32,11 @@ export default {
   },
   data() {
     return {
-      getListUrl:'/policy-notice/page',
+      getListUrl:'/policy/page',
       getListAPI:'mgop.ruiztech.staffhome.policynoticepage',
       autoGet:false,
       searchForm:{
-        status:1,
-        orderField:'issue_date',
+        orderField:'create_date',
         order:'desc'
       }
     };

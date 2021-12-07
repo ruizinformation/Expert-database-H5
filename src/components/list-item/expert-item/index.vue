@@ -1,25 +1,25 @@
 /*
  * @Author: chensongbo 
  * @Date: 2021-12-06 11:13:30 
- * @Last Modified by:   chensongbo 
- * @Last Modified time: 2021-12-06 11:13:30 
+ * @Last Modified by: chensongbo
+ * @Last Modified time: 2021-12-07 16:35:50
  */
 <template>
   <div>
     <!-- 专家item -->
-    <div v-if="type == 1 || type == 3" class="train-item">
+    <div  class="train-item">
       <div class="train-item-img">
-        <img v-if="item.banner" :src="item.banner" />
+        <img v-if="item.avatarUrl" :src="item.avatarUrl" />
       </div>
       <div class="train-item-info">
-        <h1>{{ item.title }}</h1>
-        <p>{{ item.content }}</p>
+        <h1>{{ item.name }}</h1>
+        <p>{{ item.description }}</p>
         <div class="mobile">
           <div  @click="call">
             <img src="../../../assets/img/train-manage/phone.png" alt="" />
-            15068523920
+          {{item.mobile}}
           </div>
-          <div class="question"  @click="handleDetail">立即咨询</div>
+          <div class="question"  @click="handleDetail(item.id)">立即咨询</div>
         </div>
       </div>
     </div>
@@ -42,15 +42,13 @@ export default {
     call(){
      window.location.href = 'tel://' + 15068523950
     },
-    handleDetail() {
+    handleDetail(id) {
       // 专家详情
         this.$router.push({
           name: "expert-detail",
-         //  name: "learning-detail",
-          // query: {
-          //   id: this.type == 3 ? this.item.id : this.item.subjectId,
-          //   scene: this.scene,
-          // },
+          query: {
+            id: id,
+          },
         });
     }
   },

@@ -21,14 +21,14 @@
         </div>
     <!-- 专家列表 -->
     <div class="train-list-wrapper">
-      <ServeItem v-for="(item,index) in LearningList" :key="index" :item="item" :type="3"/>
-      <van-empty v-if="LearningList.length == 0" class="empty-custom-image" description="暂无数据" />
+      <ServeItem v-for="(item,index) in serveList" :key="index" :item="item" :type="3"/>
+      <van-empty v-if="serveList.length == 0" class="empty-custom-image" description="暂无数据" />
     </div>
   </div>
 </template>
 
 <script>
-import {getTypeList,getLearningList} from "@/api/learning.js";
+import {getServeTypeList,getServeList} from "@/api/learning.js";
 import ServeItem from '@/components/list-item/serve-item/index.vue'
 
 export default {
@@ -40,41 +40,39 @@ export default {
     return {
       bannerList: [],
       msgList:[],
-      LearningList:[],
+      serveList:[],
       typeList:[],
       active:''
     };
   },
   mounted() {
-    this.getLearningMsg()
+    this.getServeTypeList()
   },
   methods: {
-    //获取banner/公告消息
-    getLearningMsg() {
-      // 获取tab类型
-      getTypeList().then(res=>{
+  // 获取tab类型
+   getServeTypeList(){
+      getServeTypeList().then(res=>{
         this.typeList = res
-        this.getLearningList(res[0].id)
+        this.getServeList(res[0].id)
       })
-      
-    },
-    // 获取学习列表
-    getLearningList(id){
+  },
+  // 获取服务市场列表
+    getServeList(id){
       let query = {
-        limit:8,
+        limit:10,
         page:1,
         typeId:id
       }
-      getLearningList(query).then(res=>{
+      getServeList(query).then(res=>{
         console.log(res)
-        this.LearningList = res
+        this.serveList = res.records
       })
     },
     // tab切换
     handleTab(){
       let id =  this.typeList[this.active].id
       console.log(id)
-      this.getLearningList(id)
+      this.getServeList(id)
     },
     showMore(){
         // 机构类型

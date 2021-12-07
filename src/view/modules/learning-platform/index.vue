@@ -1,10 +1,10 @@
-<!--
- * @Author: zhangmin
- * @Date: 2021-02-25 10:17:29
- * @LastEditors: zhangmin
- * @LastEditTime: 2021-10-20 15:12:53
- * @Description: 学习平台列表
--->
+/*
+ * @Author: chensongbo 
+ * @Date: 2021-12-07 15:05:29 
+ * @Last Modified by:   chensongbo 
+ * @Last Modified time: 2021-12-07 15:05:29 
+ */
+
 <template>
   <div class="policy-announcement-mod">
     <van-pull-refresh v-model="refreshing" @refresh="onRefresh" :pulling-text="pullingText" :loosing-text="loosingText" :loading-text="loadingText">
@@ -32,12 +32,11 @@ export default {
   },
   data() {
     return {
-      getListUrl:'/policy-notice/page',
+      getListUrl:'/study/page',
       getListAPI:'mgop.ruiztech.staffhome.policynoticepage',
       autoGet:false,
       searchForm:{
-        status:1,
-        orderField:'issue_date',
+        orderField:'create_date',
         order:'desc'
       }
     };

@@ -10,15 +10,15 @@
     <div class="expert-detail">
       <div class="expert-detail-title">
         <div class="pic">
-          <img src="~@/assets/img/index/banner.png" alt="" />
+          <img :src="expertDetail.avatarUrl" alt="" />
         </div>
         <div class="expert-info">
-          <div class="name">王德发</div>
-          <div class="address">浙江腾智律师事务所</div>
+          <div class="name">{{expertDetail.name}}</div>
+          <div class="address">{{expertDetail.description}}</div>
           <div class="mobile">
             <div @click="call">
               <img src="~@/assets/img/train-manage/phone.png" alt="" />
-              15068523920
+             {{expertDetail.mobile}}
             </div>
           </div>
         </div>
@@ -28,10 +28,7 @@
     <div class="intro">
       <p>专家介绍</p>
       <div class="content" style="">
-        中国政法大学经济法学副教授，消费者权益保护法专家，兼公司法、企业法破产法的教学和研究。环境法、经济法和MBA硕士生导师。现任中国政法大学开放教育管理办公室主任。兼任中国消费者协会理事。
-        兼任中国消费者权益保护法研究会常务理事。兼任九三学社中央法律专门委员会副主任，九三学社北京市委社会与法律委员会副主任，九三学社中国政法大学支社副支委。
-        曾任北京市政府高层协商专家组成员。曾任北京市昌平区人民检察院专家咨询委员和挂职检察院，北京市石景山区人民法院专家顾问。
-    
+        {{expertDetail.description}}
       </div>
     </div>
     <div class="bootpm-btn">
@@ -44,19 +41,31 @@
 </template>
 
 <script>
+import {getExpertDetail} from "@/api/learning.js";
 export default {
-
-  components: {},
+  components: {
+  },
   computed: {},
   data() {
     return {
-
+     detailId:"",
+     expertDetail:''
     };
   },
   mounted() {
+    let {id}=this.$route.query?this.$route.query:''
+    this.detailId=id
+    this.getExpertDetail()
   },
   methods: {
-
+    call(){
+     window.location.href = 'tel://' + 15068523950
+    },
+getExpertDetail(){
+        getExpertDetail({id:this.detailId}).then(res=>{
+        this.expertDetail = res
+      })
+},
     // 在线联系
   handleChat(){
         this.$router.push({

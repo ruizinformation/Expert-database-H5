@@ -6,11 +6,11 @@
  * @Description: 接口地址配置
  */
 
-let baseUrl = "https://staff.ruiztech.cn:4443/ruiz/"; //默认的url，可以没有
+let baseUrl = "https://expert-library.ruiztech.cn/ruiz"; //默认的url，可以没有
 
 switch (process.env.NODE_ENV) {
   case "development":
-    baseUrl = "https://staff.ruiztech.cn:4443/ruiz/"; //本地的请求url
+    baseUrl = "https://expert-library.ruiztech.cn/ruiz"; //本地的请求url
     break;
     case "qym":
       baseUrl = "http://ygm.kq.gov.cn:8183/ruiz/"; //本地的请求url

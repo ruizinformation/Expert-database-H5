@@ -1,0 +1,58 @@
+// e柯桥导航页样式
+.e-keqiao-mod {
+  .banner-content {
+    padding: 10px 16px;
+    .banner-img {
+      width: 100%;
+    }
+  }
+  .e-menu {
+    padding: 0 14px;
+    &-list {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .e-menu-item {
+        width: calc(50% - 4px);
+        padding: 16px 17px;
+        position: relative;
+        z-index: 1;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        overflow: hidden;
+        &-bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+        }
+
+        &-icon {
+          width: 39px;
+          height: 39px;
+        }
+
+        &-name {
+          font-size: var(--font-size-bg);
+          color: #ffffff;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+// 标准版
+.normal-mod {
+  .e-keqiao-mod {
+  }
+}
+// 长辈版
+.elder-mod {
+  .e-keqiao-mod {
+  }
+}

@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import {getCompanyInfo,bindCompany,getUserInfo,smsSend} from '@/api/home.js'
+import {bindCompany,getUserInfo,smsSend} from '@/api/home.js'
 import {isMobile } from '@/utils/validate.js'
 
 export default {
@@ -106,25 +106,28 @@ export default {
     init(){
       //let {creditCode}=this.basicInfo
       let creditCode="48948665DEREFe567896"
+      this.$cookie.set('token',"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJleHBpcmVfdGltZSI6MTY0MDE1Mjk2MDQ0NH0.NdNiu8uVuWWXRRnUKRVIZpqAxOj7dSI7DTeL72m3VdM")
       if(!creditCode){
         this.$toast('参数错误，请稍后重试！')
         return
       }
-      getCompanyInfo({taxNumber:creditCode}).then(data=>{
-        console.log('data',data)
-         console.log('data111',this.dataForm)
-        if(data){
-          // 登录进入主页
-          bindCompany(this.dataForm).then(({data})=>{
-              this.$cookie.set('accessToken',data.accessToken)
-             this.toGetUserInfo()
-            this.$router.replace({name:'index'})
-          })
-        }else{
-          // 显示绑定表单
-          this.showType=2
-        }
-      })
+      
+       this.toGetUserInfo()
+      // getCompanyInfo({taxNumber:creditCode}).then(data=>{
+      //   console.log('data',data)
+      //    console.log('data111',this.dataForm)
+      //   if(data){
+      //     // 登录进入主页
+      //     bindCompany(this.dataForm).then(({data})=>{
+      //         this.$cookie.set('accessToken',data.accessToken)
+      //        this.toGetUserInfo()
+      //       this.$router.replace({name:'index'})
+      //     })
+      //   }else{
+      //     // 显示绑定表单
+      //     this.showType=2
+      //   }
+      // })
     },
     toSmsSend(){
       if(!this.btnCanClick)return
@@ -180,14 +183,15 @@ export default {
           console.log('获取用户信息===')
         getUserInfo().then(data=>{
           console.log('获取用户信息',data)
-          let {companyInfo,companyId}=data
-          this.userInfo=data
-          if(companyId){
-            this.companyInfo=companyInfo
-          }else{
-            // 未绑定公司，进入引导页去企业码绑定
-            this.$router.replace({name:'guide-page'})
-          }
+           this.$router.replace({name:'index'})
+         // let {mobile,id}=data
+          // this.userInfo=data
+          // if(companyId){
+          //   this.companyInfo=companyInfo
+          // }else{
+          //   // 未绑定公司，进入引导页去企业码绑定
+          //   this.$router.replace({name:'guide-page'})
+          // }
           
         })
       },

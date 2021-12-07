@@ -21,14 +21,14 @@
         </div>
     <!-- 专家列表 -->
     <div class="train-list-wrapper">
-      <ExpertItem v-for="(item,index) in LearningList" :key="index" :item="item" :type="3"/>
-      <van-empty v-if="LearningList.length == 0" class="empty-custom-image" description="暂无数据" />
+      <ExpertItem v-for="(item,index) in expertList" :key="index" :item="item"/>
+      <van-empty v-if="expertList.length == 0" class="empty-custom-image" description="暂无数据" />
     </div>
   </div>
 </template>
 
 <script>
-import {getTypeList,getLearningList} from "@/api/learning.js";
+import {getTypeList,getExpertList} from "@/api/learning.js";
 import ExpertItem from '@/components/list-item/expert-item/index.vue'
 
 export default {
@@ -40,7 +40,7 @@ export default {
     return {
       bannerList: [],
       msgList:[],
-      LearningList:[],
+      expertList:[],
       typeList:[],
       active:''
     };
@@ -53,28 +53,29 @@ export default {
     getLearningMsg() {
       // 获取tab类型
       getTypeList().then(res=>{
-        this.typeList = res
-        this.getLearningList(res[0].id)
+        console.log(132,res.records)
+        this.typeList = res.records
+        this.getExpertList(res.records[0].id)
       })
       
     },
-    // 获取学习列表
-    getLearningList(id){
+    // 获取专家列表
+    getExpertList(id){
       let query = {
         limit:8,
         page:1,
         typeId:id
       }
-      getLearningList(query).then(res=>{
+      getExpertList(query).then(res=>{
         console.log(res)
-        this.LearningList = res
+        this.expertList = res.records
       })
     },
     // tab切换
     handleTab(){
       let id =  this.typeList[this.active].id
       console.log(id)
-      this.getLearningList(id)
+      this.getExpertList(id)
     }
   },
 };

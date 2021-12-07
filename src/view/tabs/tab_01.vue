@@ -45,7 +45,7 @@ import PolicyItem from '@/components/list-item/policy-item/index.vue'
 import {getPolicyNoticePage} from '@/api/policy-announcement.js'
 import emptyImg from "@/assets/img/common/no_data.png";
 import YGMCode from "@/components/YGM-code/index.vue";
-import {getMessageList} from '@/api/home.js'
+// import {getMessageList} from '@/api/home.js'
   export default {
     components: {
       PolicyItem,
@@ -122,18 +122,17 @@ import {getMessageList} from '@/api/home.js'
         // 获取政策公告前三条
         this.refreshPolicyNoticePage()
         // 获取消息列表
-        getMessageList({page:1,limit:999,orderField: 'id',
-          order: 'desc'}).then(({records})=>{
-          this.messageList=records
-        }).catch(()=>{
-        })
+        // getMessageList({page:1,limit:999,orderField:'create_date',
+        //   order: 'desc'}).then(({records})=>{
+        //   this.messageList=records
+        // }).catch(()=>{
+        // })
         this.$cookie.set('learningActive', 0)
         this.$cookie.set('trainActive', 0)
       },
       refreshPolicyNoticePage(){
         
-         getPolicyNoticePage({page:1,limit:3,status:1, orderField: 'issue_date',
-          order: 'desc'}).then(({records})=>{
+         getPolicyNoticePage({page:1,limit:3}).then(({records})=>{
             console.log(234334,records)
             if (this.refreshing) {
               this.dataList = [];
@@ -154,8 +153,8 @@ import {getMessageList} from '@/api/home.js'
       },
       onSwitchClick() {
         console.log(this.UIStyle)
-        this.UIStyle = this.UIStyle == 'normal' ? 'elder' : 'normal'
-        this.$setStyle(this.UIStyle)
+        //this.UIStyle = this.UIStyle == 'normal' ? 'elder' : 'normal'
+       // this.$setStyle(this.UIStyle)
       },
       //点击电话
       onPhoneNumberClick(phone) {

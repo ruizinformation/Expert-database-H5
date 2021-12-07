@@ -15,7 +15,7 @@ import { Toast } from "vant";
  export function getPolicyNoticePage(data) {
     return new Promise((resolve, reject) => {
       request({
-        url:'/policy-notice/page',
+        url:'/policy/page',
         // url:'/train/subject/page',
         api: 'mgop.ruiztech.staffhome.policynoticepage',
         type: 'GET',
@@ -30,25 +30,6 @@ import { Toast } from "vant";
     });
   }
 
-  /**
- * 政策公告-评论列表
- */
- export function getPolicyCommentPage(data) {
-    return new Promise((resolve, reject) => {
-      request({
-        url:'/policy-notice-comment/page',
-        api: 'mgop.ruiztech.staffhome.policynoticecommentpage',
-        type: 'GET',
-        data: data
-      }).then(({ data }) => {
-        resolve(data)
-      }).catch((err) => {
-        console.log(err)
-        Toast(err.msg);
-        reject(err);
-      });
-    });
-  }
 
 
   /**
@@ -57,29 +38,9 @@ import { Toast } from "vant";
  export function getPolicyInfo(data) {
     return new Promise((resolve, reject) => {
       request({
-        url:'/policy-notice/info',
+        url:'/policy/info',
         api: 'mgop.ruiztech.staffhome.policynoticeinfo',
         type: 'GET',
-        data: data
-      }).then(({ data }) => {
-        resolve(data)
-      }).catch((err) => {
-        console.log(err)
-        Toast(err.msg);
-        reject(err);
-      });
-    });
-  }
-
-    /**
- * 政策公告-评论
- */
- export function policyCommentcreate(data) {
-    return new Promise((resolve, reject) => {
-      request({
-        url:'/policy-notice-comment/create',
-        api: 'mgop.ruiztech.staffhome.policynoticecommentcreate',
-        type: 'POST',
         data: data
       }).then(({ data }) => {
         resolve(data)
