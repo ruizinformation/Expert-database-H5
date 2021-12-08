@@ -2,14 +2,14 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 14:43:18 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-06 16:41:23
+ * @Last Modified time: 2021-12-07 20:37:23
  */
 
 <template>
   <div class="basic-info-mod">
       <div class="basic-info-content">
      <!-- <div class="picBox"> -->
-        <van-image class="picBox" fit="cover" src="https://img01.yzcdn.cn/vant/cat.jpeg" alt=""/>
+        <van-image class="picBox" fit="cover" :src="dataForm.picUrl" alt=""/>
       <!-- </div> -->
       <!-- <div class="changePic">
        切换头像
@@ -58,9 +58,6 @@ export default {
   },
   methods: {
     init(){
-      let politics,education;// eslint-disable-line no-unused-vars
-      ({politics:this.dataForm.politics,education:this.dataForm.education}=this.userInfo)
-      this.userInfo.mobile=this.userInfo.mobile.replace(/^(.{3})(?:\d+)(.{4})$/, "$1****$2")
       this.picUrl= "https://img01.yzcdn.cn/vant/cat.jpeg"
     },
      uploadImg(e) {
@@ -80,7 +77,7 @@ export default {
             vm.resetOrientation(base64, orientation, function (resultBase64) {
               vm.b64toBlob(resultBase64, function (blob) {
                 console.log(123,blob)
-                vm.picUrl=window.URL.createObjectURL(blob)
+                vm.dataForm.picUrl=window.URL.createObjectURL(blob)
                 param.append('file', blob); // 通过append向form对象添加数据
                 //调用接口上传图片
               //  return vm.registerFace(param, config).then(() => {

@@ -14,7 +14,7 @@
       </van-tabs>
     </div>
             <div class="learning-title">
-          <div class="view-more" >
+          <div class="view-more" @click="showMore">
             更多分类
             <van-icon name="arrow" />
           </div>
@@ -46,14 +46,20 @@ export default {
     };
   },
   mounted() {
+    let {typeId}=this.$route.query?this.$route.query:''
+    if(typeId){
+    this.active=typeId
+     this.getExpertList(typeId)
+    }else{
     this.getLearningMsg()
+    }
+
   },
   methods: {
     //获取banner/公告消息
     getLearningMsg() {
       // 获取tab类型
       getTypeList().then(res=>{
-        console.log(132,res.records)
         this.typeList = res.records
         this.getExpertList(res.records[0].id)
       })
@@ -76,6 +82,12 @@ export default {
       let id =  this.typeList[this.active].id
       console.log(id)
       this.getExpertList(id)
+    },
+        showMore(){
+        // 机构类型
+        this.$router.push({
+          name: "expertType-list",
+        });
     }
   },
 };

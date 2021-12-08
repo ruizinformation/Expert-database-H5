@@ -46,6 +46,10 @@ export default {
     };
   },
   mounted() {
+    let {typeId}=this.$route.query?this.$route.query:''
+    if(typeId){
+    this.active=typeId
+    }
     this.getServeTypeList()
   },
   methods: {
@@ -78,11 +82,6 @@ export default {
         // 机构类型
         this.$router.push({
           name: "serveType-list",
-         //  name: "learning-detail",
-          // query: {
-          //   id: this.type == 3 ? this.item.id : this.item.subjectId,
-          //   scene: this.scene,
-          // },
         });
     }
   },

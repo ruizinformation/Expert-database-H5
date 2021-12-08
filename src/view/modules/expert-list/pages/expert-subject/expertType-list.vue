@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 11:41:20 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-07 20:52:11
+ * @Last Modified time: 2021-12-07 21:00:03
  */
 
 <template>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import {getServeTypeList} from "@/api/learning.js";
+import {getTypeList} from "@/api/learning.js";
 export default {
 
   components: {},
@@ -29,8 +29,8 @@ export default {
     };
   },
   mounted() {
-      getServeTypeList().then(res=>{
-        this.typeList = res
+      getTypeList().then(res=>{
+        this.typeList = res.records
       })
   },
   methods: {

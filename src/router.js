@@ -199,6 +199,13 @@ const routes = [{
     }
   },
   {
+    name: "expertType-list",
+    component: () => import("./view/modules/expert-list/pages/expert-subject/expertType-list.vue"),
+    meta: {
+      title: "专家分类",
+    }
+  },
+  {
     name: "expert-detail",
     component: () => import("./view/modules/expert-list/pages/expert-subject/expert-detail.vue"),
     meta: {
