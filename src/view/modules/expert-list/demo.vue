@@ -1,9 +1,9 @@
 <!--
- * @Author: chensongbo 
- * @Date: 2021-12-06 11:00:49 
- * @Last Modified by:   chensongbo 
- * @Last Modified time: 2021-12-06 11:00:49 
-  * @Description: 服务市场首页
+ * @Author: zhangmin
+ * @Date: 2021-02-25 10:17:29
+ * @LastEditors: xuyingchao
+ * @LastEditTime: 2021-10-22 12:46:06
+ * @Description: 专家咨询首页
 -->
 <template>
   <div class="train-home-mod learning-mod">
@@ -34,14 +34,13 @@
     </div>
     <!-- 专家列表 -->
     <div class="train-list-wrapper">
-      <ServeItem
-        v-for="(item, index) in serveList"
+      <ExpertItem
+        v-for="(item, index) in expertList"
         :key="index"
         :item="item"
-        :type="3"
       />
       <van-empty
-        v-if="serveList.length == 0"
+        v-if="expertList.length == 0"
         class="empty-custom-image"
         description="暂无数据"
       />
@@ -50,77 +49,70 @@
 </template>
 
 <script>
-import { getServeTypeList, getServeList } from "@/api/learning.js";
-import ServeItem from "@/components/list-item/serve-item/index.vue";
+import { getTypeList, getExpertList } from "@/api/learning.js";
+import ExpertItem from "@/components/list-item/expert-item/index.vue";
 
 export default {
   components: {
-    ServeItem,
+    ExpertItem,
   },
   computed: {},
   data() {
     return {
       bannerList: [],
       msgList: [],
-      serveList: [],
-      typeList: [],
+      expertList: [{tilte:"123"},{tilte:"123"},{tilte:"123"},{tilte:"123"},{tilte:"123"},{tilte:"123"},{tilte:"123"},{tilte:"123"},{tilte:"123"}],
+      typeList: [{name:"类型1",id:1},{name:"类型2",id:2}],
       active: "",
     };
   },
   mounted() {
-    this.init()
+   // this.init()
 
   },
   methods: {
     init(){
-    // 获取tab类型
-      getServeTypeList().then((res) => {
-        this.typeList = res;
-        let { typeId } = this.$route.query ? this.$route.query : "";
-        if (typeId) {
-          this.active = typeId;
-              this.getServeList(typeId);
-        }else{
-              this.getServeList(res[0].id);
-        }
-      });
+    getTypeList().then((res) => {
+    this.typeList = res.records;
+    let { typeId } = this.$route.query ? this.$route.query : "";
+    if (typeId) {
+      this.active = typeId;
+      this.getExpertList(typeId);
+    } else {
+      this.getExpertList(res.records[0].id);
+    }
+    });
     },
-
-    // 获取服务市场列表
-    getServeList(id) {
+    // 获取专家列表
+    getExpertList(id) {
       let query = {
-        limit: 10,
+        limit: 8,
         page: 1,
         typeId: id,
       };
-      getServeList(query).then((res) => {
+      getExpertList(query).then((res) => {
         console.log(res);
-        this.serveList = res.records;
+        this.expertList = res.records;
       });
     },
     // tab切换
     handleTab() {
       let id = this.typeList[this.active].id;
       console.log(id);
-      this.getServeList(id);
+      this.getExpertList(id);
     },
     showMore() {
       // 机构类型
       this.$router.push({
-        name: "serveType-list",
+        name: "expertType-list",
       });
     },
   },
 };
 </script>
 <style lang="less" scoped>
-// .elder-mod{
-//   .train-list-wrapper{
-//     height: calc(100vh - 330px);
-//   }
-// }
-// .train-list-wrapper{
-//     height: calc(100vh - 300px);
-//     overflow-y: scroll;
-// }
+.train-list-wrapper {
+  height: calc(100vh - 110px);
+  overflow-y: scroll;
+}
 </style>

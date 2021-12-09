@@ -67,19 +67,22 @@ export default {
     };
   },
   mounted() {
+    this.init()
+
+  },
+  methods: {
+    init(){
     getTypeList().then((res) => {
-      this.typeList = res.records;
-      this.getExpertList(res.records[0].id);
-    });
+    this.typeList = res.records;
     let { typeId } = this.$route.query ? this.$route.query : "";
     if (typeId) {
       this.active = typeId;
       this.getExpertList(typeId);
     } else {
-      this.getExpertList(0);
+      this.getExpertList(res.records[0].id);
     }
-  },
-  methods: {
+    });
+    },
     // 获取专家列表
     getExpertList(id) {
       let query = {

@@ -255,6 +255,12 @@ const routes = [{
     meta: {
       title: "消息",
     }
+  },  {
+    name: "demo",
+    component: () => import("./view/modules/expert-list/demo.vue"),
+    meta: {
+      title: "消息",
+    }
   },
 ];
 
