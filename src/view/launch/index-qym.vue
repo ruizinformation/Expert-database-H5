@@ -88,7 +88,8 @@ export default {
       dataForm:{
         
       },
-      btnCanClick:true
+      btnCanClick:true,
+      token:''
     };
   },
   activated() {
@@ -98,6 +99,8 @@ export default {
     console.log('launch====mounted',this.$route)
     //?entName=七七公司&creditCode=48948665DEREFe567896&frName=天乐&job=工程师&phone=18258290000&userName=七七&token=fwef489ew87f6e4w56f445
    this.basicInfo=this.$route.query?this.$route.query:{},
+   //this.token = this.$route.query ? this.$route.query : "";
+  console.log(22,this.basicInfo)
    this.dataForm={entName:"七七公司",creditCode:"48948665DEREFe567896",frName:"天乐",job:"工程师",phone:"18258290000",userName:"七七",token:"fwef489ew87f6e4w56f445"}
   // this.dataForm=this.cloneObject(this.basicInfo)
    this.init()
@@ -113,20 +116,8 @@ export default {
       }
       
        this.toGetUserInfo()
-      // getCompanyInfo({taxNumber:creditCode}).then(data=>{
-      //   console.log('data',data)
-      //    console.log('data111',this.dataForm)
-      //   if(data){
-      //     // 登录进入主页
-      //     bindCompany(this.dataForm).then(({data})=>{
-      //         this.$cookie.set('accessToken',data.accessToken)
-      //        this.toGetUserInfo()
-      //       this.$router.replace({name:'index'})
-      //     })
-      //   }else{
-      //     // 显示绑定表单
-      //     this.showType=2
-      //   }
+      // getToken({token:this.basicInfo.token}).then(data=>{
+      //   console.log(88,data)
       // })
     },
     toSmsSend(){

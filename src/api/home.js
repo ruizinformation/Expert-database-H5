@@ -49,6 +49,25 @@ import Vue from 'vue'
   });
 }
 
+  /**
+ * 登录
+ */
+   export function getToken(data) {
+    return new Promise((resolve, reject) => {
+        request({
+            url: '/auth/login-qym',
+            api: 'mgop.ruiztech.staffhome.trainsubjectcommentcreate',
+            type: 'POST',
+            data: data
+        }).then(({ data }) => {
+            resolve(data)
+        }).catch((err) => {
+            Toast(err.msg);
+            reject(err);
+        });
+    });
+  }
+
 /**
  * 手机号登录
  */

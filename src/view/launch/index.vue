@@ -48,7 +48,6 @@ export default {
   mounted(){
      console.log('launch====mounted',this.$route)
       console.log('process.env.NODE_ENV',process.env.NODE_ENV)
-      
       if(process.env.NODE_ENV=='development'){// 开发坏境，直接登录
         this.platform='h5'//将接口环境设置为Http请求
         let basicInfo=this.$route.query?this.$route.query:{}
