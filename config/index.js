@@ -13,13 +13,13 @@ switch (process.env.NODE_ENV) {
     baseUrl = "https://expert-library.ruiztech.cn/ruiz"; //本地的请求url
     break;
     case "qym":
-      baseUrl = "http://ygm.kq.gov.cn:8183/ruiz/"; //本地的请求url
+      baseUrl = "https://expert-library.ruiztech.cn/ruiz"; //本地的请求url
       break;
   case "test": // 注意这里的名字要和设置的环境名字对应起来
-    baseUrl = "https://staff.ruiztech.cn:4443/ruiz/"; //测试环境中的url
+    baseUrl = "https://expert-library.ruiztech.cn/ruiz"; //测试环境中的url
     break;
   case "production":
-    baseUrl = "http://ygm.kq.gov.cn:8183/ruiz/"; //生产环境url
+    baseUrl = "https://expert-library.ruiztech.cn/ruiz"; //生产环境url
     break;
 }
 

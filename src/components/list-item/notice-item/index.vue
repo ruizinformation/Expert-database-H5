@@ -1,17 +1,33 @@
-<!--
- * @Author: zhangmin
- * @Date: 2021-02-25 10:17:29
- * @LastEditors: xuyingchao
- * @LastEditTime: 2021-10-15 18:56:33
- * @Description: 政策公告-Item
--->
+/*
+ * @Author: chensongbo 
+ * @Date: 2021-12-08 20:24:42 
+ * @Last Modified by: chensongbo
+ * @Last Modified time: 2021-12-09 08:46:43
+ */
+
 <template>
-  <div class="policy-announcement-item" @click="toNoticeDetail">
-    <div class="policy-title">{{data.title}}</div>
-    <div class="policy-sub-title">{{data.description}}</div>
-    <div class="policy-foot">
-      <div class="policy-date">发布日期 {{data.createDate}}</div>
-      <!-- <div class="policy-view-count">阅读量 {{data.pv}}</div> -->
+  <div class="policy-announcement-item">
+    <div>
+    <div class="policy-title">
+      <div>我的咨询</div>
+      <div class="time">2021-12-12 12:12:12</div>
+    </div>
+    <div class="policy-content">{{data.description}}
+      <div>
+        <img src="../../../assets/img/train-manage/icon02.png" alt="" srcset="">
+      </div>
+    </div>
+    </div>
+        <div>
+    <div class="policy-title reply">
+      <div>专家回复</div>
+      <div class="time">2021-12-12 12:12:12</div>
+    </div>
+    <div class="policy-content bg">中国政法大学经济法学副教授，消费者权益保护法专家，兼公司法、企业法破产法的教学和研究。环境法、经济法和MBA硕士生导师。现任中
+      <div>
+        <img src="../../../assets/img/train-manage/icon02.png" alt="" srcset="">
+      </div>
+    </div>
     </div>
   </div>
 </template>
@@ -44,25 +60,39 @@ export default {
 </script>
 <style lang="less" scoped>
 .policy-announcement-item{
-  background-color: #fff;
   border-radius: 4px;
   padding: 15px 12.5px;
-  margin-bottom: 11px;
+  .reply{
+    padding-top: 12px;
+  }
   .policy-title{
-      font-size: var(--font-size-lg);
-      font-weight: bold;
-      overflow: hidden;
-      text-overflow:ellipsis;
-      white-space: nowrap;
-      line-height: var(--line-height-md);
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     font-size: 15px;
+     color: #303030;
+     padding-left: 10px;
+     .time{font-size: 14px;}
   }
-  .policy-sub-title{
-    font-size: var(--font-size-md);
-    margin-top: 10px;
-    overflow: hidden;
-    text-overflow:ellipsis;
-    white-space: nowrap;
+  .policy-content{
+    background: #fff;
+    padding: 12.5px;
+    border-radius: 4px;
+    margin-top: 12px;
+    font-size: 15px;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: #303030;
+    line-height: 24px;
+    img{
+      width: 24px;
+      height: 24px;
+      padding-top: 10px;
+    }
   }
+     .bg{
+      background: #D4E7FA;
+    }
   .policy-foot{
     display: flex;
     justify-content: space-between;

@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 14:43:18 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-07 20:37:23
+ * @Last Modified time: 2021-12-09 08:56:32
  */
 
 <template>
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import {updateUser} from '@/api/user.js'
+import {updateUser,uploadPic} from '@/api/user.js'
 import {getUserInfo} from '@/api/home.js'
 import EXIF from 'exif-js'
 
@@ -64,9 +64,9 @@ export default {
         const vm = this;
         let file = e.target.files[0]
         let param = new FormData()  // 创建form对象
-        // let config = {
-        //   headers: {'Content-Type': 'multipart/form-data'}
-        // }
+        let config = {
+          headers: {'Content-Type': 'multipart/form-data'}
+        }
       //解决ios拍照照片自动旋转问题
       vm.getOrientation(file, function (orientation) {
           const reader = new FileReader();
@@ -77,12 +77,15 @@ export default {
             vm.resetOrientation(base64, orientation, function (resultBase64) {
               vm.b64toBlob(resultBase64, function (blob) {
                 console.log(123,blob)
+                //var files=new window.File([blob],this.files[0].name,{type:this.files[0].type})
+                let file = new window.File([blob], '123', {type: 'image/jpeg'})
+                  console.log(44,file)
                 vm.dataForm.picUrl=window.URL.createObjectURL(blob)
-                param.append('file', blob); // 通过append向form对象添加数据
+                param.append('file', file); // 通过append向form对象添加数据
                 //调用接口上传图片
-              //  return vm.registerFace(param, config).then(() => {
-              //    // 上传成功逻辑
-              //  })
+               return uploadPic(param,config).then(() => {
+                 // 上传成功逻辑
+               })
               });
             });
           }

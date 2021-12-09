@@ -29,42 +29,21 @@ import { Toast } from "vant";
   }
 
   /**
- * 我的组织列表
+ * 上传图片
  */
- export function getCompanyList(data) {
-    return new Promise((resolve, reject) => {
+ export function uploadPic(data) {
+  return new Promise((resolve, reject) => {
       request({
-        url:'/company/user/list',
-        api: 'mgop.ruiztech.staffhome.companyuserlist',
-        type: 'GET',
-        data: data
+          url: '/oss/upload',
+          api: 'mgop.ruiztech.staffhome.trainsubjectcommentcreate',
+          type: 'POST',
+          data: data
       }).then(({ data }) => {
-        resolve(data)
+          resolve(data)
       }).catch((err) => {
-        console.log(err)
-        Toast(err.msg);
-        reject(err);
+          Toast(err.msg);
+          reject(err);
       });
-    });
-  }
+  });
+}
 
-
-  /**
- * 切换组织
- */
- export function userUpdateCompany(data) {
-    return new Promise((resolve, reject) => {
-      request({
-        url:'/user/update/company',
-        api: 'mgop.ruiztech.staffhome.userupdatecompany',
-        type: 'PUT',
-        data: data
-      }).then(({ data }) => {
-        resolve(data)
-      }).catch((err) => {
-        console.log(err)
-        Toast(err.msg);
-        reject(err);
-      });
-    });
-  }

@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 11:41:20 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-07 21:00:03
+ * @Last Modified time: 2021-12-08 18:41:08
  */
 
 <template>
@@ -36,7 +36,7 @@ export default {
   methods: {
 chooseType(id){
         this.$router.push({
-          name: "serve-mark",
+          name: "expert-list",
           query:{typeId:id}
         });
 },

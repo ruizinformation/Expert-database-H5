@@ -142,6 +142,14 @@ const routes = [{
     }
   },
   {
+    name: "consult-detail",
+    component: () => import("./view/modules/user/consult-list/consult-detail.vue"),
+    meta: {
+      title: "我的咨询",
+    }
+    
+  },
+  {
     name: "reply-list",
     component: () => import("./view/modules/user/reply-list/index.vue"),
     meta: {
@@ -218,6 +226,7 @@ const routes = [{
     meta: {
       title: "在线咨询",
     }
+    
   },
   {
     name: "serve-mark",

@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 14:15:15 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-06 14:40:13
+ * @Last Modified time: 2021-12-08 19:51:32
  */
 
 <template>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import {getCompanyList,userUpdateCompany} from '@/api/user.js'
+import {userUpdateCompany} from '@/api/user.js'
 import emptyImg from "@/assets/img/common/no_data.png";
   import {getUserInfo} from '@/api/home.js'
 
@@ -64,14 +64,14 @@ export default {
   },
   methods: {
     init(){
-      getCompanyList().then(data=>{
-         if (this.refreshing) {
-          this.dataList = [];
-          this.refreshing = false;
-        }
-        this.dataList=data
-        this.noData=data.length==0
-      })
+      // getCompanyList().then(data=>{
+      //    if (this.refreshing) {
+      //     this.dataList = [];
+      //     this.refreshing = false;
+      //   }
+      //   this.dataList=data
+      //   this.noData=data.length==0
+      // })
     },
     onItemClick({companyId,companyInfo}){
       if(companyId==this.companyInfo.id)return

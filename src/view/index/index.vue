@@ -40,6 +40,7 @@
   import TabSecond from '@/view/tabs/tab_02'
   import TabThird from '@/view/tabs/tab_03'
   // import  {AplusPush} from '@/utils/aplus-push.js'//浙里办埋点
+  // import {getUnreadMessageList} from "@/api/learning.js";
   export default {
     components: {
       TabFirst,
@@ -67,6 +68,9 @@
     mounted() {
       let active=sessionStorage.getItem('homeActive')||0
       this.active=Number(active) 
+      // getUnreadMessageList().then(res=>{
+      //   console.log(res)
+      // })
       this.$forceUpdate()
       // AplusPush()//浙里办埋点
 

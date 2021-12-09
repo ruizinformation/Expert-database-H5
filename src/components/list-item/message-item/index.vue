@@ -2,24 +2,26 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 19:34:10 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-06 20:21:38
+ * @Last Modified time: 2021-12-08 20:08:54
  */
 
 <template>
   <div>
     <!-- 政策通知item -->
-    <!-- <div  class="message-item" @click="handleDetail">
+    <div v-if="type==1" class="message-item" @click="handleDetail">
       <div class="message-info">
-      <div>您有一条新的政策通知</div>
-         <van-icon  dot />
-      <div class="preview">
+      <div>
+          <van-icon  dot />
+        {{item.policyVo.title}}
+        </div>
+      <div class="preview" @click="handleDetail">
         点击查看
         <img  src="../../../assets/img/index/arrow-right2.png" alt="" srcset="">
       </div>
       </div>
-    </div> -->
+    </div>
     <!-- 法律咨询item -->
-    <div  class="layer-item" @click="handleDetail">
+    <div v-if="type==2"  class="layer-item" @click="handleDetail">
        <div class="layer-info">
       <img src="../../../assets/img/index/headPic.png" alt="" srcset="">
       <van-icon  badge="99+" />
@@ -37,8 +39,6 @@
   </div>
 </template>
 <script>
-import {trainRemove} from "@/api/train.js";
-import {learningRemove} from "@/api/learning.js";
 export default {
   components: {},
   computed: {},
@@ -57,36 +57,14 @@ export default {
   },
   methods: {
     handleDetail(){
-      // 学习详情
-      if(this.type == 3 || this.type == 4){
-        this.$router.push({ name: 'learning-detail', query:{id:this.type == 3 ?this.item.id:this.item.subjectId,scene:this.scene}})
+      // 政策详情
+      if(this.type == 1){
+        this.$router.push({ name: 'policy-announcement-detail', query:{id:this.item.policyId}})
       }else{
-      // 培训详情
-        this.$router.push({ name: 'subject-detail', query:{id:this.type == 1 ?this.item.id:this.item.subjectId,scene:this.scene}})
+      // 咨询详情
+        this.$router.push({ name: 'consult-detail', query:{id:this.item.id}})
       }
     },
-    handleRemove(){
-      let type = this.type
-      this.$dialog.confirm({
-        title: '提示',
-        message: `确认删除该${type == 1 || type == 2 ? '培训':'学习'}？`,
-      }).then(() => {
-        if(type == 1 || type == 2){
-          trainRemove({id:this.item.id}).then(res=>{
-            console.log(res)
-            this.$toast('删除成功！')
-            this.$emit('refresh')
-          })
-        }else{
-          learningRemove({id:this.item.id}).then(res=>{
-            console.log(res)
-            this.$toast('删除成功！')
-            this.$emit('refresh')
-          })
-        }
-        
-        }).catch(() => {});
-    }
   },
 };
 </script>

@@ -140,7 +140,25 @@ export function getMessagePolicyList(data) {
  export function getMessageLayerList(data) {
     return new Promise((resolve, reject) => {
         request({
-            url: '/message/policy',
+            url: '/message/consult/page',
+            api: 'mgop.ruiztech.staffhome.studysubjectlist',
+            type: 'GET',
+            data: data
+        }).then(({ data }) => {
+            resolve(data)
+        }).catch((err) => {
+            Toast(err.msg);
+            reject(err);
+        });
+    });
+}
+/**
+ * 获取未读消息
+ */
+ export function getUnreadMessageList(data) {
+    return new Promise((resolve, reject) => {
+        request({
+            url: '/message/unread',
             api: 'mgop.ruiztech.staffhome.studysubjectlist',
             type: 'GET',
             data: data

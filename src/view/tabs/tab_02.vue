@@ -1,10 +1,10 @@
-<!--
- * @Author: zhangmin
- * @Date: 2021-02-25 10:17:29
- * @LastEditors: xuyingchao
- * @LastEditTime: 2021-10-22 12:46:06
- * @Description: 学习平台首页
--->
+/*
+ * @Author: chensongbo 
+ * @Date: 2021-12-08 17:01:48 
+ * @Last Modified by: chensongbo
+ * @Last Modified time: 2021-12-08 19:56:12
+ */
+
 <template>
   <div class="learning-mod">
     <div class="tab-row">
@@ -15,7 +15,7 @@
     </div>
     <!-- 培训列表 -->
     <div class="train-list-wrapper">
-      <MessageItem v-for="(item,index) in MessageList" :key="index" :item="item" :type="3"/>
+      <MessageItem v-for="(item,index) in MessageList" :key="index" :item="item" :type="type"/>
       <van-empty v-if="MessageList.length == 0" class="empty-custom-image" description="暂无数据" />
     </div>
   </div>
@@ -34,28 +34,29 @@ export default {
     return {
       MessageList:[],
       typeList:[{id:1,name:"政策通知"},{id:2,name:"法律咨询"}],
-      active:''
+      active:'',
+      type:1
     };
   },
   mounted() {
-    //this.getMessageList()
+    this.getMessageList()
   },
   methods: {
     // 获取消息列表
-    getMessageList(typeId){
+    getMessageList(){
       let query = {
         limit:8,
         page:1,
       }
-      if(typeId==1){
+      if(this.type==1){
      getMessagePolicyList(query).then(res=>{
         console.log(res)
-        this.MessageList = res.records
+        this.MessageList = res
       })
       }else{
       getMessageLayerList(query).then(res=>{
         console.log(res)
-        this.MessageList = res.records
+        this.MessageList = res
       }) 
       }
  
@@ -70,8 +71,9 @@ export default {
     // tab切换
     handleTab(){
       let id =  this.typeList[this.active].id
+      this.type=this.typeList[this.active].id
       console.log(id)
-      this.getLearningList(id)
+      this.getMessageList()
     }
   },
 };
@@ -85,7 +87,7 @@ export default {
 .train-list-wrapper{
     height: calc(100vh - 110px);
     overflow-y: scroll;
-    margin-top: 10px;
+    padding-top: 10px;
 }
 
 
