@@ -6,7 +6,8 @@
   * @Description: 服务市场首页
 -->
 <template>
-  <div class="train-home-mod learning-mod">
+  <div class="train-home-mod learning-mod serve">
+    <div class="top-head">
     <div class="tab-row">
       <van-tabs
         type="card"
@@ -31,6 +32,7 @@
         更多分类
         <van-icon name="arrow" />
       </div>
+    </div>
     </div>
     <!-- 专家列表 -->
     <div class="train-list-wrapper">
@@ -110,6 +112,9 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+  .train-list-wrapper {
+  padding-top: 90px;
+  }
 // .elder-mod{
 //   .train-list-wrapper{
 //     height: calc(100vh - 330px);
