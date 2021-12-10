@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 11:41:20 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-07 20:52:11
+ * @Last Modified time: 2021-12-10 09:40:07
  */
 
 <template>
@@ -34,11 +34,8 @@ export default {
       })
   },
   methods: {
-chooseType(id){
-        this.$router.push({
-          name: "serve-mark",
-          query:{typeId:id}
-        });
+    chooseType(index){
+     this.$listeners.handleTab(index)
 },
     // 在线联系
   handleChat(){

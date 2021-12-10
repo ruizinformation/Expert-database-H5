@@ -7,6 +7,7 @@
 -->
 <template>
   <div class="train-home-mod learning-mod">
+    <div v-show="!showType">
     <div class="tab-row">
       <van-tabs
         type="card"
@@ -45,16 +46,21 @@
         description="暂无数据"
       />
     </div>
+    </div>
+     <ExpertType v-if="showType"  @handleTab="handleTab"/>
   </div>
 </template>
 
 <script>
 import { getTypeList, getExpertList } from "@/api/learning.js";
 import ExpertItem from "@/components/list-item/expert-item/index.vue";
+import ExpertType from "../expert-list/pages/expert-subject/expertType-list.vue";
+
 
 export default {
   components: {
     ExpertItem,
+    ExpertType
   },
   computed: {},
   data() {
@@ -64,6 +70,7 @@ export default {
       expertList: [],
       typeList: [],
       active: "",
+      showType:false
     };
   },
   mounted() {
@@ -96,16 +103,18 @@ export default {
       });
     },
     // tab切换
-    handleTab() {
+    handleTab(index) {
+      if(index||index==0){
+        this.active=index
+        this.showType=false
+      }
       let id = this.typeList[this.active].id;
       console.log(id);
       this.getExpertList(id);
     },
     showMore() {
-      // 机构类型
-      this.$router.push({
-        name: "expertType-list",
-      });
+      // 专家类型
+        this.showType=true
     },
   },
 };

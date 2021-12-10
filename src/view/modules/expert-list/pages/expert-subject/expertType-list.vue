@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 11:41:20 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-08 18:41:08
+ * @Last Modified time: 2021-12-10 09:49:14
  */
 
 <template>
@@ -34,12 +34,9 @@ export default {
       })
   },
   methods: {
-chooseType(id){
-        this.$router.push({
-          name: "expert-list",
-          query:{typeId:id}
-        });
-},
+ chooseType(index){
+      this.$listeners.handleTab(index)
+     },
     // 在线联系
   handleChat(){
         this.$router.push({

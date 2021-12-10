@@ -7,6 +7,7 @@
 -->
 <template>
   <div class="train-home-mod learning-mod serve">
+    <div  v-show="!showType">
     <div class="top-head">
     <div class="tab-row">
       <van-tabs
@@ -48,16 +49,20 @@
         description="暂无数据"
       />
     </div>
+    </div>
+     <ServeType v-if="showType"  @handleTab="handleTab"/>
   </div>
 </template>
 
 <script>
 import { getServeTypeList, getServeList } from "@/api/learning.js";
 import ServeItem from "@/components/list-item/serve-item/index.vue";
+import ServeType from "../serve-mark/pages/serve-subject/serveType-list.vue";
 
 export default {
   components: {
     ServeItem,
+    ServeType
   },
   computed: {},
   data() {
@@ -67,6 +72,7 @@ export default {
       serveList: [],
       typeList: [],
       active: "",
+      showType:false
     };
   },
   mounted() {
@@ -78,13 +84,7 @@ export default {
     // 获取tab类型
       getServeTypeList().then((res) => {
         this.typeList = res;
-        let { typeId } = this.$route.query ? this.$route.query : "";
-        if (typeId) {
-          this.active = typeId;
-              this.getServeList(typeId);
-        }else{
-              this.getServeList(res[0].id);
-        }
+        this.getServeList(res[0].id);
       });
     },
 
@@ -101,31 +101,29 @@ export default {
       });
     },
     // tab切换
-    handleTab() {
+    handleTab(index) {
+      if(index||index==0){
+        this.active=index
+        this.showType=false
+      }
       let id = this.typeList[this.active].id;
-      console.log(id);
       this.getServeList(id);
     },
     showMore() {
       // 机构类型
-      this.$router.push({
-        name: "serveType-list",
-      });
+      this.showType=true
     },
   },
 };
 </script>
 <style lang="less" scoped>
-  .train-list-wrapper {
-  padding-top: 90px;
-  }
 // .elder-mod{
 //   .train-list-wrapper{
 //     height: calc(100vh - 330px);
 //   }
 // }
-// .train-list-wrapper{
-//     height: calc(100vh - 300px);
-//     overflow-y: scroll;
-// }
+.train-list-wrapper{
+    height: calc(100vh - 100px);
+    overflow-y: scroll;
+}
 </style>
