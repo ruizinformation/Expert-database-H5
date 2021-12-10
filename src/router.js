@@ -22,13 +22,6 @@ const routes = [{
     },
   },
   {
-    name: "launch-qym",
-    component: () => import("./view/launch/index-qym.vue"),
-    meta: {
-      title: "员工码",
-    },
-  },
-  {
     name: "guide-page",
     component: () => import("./view/guide-page/index.vue"),
     meta: {
