@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     call(){
-     window.location.href = 'tel://' + 15068523950
+     window.location.href = 'tel://' + this.expertDetail.mobile
     },
 getExpertDetail(){
         getExpertDetail({id:this.detailId}).then(res=>{
