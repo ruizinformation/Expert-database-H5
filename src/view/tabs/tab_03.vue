@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 14:46:27 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-07 14:24:47
+ * @Last Modified time: 2021-12-10 17:37:15
  */
 
 
@@ -13,7 +13,7 @@
         <div class="user-card-left">
           <div><img src="~@/assets/img/index/headPic.png" alt="" /></div>
           <div>
-            <div class="left-row username">{{ userInfo.username }}</div>
+            <div class="left-row username">{{ userInfo.nickname }}</div>
             <div class="left-row mobile">{{ userInfo.mobile }}</div>
           </div>
         </div>
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-// import { getUserInfo } from "@/api/home.js";
+import { getUserInfo } from "@/api/home.js";
 
 export default {
   components: {},
@@ -75,9 +75,9 @@ export default {
   },
   mounted() {
     console.log("mounted");
-    // getUserInfo().then((data) => {
-    //   this.userInfo = data;
-    // });
+    getUserInfo().then((data) => {
+      this.userInfo = data;
+    });
   },
   methods: {
     onMenuClick({ route }) {

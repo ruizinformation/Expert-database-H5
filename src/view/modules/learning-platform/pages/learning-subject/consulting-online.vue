@@ -21,6 +21,13 @@
     <div class="takePic">
     <van-uploader v-model="fileList" multiple :max-count="1" />
     </div>
+
+        <div class="bootpm-btn">
+    <div class="chat-btn" @click="handleChat">
+      <img src="~@/assets/img/train-manage/chat.png" alt="">
+      在线联系
+    </div>
+    </div>
   </div>
 </template>
 
@@ -28,22 +35,14 @@
 import {
   getLearningDetail,
 } from "@/api/learning.js";
-import listMixin from "@/mixins/list-mixin.js";
 
 export default {
-  mixins: [listMixin],
   components: {},
   computed: {},
   data() {
     return {
       detailId: "",
       learningDetail: {},
-      getListUrl: "/study/subject/comment/page", //列表接口
-      getListAPI: "mgop.ruiztech.staffhome.studysubjectcommentpage", //网关地址
-      signInStatus: 0,
-      pdfShow: false,
-      bannerShow: true,
-      active: "",
       fileList: [],
       message:''
     };

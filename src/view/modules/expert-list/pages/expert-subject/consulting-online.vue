@@ -21,43 +21,48 @@
     <div class="takePic">
     <van-uploader v-model="fileList" multiple :max-count="1" />
     </div>
+        <div class="bootpm-btn">
+    <div class="chat-btn" @click="handleSubmit">
+      确定
+    </div>
+    </div>
   </div>
 </template>
 
 <script>
 import {
-  getLearningDetail,
+  addConsult,
 } from "@/api/learning.js";
-import listMixin from "@/mixins/list-mixin.js";
 
 export default {
-  mixins: [listMixin],
   components: {},
   computed: {},
   data() {
     return {
       detailId: "",
       learningDetail: {},
-      getListUrl: "/study/subject/comment/page", //列表接口
-      getListAPI: "mgop.ruiztech.staffhome.studysubjectcommentpage", //网关地址
-      signInStatus: 0,
-      pdfShow: false,
-      bannerShow: true,
-      active: "",
+      expertId:"",
+      toUserId:'',
       fileList: [],
       message:''
     };
   },
   mounted() {
-    // let { id } = this.$route.query ? this.$route.query : "";
-    // this.detailId = id;
-    // this.searchForm.subjectId = id;
-   // this.getLearningDetail();
+    let { expertId,toUserId } = this.$route.query ? this.$route.query : "";
+    this.expertId = expertId;
+    this.toUserId = toUserId;
   },
   methods: {
-    getLearningDetail() {
-      getLearningDetail({ id: this.detailId }).then((res) => {
-        this.learningDetail = res;
+    handleSubmit(){
+      console.log(123,this.fileList)
+        this.$loading.show({
+          title: '提交中'
+        })
+      addConsult({ parentId:0,toUserId:  this.toUserId ,expertId: this.expertId,content:this.message }).then(()=> {
+           this.$loading.hide()
+          this.$toast("提交成功");
+          this.message="",
+          this.fileList=[]
       });
     },
 

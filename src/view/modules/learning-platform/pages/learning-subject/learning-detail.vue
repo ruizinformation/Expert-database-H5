@@ -8,10 +8,10 @@
 <template>
   <div class="subject-detail">
     <div class="subject-detail-banner">
-      <img @click="handleStartLearning" v-if="learningDetail.contentType == 1" src="@/assets/img/train-manage/pdf-banner.png" />
+      <img @click="handleStartLearning(learningDetail.annex[0].url)" v-if="learningDetail.contentType == 1" src="@/assets/img/train-manage/pdf-banner.png" />
       <div class="video-wrapper" v-if="learningDetail.contentType == 2" @click="handlePlayTrain">
         <img v-if="bannerShow" src="@/assets/img/train-manage/video-banner.png" />
-        <video-view class="video-view" ref='videoView' :sourcesUrl="learningDetail.annex" @endPlay="endPlay"></video-view>
+        <video-view class="video-view" ref='videoView' :sourcesUrl="learningDetail.annex[0].url" @endPlay="endPlay"></video-view>
       </div>
     </div>
     <div class="subject-detail-title">
@@ -72,11 +72,11 @@ export default {
       })
     },
     // 开始pdf
-    handleStartLearning(){
+    handleStartLearning(url){
       this.$router.push({ name: 'pdf-view', 
       query:{ 
-        subjectId:this.detailId,
-        type:2 //学习
+        url:url,
+       // type:2 //学习
       }})
     },
     // 开始视频

@@ -48,7 +48,6 @@ const minix = {
       // this.$nextTick(() => {
       //   this.getDataList();
       // });
-      
       // 节流
       if (this.timeout) {
         clearTimeout(this.timeout)

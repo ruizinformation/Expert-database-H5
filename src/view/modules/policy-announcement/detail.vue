@@ -1,8 +1,8 @@
 /*
  * @Author: chensongbo 
  * @Date: 2021-12-07 14:58:41 
- * @Last Modified by:   chensongbo 
- * @Last Modified time: 2021-12-07 14:58:41 
+ * @Last Modified by: chensongbo
+ * @Last Modified time: 2021-12-10 16:29:54
  */
 
 <template>
@@ -20,7 +20,7 @@
 
 <script>
 
-import {getPolicyInfo} from '@/api/policy-announcement.js'
+import {getPolicyInfo,getPolicyread} from '@/api/policy-announcement.js'
 
 
 export default {
@@ -47,6 +47,8 @@ export default {
         getPolicyInfo({id}).then(info=>{
           this.info=info
           console.log('info',info)
+        getPolicyread({policyId:id}).then(()=>{
+        })
         })
       }
     },

@@ -14,13 +14,13 @@ import {
 } from "vant";
 
 /**
- * 通知公告-详情
+ * 咨询消息-详情
  */
-export function getNoticeInfo(data) {
+export function getConsultInfo(data) {
   return new Promise((resolve, reject) => {
     request({
       api: 'mgop.ruiztech.staffhome.noticeinfo',
-      url: 'notice/info',
+      url: '/message/consult/info',
       type: 'GET',
       data: data
     }).then(({

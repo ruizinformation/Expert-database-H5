@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 14:15:15 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-08 19:49:18
+ * @Last Modified time: 2021-12-10 17:57:38
  */
 
 <template>
@@ -31,11 +31,13 @@
 </template>
 
 <script>
-import {userUpdateCompany} from '@/api/user.js'
+// import {userUpdateCompany} from '@/api/user.js'
 import emptyImg from "@/assets/img/common/no_data.png";
-  import {getUserInfo} from '@/api/home.js'
+// import {getUserInfo} from '@/api/home.js'
+import listMixin from '@/mixins/list-mixin.js'
 
 export default {
+ mixins: [listMixin],
   components: {},
   computed:{
        userInfo: {
@@ -56,48 +58,30 @@ export default {
       refreshing: false,
       dataList:[],
       emptyImg,
-      noData:false
+      noData:false,
+      getListUrl:'/message/consult/page',
+      getListAPI:'mgop.ruiztech.staffhome.policynoticepage',
+      autoGet:false,
+      searchForm:{
+        type:1,
+        orderField:'create_date',
+        order:'desc'
+      }
     };
   },
   mounted(){
-    this.init()
+   this.onLoad()
   },
   methods: {
     init(){
-      // getCompanyList().then(data=>{
-      //    if (this.refreshing) {
-      //     this.dataList = [];
-      //     this.refreshing = false;
-      //   }
-      //   this.dataList=data
-      //   this.noData=data.length==0
-      // })
+      this.page=1
+      this.onLoad()
     },
-    onItemClick({companyId,companyInfo}){
-      if(companyId==this.companyInfo.id)return
-      this.$dialog.confirm({
-        title: '提示',
-        message: `是否切换到${companyInfo.name}`,
+    onItemClick(row){
+        this.$router.push({
+        name: 'consult-detail',
+        query:{expertId:row.expertId}
       })
-        .then(() => {
-          this.$loading.show({title:'切换中'})
-          // on confirm
-          userUpdateCompany({companyId}).then(()=>{
-            getUserInfo().then(data=>{
-              let {companyInfo}=data
-              this.userInfo=data
-              this.companyInfo=companyInfo
-               this.$loading.hide()
-              sessionStorage.setItem('homeActive',0)
-              this.$router.replace({name:'index'})
-            })
-          }).catch(()=>{
-            this.$loading.hide()
-          })
-        })
-        .catch(() => {
-          // on cancel
-        });
     }
   },
 };

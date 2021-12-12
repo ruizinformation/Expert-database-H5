@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 19:34:10 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-08 20:08:54
+ * @Last Modified time: 2021-12-10 16:42:03
  */
 
 <template>
@@ -10,9 +10,10 @@
     <!-- 政策通知item -->
     <div v-if="type==1" class="message-item" @click="handleDetail">
       <div class="message-info">
-      <div>
-          <van-icon  dot />
-        {{item.policyVo.title}}
+          <van-icon v-if="!item.status"  dot />
+      <div class="title">
+        
+        {{item.policyInfo.title}}
         </div>
       <div class="preview" @click="handleDetail">
         点击查看

@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 14:43:18 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-09 08:56:32
+ * @Last Modified time: 2021-12-10 13:37:14
  */
 
 <template>
@@ -64,9 +64,9 @@ export default {
         const vm = this;
         let file = e.target.files[0]
         let param = new FormData()  // 创建form对象
-        let config = {
-          headers: {'Content-Type': 'multipart/form-data'}
-        }
+        // let config = {
+        //   headers: {'Content-Type': 'multipart/form-data'}
+        // }
       //解决ios拍照照片自动旋转问题
       vm.getOrientation(file, function (orientation) {
           const reader = new FileReader();
@@ -83,7 +83,7 @@ export default {
                 vm.dataForm.picUrl=window.URL.createObjectURL(blob)
                 param.append('file', file); // 通过append向form对象添加数据
                 //调用接口上传图片
-               return uploadPic(param,config).then(() => {
+               return uploadPic({file:file}).then(() => {
                  // 上传成功逻辑
                })
               });

@@ -51,3 +51,23 @@ import { Toast } from "vant";
       });
     });
   }
+  
+    /**
+ * 政策公告消息-已读
+ */
+ export function getPolicyread(data) {
+  return new Promise((resolve, reject) => {
+    request({
+      url:'/message/policy/read',
+      api: 'mgop.ruiztech.staffhome.policynoticeinfo',
+      type: 'PUT',
+      data: data
+    }).then(({ data }) => {
+      resolve(data)
+    }).catch((err) => {
+      console.log(err)
+      Toast(err.msg);
+      reject(err);
+    });
+  });
+}

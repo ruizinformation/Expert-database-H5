@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-08 17:01:48 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-08 19:56:12
+ * @Last Modified time: 2021-12-10 11:32:09
  */
 
 <template>
@@ -47,6 +47,7 @@ export default {
       let query = {
         limit:8,
         page:1,
+        type:1
       }
       if(this.type==1){
      getMessagePolicyList(query).then(res=>{

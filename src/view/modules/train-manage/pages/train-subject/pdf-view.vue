@@ -19,8 +19,8 @@
 <script>
 import Pdfh5 from 'pdfh5';
 import "pdfh5/css/pdfh5.css";
-import {trainComplete,getTrainDetails} from "@/api/train.js";
-import {learningComplete,getLearningDetail} from "@/api/learning.js";
+import {trainComplete} from "@/api/train.js";
+import {learningComplete} from "@/api/learning.js";
 import TrainCompleteModal from "@/components/train-complete-modal/index.vue";
 
 export default {
@@ -34,29 +34,30 @@ export default {
     return {
         subjectId:'',
         detailInfo:{},
-        type:1
+        type:1,
+        url:""
     };
   },
   mounted(){
-    let {subjectId,type}=this.$route.query?this.$route.query:''
-    this.subjectId = subjectId
-    this.type = type
-
+    let {url}=this.$route.query?this.$route.query:''
+    this.url = url
+    //this.type = type
+   this.loadPDF(this.url)
 
     // 获取详情
     // type == 1 培训
     // type == 2 学习
-    if(type == 1){
-      getTrainDetails({id:subjectId}).then(res=>{
-          this.detailInfo = res
-          this.loadPDF(res.annex)
-      })
-    }else{
-      getLearningDetail({id:subjectId}).then(res=>{
-        this.detailInfo = res
-        this.loadPDF(res.annex)
-      })
-    }
+    // if(type == 1){
+    //   getTrainDetails({id:subjectId}).then(res=>{
+    //       this.detailInfo = res
+    //       this.loadPDF(res.annex)
+    //   })
+    // }else{
+    //   getLearningDetail({id:subjectId}).then(res=>{
+    //     this.detailInfo = res
+    //     this.loadPDF(res.annex)
+    //   })
+    // }
   },
   methods: {
    loadPDF(url){

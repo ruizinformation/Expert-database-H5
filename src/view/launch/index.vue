@@ -170,7 +170,7 @@ export default {
           console.log('获取用户信息',data)
            this.$router.replace({name:'index'})
          // let {mobile,id}=data
-          // this.userInfo=data
+          this.userInfo=data
           // if(companyId){
           //   this.companyInfo=companyInfo
           // }else{

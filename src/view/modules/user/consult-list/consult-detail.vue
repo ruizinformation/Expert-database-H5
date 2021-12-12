@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-08 20:15:35 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-09 08:33:50
+ * @Last Modified time: 2021-12-10 17:56:12
  */
 
 <template>
@@ -29,11 +29,12 @@
 </template>
 
 <script>
-import listMixin from '@/mixins/list-mixin.js'
+// import listMixin from '@/mixins/list-mixin.js'
 import NoticeItem from '@/components/list-item/notice-item/index.vue'
+import {getConsultInfo} from '@/api/notice.js'
 
 export default {
-  mixins: [listMixin],
+  // mixins: [listMixin],
   components: {
     NoticeItem
   },
@@ -42,20 +43,27 @@ export default {
   },
   data() {
     return {
-      getListUrl:'/policy/page',
+      getListUrl:'/message/consult/info',
       getListAPI:'mgop.ruiztech.staffhome.policynoticepage',
       autoGet:false,
       searchForm:{
         orderField:'create_date',
         order:'desc'
-      }
+      },
+      expertId:""
     };
   },
   mounted(){
-   this.onLoad()
+     let {expertId}=this.$route.query?this.$route.query:''
+    this.expertId=expertId
+    this.initData(expertId)
   },
   methods: {
-   
+     initData(expertId){
+        getConsultInfo({expertId}).then(res=>{
+          this.item=res
+      })
+    },
   },
 };
 </script>

@@ -63,6 +63,24 @@ import { Toast } from "vant";
     });
 }
 /**
+ * 咨询消息-新增/回复
+ */
+ export function addConsult(data) {
+    return new Promise((resolve, reject) => {
+        request({
+            url: '/message/consult/create',
+            api: 'mgop.ruiztech.staffhome.studysubjectinfo',
+            type: 'POST',
+            data: data
+        }).then(({ data }) => {
+            resolve(data)
+        }).catch((err) => {
+            Toast(err.msg);
+            reject(err);
+        });
+    });
+}
+/**
  * 服务市场分类列表
  */
  export function getServeTypeList(data) {

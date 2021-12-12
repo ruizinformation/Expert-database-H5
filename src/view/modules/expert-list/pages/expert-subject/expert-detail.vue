@@ -70,6 +70,7 @@ getExpertDetail(){
   handleChat(){
         this.$router.push({
           name: "consulting-online",
+          query:{expertId:this.expertDetail.id,toUserId:this.expertDetail.userId}
         });
   }
   },
