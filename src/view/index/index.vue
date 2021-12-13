@@ -19,7 +19,7 @@
           <img :src="props.active ? icon[0].active : icon[0].inactive" class="tab-icon" />
         </template>
       </van-tabbar-item>
-      <van-tabbar-item badge="5">
+      <van-tabbar-item :badge="unreadCount?unreadCount:''">
         <span>消息</span>
         <template #icon="props">
           <img :src="props.active ? icon[1].active : icon[1].inactive" class="tab-icon" />
@@ -40,7 +40,7 @@
   import TabSecond from '@/view/tabs/tab_02'
   import TabThird from '@/view/tabs/tab_03'
   // import  {AplusPush} from '@/utils/aplus-push.js'//浙里办埋点
-  // import {getUnreadMessageList} from "@/api/learning.js";
+  import {getMessageUnread} from "@/api/notice.js";
   export default {
     components: {
       TabFirst,
@@ -63,14 +63,16 @@
           active: require('@/assets/img/index/tab2-active.png'),
           inactive: require('@/assets/img/index/tab2.png'),
         }],
+        unreadCount:''
       };
     },
     mounted() {
       let active=sessionStorage.getItem('homeActive')||0
       this.active=Number(active) 
-      // getUnreadMessageList().then(res=>{
-      //   console.log(res)
-      // })
+      getMessageUnread().then(res=>{
+        console.log(res)
+        this.unreadCount=res.consult+res.policy
+      })
       this.$forceUpdate()
       // AplusPush()//浙里办埋点
 

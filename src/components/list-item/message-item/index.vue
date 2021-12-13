@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 19:34:10 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-10 16:42:03
+ * @Last Modified time: 2021-12-13 11:13:34
  */
 
 <template>
@@ -24,14 +24,15 @@
     <!-- 法律咨询item -->
     <div v-if="type==2"  class="layer-item" @click="handleDetail">
        <div class="layer-info">
-      <img src="../../../assets/img/index/headPic.png" alt="" srcset="">
-      <van-icon  badge="99+" />
+         <div>
+        <van-icon  :badge="item.unreadCount" />
+        <img src="../../../assets/img/index/headPic.png" alt="" srcset="">
+         </div>
       <div class="layer-infomation">
       <div class="title">
-        王佳丽
+        {{item.name}}
       </div>
         <div class="content">
-     消息内容写一下消息内容写一下消息内容写一...
       </div>
       </div>
       
@@ -63,7 +64,7 @@ export default {
         this.$router.push({ name: 'policy-announcement-detail', query:{id:this.item.policyId}})
       }else{
       // 咨询详情
-        this.$router.push({ name: 'consult-detail', query:{id:this.item.id}})
+        this.$router.push({ name: 'consult-detail', query:{expertId:this.item.expertId,tel:this.item.expertInfo.mobile}})
       }
     },
   },

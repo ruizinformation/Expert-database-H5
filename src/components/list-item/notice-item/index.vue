@@ -2,30 +2,30 @@
  * @Author: chensongbo 
  * @Date: 2021-12-08 20:24:42 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-09 08:46:43
+ * @Last Modified time: 2021-12-13 11:21:32
  */
 
 <template>
   <div class="policy-announcement-item">
-    <div>
+    <div v-if="data.isConsult">
     <div class="policy-title">
-      <div>我的咨询</div>
-      <div class="time">2021-12-12 12:12:12</div>
+      <div>我的咨询：</div>
+      <div class="time">{{data.createDate}}</div>
     </div>
-    <div class="policy-content">{{data.description}}
-      <div>
-        <img src="../../../assets/img/train-manage/icon02.png" alt="" srcset="">
+    <div class="policy-content">{{data.content}}
+      <div v-if="data.images">
+        <img :src="data.images" alt="" srcset=""  @click="imagePreview(data.images)">
       </div>
     </div>
     </div>
-        <div>
+        <div v-else>
     <div class="policy-title reply">
-      <div>专家回复</div>
-      <div class="time">2021-12-12 12:12:12</div>
+      <div>专家回复：</div>
+      <div class="time">{{data.createDate}}</div>
     </div>
-    <div class="policy-content bg">中国政法大学经济法学副教授，消费者权益保护法专家，兼公司法、企业法破产法的教学和研究。环境法、经济法和MBA硕士生导师。现任中
-      <div>
-        <img src="../../../assets/img/train-manage/icon02.png" alt="" srcset="">
+    <div class="policy-content bg">{{data.content}}
+      <div v-if="data.images">
+        <img :src="data.images"  alt="" srcset=""   @click="imagePreview(data.images)" >
       </div>
     </div>
     </div>
@@ -33,6 +33,9 @@
 </template>
 
 <script>
+  import {
+    ImagePreview
+  } from 'vant';
 export default {
   components: {
    
@@ -52,6 +55,9 @@ export default {
    
   },
   methods: {
+     imagePreview(url) {
+        ImagePreview([url]);
+      },
     toNoticeDetail(){
       this.$router.push({ name: 'notice-detail', query:{id:this.data.id}})
     }

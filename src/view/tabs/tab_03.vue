@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 14:46:27 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-10 17:37:15
+ * @Last Modified time: 2021-12-13 10:11:17
  */
 
 
@@ -11,7 +11,7 @@
     <div class="user-content">
       <div class="user-card">
         <div class="user-card-left">
-          <div><img src="~@/assets/img/index/headPic.png" alt="" /></div>
+          <div><img :src="userInfo.avatarUrl" alt="" /></div>
           <div>
             <div class="left-row username">{{ userInfo.nickname }}</div>
             <div class="left-row mobile">{{ userInfo.mobile }}</div>

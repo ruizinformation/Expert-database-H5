@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 14:15:15 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-10 17:57:38
+ * @Last Modified time: 2021-12-13 11:15:56
  */
 
 <template>
@@ -12,7 +12,7 @@
         <div class="data-list">
           <div class="data-list-item" v-for="(row,rowIndex) in dataList" :key="rowIndex" @click="onItemClick(row)">
             <div class="company-name">
-                <van-icon  dot  />
+                <van-icon  dot  v-if="row.unreadCount"/>
               <img src="../../../../assets/img/index/headPic.png" alt="">
             
               <div>{{row.companyInfo?row.companyInfo.name:''}}</div>
@@ -80,7 +80,7 @@ export default {
     onItemClick(row){
         this.$router.push({
         name: 'consult-detail',
-        query:{expertId:row.expertId}
+        query:{expertId:row.expertId,tel:row.expertInfo.mobile}
       })
     }
   },

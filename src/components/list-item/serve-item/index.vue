@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 11:13:30 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-07 17:04:24
+ * @Last Modified time: 2021-12-13 11:50:28
  */
 <template>
   <div>
@@ -12,7 +12,7 @@
         <h1>{{ item.name }}</h1>
         <p>{{ item.description }}</p>
         <div class="mobile">
-          <div>联系人：{{item.manager}}</div>
+          <div class="name">联系人：{{item.manager}}</div>
           <div  @click="call">
             <img src="../../../assets/img/train-manage/phone.png" alt="" />
             {{item.mobile}}
@@ -121,6 +121,12 @@ export default {
       font-size: 15px;
       justify-content: space-between;
       align-items: center;
+      .name{
+      width: 35%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      }
       img {
         width: 14px;
         height: 14px;

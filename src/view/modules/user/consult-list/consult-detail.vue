@@ -2,18 +2,18 @@
  * @Author: chensongbo 
  * @Date: 2021-12-08 20:15:35 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-10 17:56:12
+ * @Last Modified time: 2021-12-13 11:31:46
  */
 
 <template>
   <div class="consult-detail-mod">
     <!-- <van-pull-refresh v-model="refreshing" @refresh="onRefresh" :pulling-text="pullingText" :loosing-text="loosingText" :loading-text="loadingText"> -->
-      <van-list class="consult-list-wrapper" v-model="loading" :finished="finished" :finished-text="finishedText" @load="onLoad" :immediate-check="false">
+      <div class="consult-list-wrapper" >
         <div class="data-list">
           <notice-item v-for="(row,rowIndex) in dataList" :key="rowIndex" :data="row" />
           <van-empty v-if="noData" class="empty-custom-image" description="暂无数据" />
         </div>
-      </van-list>
+      </div>
     <!-- </van-pull-refresh> -->
 
      <div class="bootpm-btn">
@@ -22,19 +22,21 @@
     </div>
       <div class="chat-btn" @click="call">
       <img src="~@/assets/img/train-manage/phone_white.png" alt="">
-     15068213232
+     {{tel}}
     </div>
     </div>   
   </div>
 </template>
 
 <script>
-import listMixin from '@/mixins/list-mixin.js'
+// import listMixin from '@/mixins/list-mixin.js'
 import NoticeItem from '@/components/list-item/notice-item/index.vue'
-import {getConsultInfo} from '@/api/notice.js'
+import {getConsultInfo,getConsultRead} from '@/api/notice.js'
+
+
 
 export default {
-  mixins: [listMixin],
+  // mixins: [listMixin],
   components: {
     NoticeItem
   },
@@ -50,27 +52,34 @@ export default {
         orderField:'create_date',
         order:'desc'
       },
-      expertId:""
+      dataList:[],
+      expertId:"",
+      tel:""
     };
   },
   mounted(){
-     let {expertId}=this.$route.query?this.$route.query:''
+     let {expertId,tel}=this.$route.query?this.$route.query:''
     this.expertId=expertId
-    this.initData(expertId)
+    this.tel=tel
+    this.initData()
   },
   methods: {
     // onRefresh(){
     //   this.initData()
     // },
-     initData(expertId){
-        getConsultInfo({expertId:expertId}).then(res=>{
-          this.item=res
+    //已读接口
+     initData(){
+        getConsultRead({expertId: this.expertId}).then(()=>{
+      }),
+        getConsultInfo({expertId: this.expertId}).then(res=>{
+          console.log(66,res)
+          this.dataList=res
       })
     },
     chatOnline(){
           this.$router.push({
           name: "consulting-online",
-          //query:{expertId:this.expertId,toUserId:this.expertDetail.userId}
+          query:{expertId:this.expertId,toUserId:this.dataList[0].userId}
         });
     },
     call(){

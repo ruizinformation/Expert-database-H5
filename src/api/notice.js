@@ -33,3 +33,44 @@ export function getConsultInfo(data) {
     });
   });
 }
+
+/**
+ * 消息未读数
+ */
+ export function getMessageUnread(data) {
+  return new Promise((resolve, reject) => {
+    request({
+      api: 'mgop.ruiztech.staffhome.noticeinfo',
+      url: '/message/unread',
+      type: 'GET',
+      data: data
+    }).then(({
+      data
+    }) => {
+      resolve(data)
+    }).catch((err) => {
+      Toast(err.msg);
+      reject(err);
+    });
+  });
+}
+
+    /**
+ * 政策公告消息-已读
+ */
+    export function getConsultRead(data) {
+      return new Promise((resolve, reject) => {
+        request({
+          url:'/message/consult/read',
+          api: 'mgop.ruiztech.staffhome.policynoticeinfo',
+          type: 'PUT',
+          data: data
+        }).then(({ data }) => {
+          resolve(data)
+        }).catch((err) => {
+          console.log(err)
+          Toast(err.msg);
+          reject(err);
+        });
+      });
+    }

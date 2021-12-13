@@ -2,14 +2,14 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 14:43:18 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-10 13:37:14
+ * @Last Modified time: 2021-12-13 10:09:52
  */
 
 <template>
   <div class="basic-info-mod">
       <div class="basic-info-content">
      <!-- <div class="picBox"> -->
-        <van-image class="picBox" fit="cover" :src="dataForm.picUrl" alt=""/>
+        <van-image class="picBox" fit="cover" :src="userInfo.avatarUrl?userInfo.avatarUrl:'https://img01.yzcdn.cn/vant/cat.jpeg'" alt=""/>
       <!-- </div> -->
       <!-- <div class="changePic">
        切换头像
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import {updateUser,uploadPic} from '@/api/user.js'
+import {updateUser} from '@/api/user.js'
 import {getUserInfo} from '@/api/home.js'
 import EXIF from 'exif-js'
 
@@ -47,9 +47,7 @@ export default {
   data() {
     return {
       dataForm:{
-        politics:'',
-        education:'',
-        picUrl: "https://img01.yzcdn.cn/vant/cat.jpeg", 
+        avatarUrl: "", 
       }
     };
   },
@@ -58,17 +56,18 @@ export default {
   },
   methods: {
     init(){
-      this.picUrl= "https://img01.yzcdn.cn/vant/cat.jpeg"
+     // this.picUrl= "https://img01.yzcdn.cn/vant/cat.jpeg"
     },
      uploadImg(e) {
         const vm = this;
         let file = e.target.files[0]
-        let param = new FormData()  // 创建form对象
+        //let param = new FormData()  // 创建form对象
         // let config = {
         //   headers: {'Content-Type': 'multipart/form-data'}
         // }
       //解决ios拍照照片自动旋转问题
       vm.getOrientation(file, function (orientation) {
+        console.log(77,file)
           const reader = new FileReader();
           reader.readAsDataURL(file);
           reader.onload = function(evt){
@@ -76,16 +75,20 @@ export default {
             // 将图片旋转到正确的角度 并压缩
             vm.resetOrientation(base64, orientation, function (resultBase64) {
               vm.b64toBlob(resultBase64, function (blob) {
-                console.log(123,blob)
-                //var files=new window.File([blob],this.files[0].name,{type:this.files[0].type})
-                let file = new window.File([blob], '123', {type: 'image/jpeg'})
-                  console.log(44,file)
-                vm.dataForm.picUrl=window.URL.createObjectURL(blob)
-                param.append('file', file); // 通过append向form对象添加数据
+                vm.userInfo.avatarUrl=window.URL.createObjectURL(blob)
                 //调用接口上传图片
-               return uploadPic({file:file}).then(() => {
-                 // 上传成功逻辑
-               })
+              vm.$postFile('/oss/upload', file).then(({
+          data
+        }) => {
+          if(data){
+            console.log(7766,data)
+           vm.dataForm.avatarUrl = data
+           vm.userInfo.avatarUrl = data
+          }
+        }).catch(() => {
+         // this.imagesUrl= []
+         // this.$toast("上传失败");
+        })
               });
             });
           }
@@ -165,10 +168,12 @@ export default {
     img.src = srcBase64;
   },
     onSaveClick(){
+      console.log(65,this.dataForm)
       updateUser(this.dataForm).then(()=>{
         this.$toast('保存成功')
          getUserInfo().then(data=>{
-          this.userInfo=data
+           console.log(99,data)
+          this.userInfo.avatarUrl=data.avatarUrl
         })
       })
     }
