@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 14:15:15 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-13 11:15:56
+ * @Last Modified time: 2021-12-13 14:09:37
  */
 
 <template>
@@ -12,7 +12,7 @@
         <div class="data-list">
           <div class="data-list-item" v-for="(row,rowIndex) in dataList" :key="rowIndex" @click="onItemClick(row)">
             <div class="company-name">
-                <van-icon  dot  v-if="row.unreadCount"/>
+                <van-icon  dot  v-if="row.isThisUser&&row.unreadCount"/>
               <img src="../../../../assets/img/index/headPic.png" alt="">
             
               <div>{{row.companyInfo?row.companyInfo.name:''}}</div>

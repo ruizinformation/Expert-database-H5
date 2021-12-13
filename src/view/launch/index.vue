@@ -8,7 +8,7 @@
 <template>
   <div class="launch-mod">
     <div v-if="showType==1" class="launch-content">
-      <div class="launch-title">欢迎来到员工码！</div>
+      <div class="launch-title">欢迎来到专家库！</div>
       <img class="launch-img" src="~@/assets/img/home/launch.png" alt="">
     </div>
     <div v-if="showType==2" class="launch-form">
@@ -99,10 +99,7 @@ export default {
     console.log('launch====mounted',this.$route)
     //?entName=七七公司&creditCode=48948665DEREFe567896&frName=天乐&job=工程师&phone=18258290000&userName=七七&token=fwef489ew87f6e4w56f445
    this.basicInfo=this.$route.query?this.$route.query:{},
-   //this.token = this.$route.query ? this.$route.query : "";
   console.log(6622,this.basicInfo)
-  // this.dataForm={entName:"七七公司",creditCode:"48948665DEREFe567896",frName:"天乐",job:"工程师",phone:"18258290000",userName:"七七",token:"fwef489ew87f6e4w56f445"}
-  // this.dataForm=this.cloneObject(this.basicInfo)
    this.init()
   },
   methods: {

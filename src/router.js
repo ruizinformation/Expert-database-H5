@@ -18,14 +18,14 @@ const routes = [{
     name: "launch",
     component: () => import("./view/launch/index.vue"),
     meta: {
-      title: "员工码",
+      title: "专家库",
     },
   },
   {
     name: "guide-page",
     component: () => import("./view/guide-page/index.vue"),
     meta: {
-      title: "员工码",
+      title: "专家库",
     },
   },
   {

@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 19:34:10 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-13 11:13:34
+ * @Last Modified time: 2021-12-13 13:23:05
  */
 
 <template>
@@ -13,7 +13,7 @@
           <van-icon v-if="!item.status"  dot />
       <div class="title">
         
-        {{item.policyInfo.title}}
+        {{item.policyInfo.title?item.policyInfo.title:""}}
         </div>
       <div class="preview" @click="handleDetail">
         点击查看
@@ -25,7 +25,7 @@
     <div v-if="type==2"  class="layer-item" @click="handleDetail">
        <div class="layer-info">
          <div>
-        <van-icon  :badge="item.unreadCount" />
+        <van-icon  :badge="item.isThisUser&&item.unreadCount" />
         <img src="../../../assets/img/index/headPic.png" alt="" srcset="">
          </div>
       <div class="layer-infomation">

@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 11:13:30 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-13 11:50:28
+ * @Last Modified time: 2021-12-13 14:47:18
  */
 <template>
   <div>
@@ -38,7 +38,7 @@ export default {
   mounted() {},
   methods: {
     call(){
-     window.location.href = 'tel://' + 15068523950
+     window.location.href = 'tel://' + this.item.mobile
     },
     handleDetail(id) {
       // 专家详情

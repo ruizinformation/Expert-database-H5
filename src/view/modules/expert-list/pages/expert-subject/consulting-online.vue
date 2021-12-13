@@ -42,15 +42,17 @@ export default {
       learningDetail: {},
       expertId:"",
       toUserId:'',
+      parentId:'',
       fileList: [],
       message:'',
       imagesUrl:[]
     };
   },
   mounted() {
-    let { expertId,toUserId } = this.$route.query ? this.$route.query : "";
+    let { expertId,toUserId,parentId} = this.$route.query ? this.$route.query : "";
     this.expertId = expertId;
     this.toUserId = toUserId;
+    this.parentId = parentId?parentId:0;
   },
   methods: {
       afterRead(file) {
@@ -72,7 +74,7 @@ export default {
         this.$loading.show({
           title: '提交中'
         })
-      addConsult({ parentId:0,toUserId:  this.toUserId ,expertId: this.expertId,content:this.message ,images:this.imagesUrl}).then(()=> {
+      addConsult({ parentId: this.parentId,toUserId:  this.toUserId ,expertId: this.expertId,content:this.message ,images:this.imagesUrl}).then(()=> {
            this.$loading.hide()
           this.$toast("提交成功");
           this.message="",

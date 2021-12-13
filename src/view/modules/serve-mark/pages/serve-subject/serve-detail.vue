@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 11:41:20 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-07 17:06:07
+ * @Last Modified time: 2021-12-13 14:31:58
  */
 
 <template>
@@ -15,9 +15,9 @@
         </div>
       </div>
     </div>
-    <!-- 专家介绍 -->
+    <!-- 机构介绍 -->
     <div class="intro">
-      <p>专家介绍</p>
+      <p>机构介绍</p>
       <div class="content" style="">
        {{item.description}}
     
@@ -61,7 +61,7 @@ export default {
 
     // 在线联系
   handleCall(){
-      window.location.href = 'tel://' + 15068523950
+      window.location.href = 'tel://' + this.item.mobile
   }
   },
 };

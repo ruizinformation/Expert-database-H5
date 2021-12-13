@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-08 17:01:48 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-13 10:42:46
+ * @Last Modified time: 2021-12-13 14:40:25
  */
 
 <template>
@@ -10,7 +10,7 @@
     <div class="tab-row">
       <van-tabs type="card" v-model="active" :ellipsis="false" scrollspy @click="handleTab"
       color="#288CF2" title-active-color="#FFFFFF" title-inactive-color='#303030'>
-        <van-tab :badge="type==1?consultUnreadCount||'':policyUnreadCount||''" v-for="(item,index) in typeList" :title="item.name" :key="index"><div></div></van-tab>
+        <van-tab :badge="index==1?consultUnreadCount||'':policyUnreadCount||''" v-for="(item,index) in typeList" :title="item.name" :key="index"><div></div></van-tab>
       </van-tabs>
     </div>
     <!-- 消息列表 -->
@@ -36,7 +36,9 @@ export default {
       MessageList:[],
       typeList:[{id:1,name:"政策通知"},{id:2,name:"法律咨询"}],
       active:'',
-      type:1
+      type:1,
+      consultUnreadCount:"",
+      policyUnreadCount:""
     };
   },
   mounted() {
