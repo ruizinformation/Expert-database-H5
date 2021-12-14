@@ -248,6 +248,13 @@ const routes = [{
     meta: {
       title: "消息",
     }
+  },
+  {
+    name: "reply-detail",
+    component: () => import("./view/modules/user/reply-list/reply-detail.vue"),
+    meta: {
+      title: "我的回复",
+    }
   }
 ];
 

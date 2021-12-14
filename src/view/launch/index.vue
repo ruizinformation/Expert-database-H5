@@ -104,8 +104,10 @@ export default {
   },
   methods: {
     init(){
-      // this.$cookie.set('token',"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55X2lkIjoxLCJ1c2VyX2lkIjo5LCJleHBpcmVfdGltZSI6MTY0MDc0OTE0NDczMX0.zqmnMMH6kqDyPjlHT6MpSBVAaaLwjskrt98fvMuUyUg")
-      // this.toGetUserInfo()
+      //this.$cookie.set('token',"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55X2lkIjoxLCJ1c2VyX2lkIjo5LCJleHBpcmVfdGltZSI6MTY0MDc0OTE0NDczMX0.zqmnMMH6kqDyPjlHT6MpSBVAaaLwjskrt98fvMuUyUg")
+      //this.$cookie.set('token',"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55X2lkIjoxLCJ1c2VyX2lkIjo2LCJleHBpcmVfdGltZSI6MTY0MDc2NDQ5NzczOX0.UdqMTfAFVOU38tGPn_ogmxErF6Mv2aEX5ptqgXRcv3M")
+
+      //this.toGetUserInfo()
       this.$cookie.set('token',this.basicInfo.token)
       getToken().then(data=>{
         console.log(88,data)

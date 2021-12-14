@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-08 20:24:42 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-13 11:21:32
+ * @Last Modified time: 2021-12-14 15:32:45
  */
 
 <template>
@@ -13,7 +13,7 @@
       <div class="time">{{data.createDate}}</div>
     </div>
     <div class="policy-content">{{data.content}}
-      <div v-if="data.images">
+      <div v-if="data.images.length">
         <img :src="data.images" alt="" srcset=""  @click="imagePreview(data.images)">
       </div>
     </div>
@@ -24,7 +24,7 @@
       <div class="time">{{data.createDate}}</div>
     </div>
     <div class="policy-content bg">{{data.content}}
-      <div v-if="data.images">
+      <div v-if="data.images.length">
         <img :src="data.images"  alt="" srcset=""   @click="imagePreview(data.images)" >
       </div>
     </div>

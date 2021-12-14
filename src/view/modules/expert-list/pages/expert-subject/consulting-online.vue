@@ -74,7 +74,7 @@ export default {
         this.$loading.show({
           title: '提交中'
         })
-      addConsult({ parentId: this.parentId,toUserId:  this.toUserId ,expertId: this.expertId,content:this.message ,images:this.imagesUrl}).then(()=> {
+      addConsult({ parentId: this.parentId,toUserId: this.toUserId ,expertId: this.expertId,content:this.message ,images:this.imagesUrl}).then(()=> {
            this.$loading.hide()
           this.$toast("提交成功");
           this.message="",

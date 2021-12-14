@@ -8,7 +8,6 @@ chensongbo * @Last Modified time: 2021-12-13 15:14:16 */
         type="card"
         v-model="active"
         :ellipsis="false"
-        scrollspy
         @click="handleTab"
         color="#288CF2"
         title-active-color="#FFFFFF"
@@ -25,19 +24,20 @@ chensongbo * @Last Modified time: 2021-12-13 15:14:16 */
     </div>
 
     <!-- 消息列表 -->
-    <!-- <van-pull-refresh
+    <van-pull-refresh
       v-model="refreshing"
       @refresh="init"
       pulling-text="下拉即可刷新..."
       loosing-text="释放即可刷新..."
       loading-text="加载中..."
-    > -->
+    >
       <div class="train-list-wrapper">
         <MessageItem
           v-for="(item, index) in MessageList"
           :key="index"
           :item="item"
           :type="type"
+          :userType="userType"
         />
         <van-empty
           v-if="MessageList.length == 0"
@@ -45,7 +45,7 @@ chensongbo * @Last Modified time: 2021-12-13 15:14:16 */
           description="暂无数据"
         />
       </div>
-    <!-- </van-pull-refresh> -->
+    </van-pull-refresh>
   </div>
 </template>
 
@@ -58,7 +58,16 @@ export default {
   components: {
     MessageItem,
   },
-  computed: {},
+  computed: {
+     userInfo: {
+        get() {
+          return this.$store.state.user.userInfo
+        },
+        set(val) {
+          this.$store.commit('user/updateUserInfo', val)
+        }
+      },
+  },
   data() {
     return {
       MessageList: [],
@@ -68,9 +77,10 @@ export default {
       ],
       active: "",
       type: 1,
+      usertype:"游客",
       consultUnreadCount: "",
       policyUnreadCount: "",
-      //refreshing:false,
+      refreshing:false,
     };
   },
   mounted() {
@@ -78,6 +88,11 @@ export default {
   },
   methods: {
     init() {
+      if(this.userInfo.isExpert){
+         this.usertype="专家"
+      }else{
+         this.usertype="游客"
+      }
       getMessageUnread().then((res) => {
         console.log(res);
         this.consultUnreadCount = res.consult;
@@ -90,7 +105,6 @@ export default {
       let query = {
         limit: 99,
         page: 1,
-        type: 1,
       };
       if (this.type == 1) {
         getMessagePolicyList(query).then((res) => {
@@ -103,7 +117,7 @@ export default {
           this.MessageList = res.records;
         });
       }
-      //this.refreshing=false
+      this.refreshing=false
     },
     // tab切换
     handleTab() {
