@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 14:15:15 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-14 10:46:39
+ * @Last Modified time: 2021-12-14 17:24:11
  */
 
 <template>
@@ -74,7 +74,7 @@ export default {
   methods: {
     onItemClick(row){
         this.$router.push({
-        name: 'consult-detail',
+        name: 'reply-detail',
         query:{expertId:row.expertId,tel:row.expertInfo.mobile}
       })
     }

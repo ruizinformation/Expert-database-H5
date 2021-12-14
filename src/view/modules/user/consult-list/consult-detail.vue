@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-08 20:15:35 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-14 10:43:13
+ * @Last Modified time: 2021-12-14 15:49:20
  */
 
 <template>
@@ -83,7 +83,7 @@ export default {
     chatOnline(){
           this.$router.push({
           name: "consulting-online",
-          query:{expertId:this.expertId,toUserId:this.dataList[0].userId,parentId:this.dataList[this.dataList.length-1].id}
+          query:{expertId:this.expertId,toUserId:this.dataList[0].expertInfo.userId,parentId:this.dataList[this.dataList.length-1].id}
         });
     },
    call(){

@@ -34,7 +34,7 @@
       </div>
     </div>
     <!-- 专家列表 -->
-    <div class="train-list-wrapper">
+    <van-list @load="onLoad"  v-model="loading" :finished="finished" finished-text="没有更多了" class="train-list-wrapper">
       <ExpertItem
         v-for="(item, index) in expertList"
         :key="index"
@@ -45,7 +45,7 @@
         class="empty-custom-image"
         description="暂无数据"
       />
-    </div>
+    </van-list>
     </div>
      <ExpertType v-if="showType"  @handleTab="handleTab"/>
   </div>
@@ -70,7 +70,14 @@ export default {
       expertList: [],
       typeList: [],
       active: "",
-      showType:false
+      showType:false,
+      loading: false,
+      finished: false,
+      query :{
+        limit: 8,
+        page: 0,
+        typeId: '',
+      }
     };
   },
   mounted() {
@@ -81,24 +88,21 @@ export default {
     init(){
     getTypeList().then((res) => {
     this.typeList = res.records;
-    let { typeId } = this.$route.query ? this.$route.query : "";
-    if (typeId) {
-      this.active = typeId;
-      this.getExpertList(typeId);
-    } else {
-      this.getExpertList(res.records[0].id);
-    }
+    this.query.typeId=res.records[0].id
+    this.getExpertList(res.records[0].id);
     });
     },
+    onLoad(){
+      this.query.page++
+      this.getExpertList()
+    },
     // 获取专家列表
-    getExpertList(id) {
-      let query = {
-        limit: 8,
-        page: 1,
-        typeId: id,
-      };
-      getExpertList(query).then((res) => {
-        console.log(res);
+    getExpertList() {
+      getExpertList(this.query).then((res) => {
+        if(res.current==res.pages){
+          this.finished=true
+        }
+        this.loading = false;
         this.expertList = res.records;
       });
     },
@@ -110,6 +114,7 @@ export default {
       }
       let id = this.typeList[this.active].id;
       console.log(id);
+      this.query.typeId=id
       this.getExpertList(id);
     },
     showMore() {

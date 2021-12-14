@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 19:34:10 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-14 13:16:29
+ * @Last Modified time: 2021-12-14 17:22:07
  */
 
 <template>
@@ -30,7 +30,7 @@
          </div>
       <div class="layer-infomation">
       <div class="title">
-        {{item.expertInfo.name}}
+        {{item.fromUserName}}
       </div>
         <div class="content">
           {{item.content}}
@@ -44,10 +44,20 @@
 <script>
 export default {
   components: {},
-  computed: {},
+  computed: {
+        userInfo: {
+        get() {
+          return this.$store.state.user.userInfo
+        },
+        set(val) {
+          this.$store.commit('user/updateUserInfo', val)
+        }
+      },
+  },
   props: {
     item: [Object],
     type: [Number], // 1-培训 2-我的培训 3-学习 4-我的学习
+    usertype:[String],
     scene:[String,Number] //培训场景 1.普通培训 2.新员工培训 3.关键岗位培训
   },
   data() {
@@ -64,8 +74,15 @@ export default {
       if(this.type == 1){
         this.$router.push({ name: 'policy-announcement-detail', query:{id:this.item.policyId}})
       }else{
-      // 咨询详情
+        console.log(1231,this.userInfo)
+        if(this.userInfo.isExpert){
+       // 回复详情
+        this.$router.push({ name: 'reply-detail', query:{expertId:this.item.expertId,tel:this.item.expertInfo.mobile}})
+        }else{
+        // 咨询详情
         this.$router.push({ name: 'consult-detail', query:{expertId:this.item.expertId,tel:this.item.expertInfo.mobile}})
+        }
+     
       }
     },
   },

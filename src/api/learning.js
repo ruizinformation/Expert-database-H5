@@ -158,7 +158,7 @@ export function getMessagePolicyList(data) {
  export function getMessageLayerList(data) {
     return new Promise((resolve, reject) => {
         request({
-            url: '/message/consult/page',
+            url: '/message/consult/receive',
             api: 'mgop.ruiztech.staffhome.studysubjectlist',
             type: 'GET',
             data: data

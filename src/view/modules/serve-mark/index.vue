@@ -36,7 +36,7 @@
     </div>
     </div>
     <!-- 专家列表 -->
-    <div class="train-list-wrapper">
+    <van-list @load="onLoad"  v-model="loading" :finished="finished" finished-text="没有更多了" class="train-list-wrapper">
       <ServeItem
         v-for="(item, index) in serveList"
         :key="index"
@@ -48,7 +48,7 @@
         class="empty-custom-image"
         description="暂无数据"
       />
-    </div>
+    </van-list>
     </div>
      <ServeType v-if="showType"  @handleTab="handleTab"/>
   </div>
@@ -72,7 +72,14 @@ export default {
       serveList: [],
       typeList: [],
       active: "",
-      showType:false
+      showType:false,
+      loading: false,
+      finished: false,
+      query :{
+        limit: 10,
+        page: 0,
+        typeId: '',
+      }
     };
   },
   mounted() {
@@ -84,19 +91,21 @@ export default {
     // 获取tab类型
       getServeTypeList().then((res) => {
         this.typeList = res;
+        this.query.typeId=res[0].id
         this.getServeList(res[0].id);
       });
     },
-
+    onLoad(){
+      this.query.page++
+      this.getServeList()
+    },
     // 获取服务市场列表
-    getServeList(id) {
-      let query = {
-        limit: 10,
-        page: 1,
-        typeId: id,
-      };
-      getServeList(query).then((res) => {
-        console.log(res);
+    getServeList() {
+      getServeList(this.query).then((res) => {
+        if(res.current==res.pages){
+          this.finished=true
+        }
+        this.loading = false;
         this.serveList = res.records;
       });
     },
@@ -107,6 +116,7 @@ export default {
         this.showType=false
       }
       let id = this.typeList[this.active].id;
+      this.query.typeId=id
       this.getServeList(id);
     },
     showMore() {
