@@ -1,7 +1,7 @@
 /* * @Author: chensongbo 
  * @Date: 2021-12-13 14:28:44  
- * @Last Modified by:   chensongbo  
- * @Last Modified time: 2021-12-13 14:28:44  
+ * @Last Modified by: chensongbo
+ * @Last Modified time: 2021-12-14 10:41:56
  */
 <template>
   <div>
@@ -56,9 +56,22 @@ export default {
     this.getExpertDetail();
   },
   methods: {
-    call() {
-      window.location.href = "tel://" + this.expertDetail.mobile;
+   call(){
+     window.location.href = 'tel://' + this.expertDetail.mobile
     },
+      //     //点击电话
+      // call() {
+      //   this.$bridge.phoneCall({
+      //     "corpId": this.expertDetail.mobile
+      //   }).then(res => {
+      //     console.log(res)
+      //   }).catch(err => {
+      //     console.log(err)
+      //   })
+      // },
+    // call() {
+    //   window.location.href = "tel://" + this.expertDetail.mobile;
+    // },
     getExpertDetail() {
       getExpertDetail({ id: this.detailId }).then((res) => {
         this.expertDetail = res;

@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 14:15:15 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-13 16:56:28
+ * @Last Modified time: 2021-12-14 10:46:39
  */
 
 <template>
@@ -12,12 +12,12 @@
         <div class="data-list">
           <div class="data-list-item" v-for="(row,rowIndex) in dataList" :key="rowIndex" @click="onItemClick(row)">
             <div class="company-name">
-                <van-icon  dot  />
+                <van-icon  dot v-if="row.isThisUser&&row.unreadCount" />
               <img src="../../../../assets/img/index/headPic.png" alt="">
             
               <div>{{row.expertInfo?row.expertInfo.name:''}}</div>
             </div>
-            <div class="replt-date">
+            <div class="replt-date"> 
               <div class="">
                {{row.createTime}}
               </div>
@@ -72,6 +72,12 @@ export default {
        this.onLoad()
   },
   methods: {
+    onItemClick(row){
+        this.$router.push({
+        name: 'consult-detail',
+        query:{expertId:row.expertId,tel:row.expertInfo.mobile}
+      })
+    }
   },
 };
 </script>

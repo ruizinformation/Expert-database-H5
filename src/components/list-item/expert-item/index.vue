@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 11:13:30 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-13 11:26:30
+ * @Last Modified time: 2021-12-14 10:41:32
  */
 <template>
   <div>
@@ -42,6 +42,15 @@ export default {
     call(){
      window.location.href = 'tel://' + this.item.mobile
     },
+    //  call() {
+    //     this.$bridge.phoneCall({
+    //       "corpId": this.item.mobile
+    //     }).then(res => {
+    //       console.log(res)
+    //     }).catch(err => {
+    //       console.log(err)
+    //     })
+    //   },
     handleDetail(id) {
       // 专家详情
         this.$router.push({

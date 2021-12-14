@@ -73,9 +73,9 @@ export default {
             if(status=='success' && _this.detailInfo.subjectUserVo && _this.detailInfo.subjectUserVo.status != 1){
                 // _this.$toast('阅读完成！')
                 // 完成阅读接口请求
-                _this.handleComplete()
+              //  _this.handleComplete()
             }else{
-                _this.$refs.trainCompleteModal.showModal = true
+               // _this.$refs.trainCompleteModal.showModal = true
             }
         })
       })

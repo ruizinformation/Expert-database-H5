@@ -9,7 +9,7 @@
   <div class="YGM-code-mod">
     <van-overlay :show="showYGMModal" @click="show = false">
       <div class="YGM-content" @click.stop>
-        <div class="YGM-title">员工码</div>
+        <div class="YGM-title">专家库</div>
         <div class="YGM-body">
           <div class="code-content">
             <div id="qrCode" class="YGM-code" v-if="showYGMModal"></div>

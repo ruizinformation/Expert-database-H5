@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 11:41:20 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-13 14:31:58
+ * @Last Modified time: 2021-12-14 10:42:46
  */
 
 <template>
@@ -20,7 +20,6 @@
       <p>机构介绍</p>
       <div class="content" style="">
        {{item.description}}
-    
       </div>
     </div>
     <div class="bootpm-btn">
@@ -58,11 +57,19 @@ export default {
         })
       }
     },
-
-    // 在线联系
-  handleCall(){
-      window.location.href = 'tel://' + this.item.mobile
-  }
+   handleCall(){
+     window.location.href = 'tel://' + this.item.mobile
+    },
+  //  //点击电话
+  // handleCall() {
+  //       this.$bridge.phoneCall({
+  //         "corpId": this.item.mobile
+  //       }).then(res => {
+  //         console.log(res)
+  //       }).catch(err => {
+  //         console.log(err)
+  //       })
+  //     },
   },
 };
 </script>

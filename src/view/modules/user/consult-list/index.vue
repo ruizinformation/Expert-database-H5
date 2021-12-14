@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 14:15:15 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-13 15:53:32
+ * @Last Modified time: 2021-12-14 13:06:38
  */
 
 <template>
@@ -13,9 +13,9 @@
           <div class="data-list-item" v-for="(row,rowIndex) in dataList" :key="rowIndex" @click="onItemClick(row)">
             <div class="company-name">
                 <van-icon  dot  v-if="row.isThisUser&&row.unreadCount"/>
-              <img src="../../../../assets/img/index/headPic.png" alt="">
+              <img :src="row.expertInfo.avatarUrl" alt="">
             
-              <div>{{row.expertInfo?row.expertInfo.name:''}}</div>
+              <div style="padding-left:20px">{{row.expertInfo?row.expertInfo.name:''}}</div>
             </div>
             <div class="company-tag">
               <div class="company-status">

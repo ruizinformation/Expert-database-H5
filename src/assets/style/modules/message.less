@@ -44,7 +44,7 @@
   background: #FFFFFF;
   border-radius: 4px;
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   padding: 0 15px 0 15px;
   .van-info {
@@ -58,6 +58,8 @@
     display: flex;
     flex-direction: column;
     justify-content: start;
+    padding-left: 15px;
+    width: calc(100% - 60px);;
     .title{
   font-size: 15px;
   padding-bottom: 13px;
@@ -65,12 +67,16 @@
     .content{
       color: #919191;
       font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }
   img{
     width: 44px;
     height: 44px;
+    border-radius: 50%;
   }
 }
 .learning-mod .van-tab__text-wrapper{

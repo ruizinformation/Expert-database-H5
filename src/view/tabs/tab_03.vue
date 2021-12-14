@@ -6,7 +6,8 @@ chensongbo * @Last Modified time: 2021-12-13 15:01:14 */
     <div class="user-content">
       <div class="user-card">
         <div class="user-card-left">
-          <div><img :src="userInfo.avatarUrl" alt="" /></div>
+          <div><img :src="userInfo.avatarUrl?userInfo.avatarUrl:headPic" alt="" />
+        </div>
           <div>
             <div class="left-row username">{{ userInfo.nickname }}</div>
             <div class="left-row mobile">{{ userInfo.mobile }}</div>
@@ -63,6 +64,7 @@ export default {
   data() {
     return {
       menuList: [],
+      headPic:require('../../assets/img/index/headPic.png'),
     };
   },
   mounted() {

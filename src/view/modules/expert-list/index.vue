@@ -10,10 +10,10 @@
     <div v-show="!showType">
     <div class="tab-row">
       <van-tabs
+        sticky
         type="card"
         v-model="active"
         :ellipsis="false"
-        scrollspy
         @click="handleTab"
         color="#288CF2"
         title-active-color="#FFFFFF"

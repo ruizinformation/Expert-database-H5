@@ -6,7 +6,7 @@
  * @Description: 文件说明
 -->
 <template>
-  <div class="index-mod">
+  <div class="index-mod" >
     <div class="index-content">
       <tab-first v-if="active==0" />
       <tab-second v-if="active==1" />
@@ -79,6 +79,13 @@
     },
     methods: {
       changeTab(active){
+        if(active==0){
+          document.title="首页"
+        }else if(active==1){
+          document.title="消息"
+        }else{
+          document.title="我的"
+        }
         console.log(22,active)
         sessionStorage.setItem('homeActive',active)
       }

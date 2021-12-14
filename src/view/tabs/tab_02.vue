@@ -15,9 +15,7 @@ chensongbo * @Last Modified time: 2021-12-13 15:14:16 */
         title-inactive-color="#303030"
       >
         <van-tab
-          :badge="
-            index == 1 ? consultUnreadCount || '' : policyUnreadCount || ''
-          "
+         :badge="index == 1 ? consultUnreadCount || '' : policyUnreadCount || ''" 
           v-for="(item, index) in typeList"
           :title="item.name"
           :key="index"
@@ -25,6 +23,7 @@ chensongbo * @Last Modified time: 2021-12-13 15:14:16 */
         ></van-tab>
       </van-tabs>
     </div>
+
     <!-- 消息列表 -->
     <!-- <van-pull-refresh
       v-model="refreshing"
@@ -91,7 +90,7 @@ export default {
       let query = {
         limit: 99,
         page: 1,
-        type: this.type,
+        type: 1,
       };
       if (this.type == 1) {
         getMessagePolicyList(query).then((res) => {
@@ -127,4 +126,5 @@ export default {
   overflow-y: scroll;
   padding-top: 10px;
 }
+
 </style>

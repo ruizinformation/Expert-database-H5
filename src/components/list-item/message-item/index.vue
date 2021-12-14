@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 19:34:10 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-13 13:23:05
+ * @Last Modified time: 2021-12-14 13:16:29
  */
 
 <template>
@@ -26,13 +26,14 @@
        <div class="layer-info">
          <div>
         <van-icon  :badge="item.isThisUser&&item.unreadCount" />
-        <img src="../../../assets/img/index/headPic.png" alt="" srcset="">
+        <img :src="item.expertInfo.avatarUrl" alt="" srcset="">
          </div>
       <div class="layer-infomation">
       <div class="title">
-        {{item.name}}
+        {{item.expertInfo.name}}
       </div>
         <div class="content">
+          {{item.content}}
       </div>
       </div>
       

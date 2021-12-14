@@ -8,6 +8,10 @@
 <template>
   <div class="tab tab_01">
     <!-- <div class="home-bg"></div> -->
+    <div class="lab">
+      <div class="title">专 家 库</div>
+      <div class="content">为企业提供免费支持</div>
+    </div>
          <div>
        <img src="../../assets/img/index/banner.png" alt="">
      </div>
@@ -15,7 +19,7 @@
 
       <div class="home-m">
         <div class="home-m-item" :class="'item_0'+index" v-for="(item,index) in functionList" :key="index" @click="onFunctionClick(item)">
-          <img class="home-m-item-bg" :src="item.bg" v-if="UIStyle=='normal'" />
+          <img class="home-m-item-bg" :src="item.bg" />
           <img class="home-m-item-icon" :src="item.icon" />
           <div class="home-m-item-name">{{item.name}}</div>
         </div>
@@ -36,7 +40,6 @@
 
       </div>
     </div>
-    <YGM-code ref="YGMCode" />
   </div>
 </template>
 
@@ -44,22 +47,20 @@
 import PolicyItem from '@/components/list-item/policy-item/index.vue'
 import {getPolicyNoticePage} from '@/api/policy-announcement.js'
 import emptyImg from "@/assets/img/common/no_data.png";
-import YGMCode from "@/components/YGM-code/index.vue";
 // import {getMessageList} from '@/api/home.js'
   export default {
     components: {
       PolicyItem,
-      YGMCode
     },
     computed: {
-      UIStyle: {
-        get() {
-          return this.$store.state.common.UIStyle
-        },
-        set(val) {
-          this.$store.commit('common/updateUIStyle', val)
-        }
-      },
+      // UIStyle: {
+      //   get() {
+      //     return this.$store.state.common.UIStyle
+      //   },
+      //   set(val) {
+      //     this.$store.commit('common/updateUIStyle', val)
+      //   }
+      // },
       userInfo: {
         get() {
           return this.$store.state.user.userInfo
@@ -131,7 +132,6 @@ import YGMCode from "@/components/YGM-code/index.vue";
         this.$cookie.set('trainActive', 0)
       },
       refreshPolicyNoticePage(){
-        
          getPolicyNoticePage({page:1,limit:3}).then(({records})=>{
             console.log(234334,records)
             if (this.refreshing) {
@@ -152,7 +152,7 @@ import YGMCode from "@/components/YGM-code/index.vue";
         
       },
       onSwitchClick() {
-        console.log(this.UIStyle)
+        //console.log(this.UIStyle)
         //this.UIStyle = this.UIStyle == 'normal' ? 'elder' : 'normal'
        // this.$setStyle(this.UIStyle)
       },

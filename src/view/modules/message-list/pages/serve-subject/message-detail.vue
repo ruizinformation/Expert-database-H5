@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 11:41:20 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-06 13:10:15
+ * @Last Modified time: 2021-12-14 10:37:36
  */
 
 <template>
@@ -47,7 +47,6 @@ export default {
   mounted() {
   },
   methods: {
-
     // 在线联系
   handleCall(){
       window.location.href = 'tel://' + 15068523950

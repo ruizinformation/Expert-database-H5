@@ -8,7 +8,7 @@
 <template>
   <div class="policy-announcement-item" @click="toPolicyDetail(data.id)">
     <div class="item-left">
-       <img  :src="data.annex" alt="">
+       <img  src="../../../assets/img/train-manage/learnPic.png" alt="">
     </div>
     <div class="item-right">
     <div class="policy-title">{{data.title}}</div>
