@@ -1,10 +1,5 @@
-/*
- * @Author: chensongbo 
- * @Date: 2021-12-06 14:46:27 
- * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-13 10:11:17
- */
-
+/* * @Author: chensongbo * @Date: 2021-12-06 14:46:27 * @Last Modified by:
+chensongbo * @Last Modified time: 2021-12-13 15:01:14 */
 
 <template>
   <div class="tab tab_03">
@@ -19,7 +14,7 @@
         </div>
         <div class="user-card-right">
           <img
-          @click="editInfo"
+            @click="editInfo"
             class="integral-icon"
             src="~@/assets/img/index/edit.png"
             alt=""
@@ -67,16 +62,23 @@ export default {
   },
   data() {
     return {
-      menuList: [
-        { name: "我的咨询", route: "consult-list", isLink: true },
-        { name: "我的回复", route: "reply-list", isLink: true },
-      ],
+      menuList: [],
     };
   },
   mounted() {
     console.log("mounted");
     getUserInfo().then((data) => {
       this.userInfo = data;
+      if (data.isExpert) {
+        this.menuList = [
+          { name: "我的咨询", route: "consult-list", isLink: true },
+          { name: "我的回复", route: "reply-list", isLink: true },
+        ];
+      } else {
+        this.menuList = [
+          { name: "我的咨询", route: "consult-list", isLink: true },
+        ];
+      }
     });
   },
   methods: {
@@ -84,9 +86,9 @@ export default {
       console.log("route", route);
       this.$router.push({ name: route });
     },
-    editInfo(){
-       this.$router.push({ name: "basic-info" });
-    }
+    editInfo() {
+      this.$router.push({ name: "basic-info" });
+    },
   },
 };
 </script>

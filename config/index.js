@@ -16,7 +16,7 @@ switch (process.env.NODE_ENV) {
     baseUrl = "https://expert-library.ruiztech.cn/ruiz"; //测试环境中的url
     break;
   case "production":
-    baseUrl = "http://220.191.226.178:9080/ruiz"; //生产环境url
+    baseUrl = "http://220.191.226.178:9080/h5"; //生产环境url
     break;
 }
 

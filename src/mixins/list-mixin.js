@@ -89,7 +89,6 @@ const minix = {
     },
     // 获取列表数据
     getDataList(page) {
-
       return new Promise((resolve, reject) => {
         console.log("getDataList", page);
 

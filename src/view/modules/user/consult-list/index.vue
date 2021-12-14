@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 14:15:15 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-13 14:09:37
+ * @Last Modified time: 2021-12-13 15:53:32
  */
 
 <template>
@@ -15,11 +15,11 @@
                 <van-icon  dot  v-if="row.isThisUser&&row.unreadCount"/>
               <img src="../../../../assets/img/index/headPic.png" alt="">
             
-              <div>{{row.companyInfo?row.companyInfo.name:''}}</div>
+              <div>{{row.expertInfo?row.expertInfo.name:''}}</div>
             </div>
             <div class="company-tag">
               <div class="company-status">
-                税务专家
+                {{row.expertInfo.typeName}}
               </div>
             </div>
           </div>

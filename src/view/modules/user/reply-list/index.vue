@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 14:15:15 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-10 13:34:28
+ * @Last Modified time: 2021-12-13 16:56:28
  */
 
 <template>
@@ -15,11 +15,11 @@
                 <van-icon  dot  />
               <img src="../../../../assets/img/index/headPic.png" alt="">
             
-              <div>{{row.companyInfo?row.companyInfo.name:''}}</div>
+              <div>{{row.expertInfo?row.expertInfo.name:''}}</div>
             </div>
             <div class="replt-date">
               <div class="">
-              2021-12-12 12:12:12
+               {{row.createTime}}
               </div>
             </div>
           </div>
