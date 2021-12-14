@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import {bindCompany,getUserInfo,smsSend} from '@/api/home.js'
+import {bindCompany,getUserInfo,smsSend,getToken} from '@/api/home.js'
 import {isMobile } from '@/utils/validate.js'
 
 export default {
@@ -104,16 +104,14 @@ export default {
   },
   methods: {
     init(){
-      
- 
-      this.$cookie.set('token',"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55X2lkIjoxLCJ1c2VyX2lkIjo5LCJleHBpcmVfdGltZSI6MTY0MDc0OTE0NDczMX0.zqmnMMH6kqDyPjlHT6MpSBVAaaLwjskrt98fvMuUyUg")
-      /this.toGetUserInfo()
-      // this.$cookie.set('token',this.basicInfo.token)
-      // getToken().then(data=>{
-      //   console.log(88,data)
-      //   this.$cookie.set('token',data.accessToken)
-      //   this.toGetUserInfo()
-      // })
+      // this.$cookie.set('token',"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55X2lkIjoxLCJ1c2VyX2lkIjo5LCJleHBpcmVfdGltZSI6MTY0MDc0OTE0NDczMX0.zqmnMMH6kqDyPjlHT6MpSBVAaaLwjskrt98fvMuUyUg")
+      // this.toGetUserInfo()
+      this.$cookie.set('token',this.basicInfo.token)
+      getToken().then(data=>{
+        console.log(88,data)
+        this.$cookie.set('token',data.accessToken)
+        this.toGetUserInfo()
+      })
     },
     toSmsSend(){
       if(!this.btnCanClick)return
