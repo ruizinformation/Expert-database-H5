@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 14:15:15 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-14 17:24:11
+ * @Last Modified time: 2021-12-15 10:33:20
  */
 
 <template>
@@ -15,11 +15,11 @@
                 <van-icon  dot v-if="row.isThisUser&&row.unreadCount" />
               <img src="../../../../assets/img/index/headPic.png" alt="">
             
-              <div>{{row.expertInfo?row.expertInfo.name:''}}</div>
+              <div style="padding-left:15px">{{row.expertInfo?row.expertInfo.name:''}}</div>
             </div>
             <div class="replt-date"> 
               <div class="">
-               {{row.createTime}}
+               {{row.createDate}}
               </div>
             </div>
           </div>
@@ -75,7 +75,7 @@ export default {
     onItemClick(row){
         this.$router.push({
         name: 'reply-detail',
-        query:{expertId:row.expertId,tel:row.expertInfo.mobile}
+        query:{expertId:row.expertId,fromUserId:row.userId,tel:row.expertInfo.mobile}
       })
     }
   },

@@ -79,6 +79,7 @@ export default {
           this.$toast("提交成功");
           this.message="",
           this.fileList=[]
+           this.$router.go(-1)
       });
     },
 
