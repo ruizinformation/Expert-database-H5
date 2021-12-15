@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-08 20:15:35 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-14 18:03:12
+ * @Last Modified time: 2021-12-15 12:01:22
  */
 
 <template>
@@ -67,7 +67,7 @@ export default {
     // },
     //已读接口
      initData(){
-        getConsultRead({expertId: this.expertId}).then(()=>{
+        getConsultRead({expertId: this.expertId,userId:this.fromUserId}).then(()=>{
       }),
         getConsultInfo({expertId: this.expertId,userId:this.fromUserId}).then(res=>{
           console.log(66,res)
