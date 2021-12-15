@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 14:15:15 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-15 10:33:20
+ * @Last Modified time: 2021-12-15 11:55:34
  */
 
 <template>
@@ -13,9 +13,9 @@
           <div class="data-list-item" v-for="(row,rowIndex) in dataList" :key="rowIndex" @click="onItemClick(row)">
             <div class="company-name">
                 <van-icon  dot v-if="row.isThisUser&&row.unreadCount" />
-              <img src="../../../../assets/img/index/headPic.png" alt="">
+              <img :src="row.userInfo.avatarUrl?row.userInfo.avatarUrl:headPic" alt="">
             
-              <div style="padding-left:15px">{{row.expertInfo?row.expertInfo.name:''}}</div>
+              <div style="padding-left:15px">{{row.userInfo?row.userInfo.nickname:''}}</div>
             </div>
             <div class="replt-date"> 
               <div class="">
@@ -61,6 +61,7 @@ export default {
       getListUrl:'/message/consult/page',
       getListAPI:'mgop.ruiztech.staffhome.policynoticepage',
       autoGet:false,
+      headPic:require('../../../../assets/img/index/headPic.png'),
       searchForm:{
         type:2,
         orderField:'create_date',

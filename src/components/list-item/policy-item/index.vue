@@ -86,7 +86,7 @@ export default {
     display: flex;
     justify-content: end;
     align-items: center;
-    margin-top: 12px;
+    margin-top: 25px;
     color: #B3B5B9;
     font-size: var(--font-size-sm);
   }
