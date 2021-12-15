@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-08 20:15:35 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-14 10:43:32
+ * @Last Modified time: 2021-12-14 18:03:12
  */
 
 <template>
@@ -10,7 +10,7 @@
     <!-- <van-pull-refresh v-model="refreshing" @refresh="onRefresh" :pulling-text="pullingText" :loosing-text="loosingText" :loading-text="loadingText"> -->
       <div class="consult-list-wrapper" id="wapPage">
         <div class="data-list">
-          <notice-item v-for="(row,rowIndex) in dataList" :key="rowIndex" :data="row" />
+          <noticeReply-item v-for="(row,rowIndex) in dataList" :key="rowIndex" :data="row" />
           <!-- <van-empty v-if="noData" class="empty-custom-image" description="暂无数据" /> -->
         </div>
       </div>
@@ -26,7 +26,7 @@
 
 <script>
 // import listMixin from '@/mixins/list-mixin.js'
-import NoticeItem from '@/components/list-item/notice-item/index.vue'
+import NoticeReplyItem from '@/components/list-item/notice-item/index_reply.vue'
 import {getConsultInfo,getConsultRead} from '@/api/notice.js'
 
 
@@ -34,7 +34,7 @@ import {getConsultInfo,getConsultRead} from '@/api/notice.js'
 export default {
   // mixins: [listMixin],
   components: {
-    NoticeItem
+    NoticeReplyItem
   },
   computed:{
       
@@ -50,13 +50,15 @@ export default {
       },
       dataList:[],
       expertId:"",
-      tel:""
+      tel:"",
+      fromUserId:''
     };
   },
   mounted(){
-     let {expertId,tel}=this.$route.query?this.$route.query:''
+     let {expertId,tel,fromUserId}=this.$route.query?this.$route.query:''
     this.expertId=expertId
     this.tel=tel
+    this.fromUserId=fromUserId
     this.initData()
   },
   methods: {
@@ -67,7 +69,7 @@ export default {
      initData(){
         getConsultRead({expertId: this.expertId}).then(()=>{
       }),
-        getConsultInfo({expertId: this.expertId}).then(res=>{
+        getConsultInfo({expertId: this.expertId,userId:this.fromUserId}).then(res=>{
           console.log(66,res)
           this.dataList=res
           this.$nextTick(() => {

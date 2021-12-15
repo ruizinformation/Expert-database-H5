@@ -5,6 +5,7 @@ chensongbo * @Last Modified time: 2021-12-13 15:14:16 */
   <div class="learning-mod">
     <div class="tab-row">
       <van-tabs
+      sticky
         type="card"
         v-model="active"
         :ellipsis="false"
@@ -37,7 +38,6 @@ chensongbo * @Last Modified time: 2021-12-13 15:14:16 */
           :key="index"
           :item="item"
           :type="type"
-          :userType="userType"
         />
         <van-empty
           v-if="MessageList.length == 0"
@@ -77,7 +77,6 @@ export default {
       ],
       active: "",
       type: 1,
-      usertype:"游客",
       consultUnreadCount: "",
       policyUnreadCount: "",
       refreshing:false,
@@ -88,11 +87,6 @@ export default {
   },
   methods: {
     init() {
-      if(this.userInfo.isExpert){
-         this.usertype="专家"
-      }else{
-         this.usertype="游客"
-      }
       getMessageUnread().then((res) => {
         console.log(res);
         this.consultUnreadCount = res.consult;

@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 19:34:10 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-14 17:22:07
+ * @Last Modified time: 2021-12-15 10:43:46
  */
 
 <template>
@@ -26,11 +26,11 @@
        <div class="layer-info">
          <div>
         <van-icon  :badge="item.isThisUser&&item.unreadCount" />
-        <img :src="item.expertInfo.avatarUrl" alt="" srcset="">
+        <img :src="item.fromUserInfo.avatarUrl?item.fromUserInfo.avatarUrl:headPic" alt="" srcset="">
          </div>
       <div class="layer-infomation">
       <div class="title">
-        {{item.fromUserName}}
+        {{item.fromUserInfo.nickname}}
       </div>
         <div class="content">
           {{item.content}}
@@ -57,12 +57,11 @@ export default {
   props: {
     item: [Object],
     type: [Number], // 1-培训 2-我的培训 3-学习 4-我的学习
-    usertype:[String],
     scene:[String,Number] //培训场景 1.普通培训 2.新员工培训 3.关键岗位培训
   },
   data() {
     return {
-      
+       headPic:require('../../../assets/img/index/headPic.png'),
     };
   },
   mounted() {
@@ -77,7 +76,7 @@ export default {
         console.log(1231,this.userInfo)
         if(this.userInfo.isExpert){
        // 回复详情
-        this.$router.push({ name: 'reply-detail', query:{expertId:this.item.expertId,tel:this.item.expertInfo.mobile}})
+        this.$router.push({ name: 'reply-detail', query:{expertId:this.item.expertId,fromUserId:this.item.fromUserId,tel:this.item.expertInfo.mobile}})
         }else{
         // 咨询详情
         this.$router.push({ name: 'consult-detail', query:{expertId:this.item.expertId,tel:this.item.expertInfo.mobile}})
