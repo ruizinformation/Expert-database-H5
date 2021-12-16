@@ -194,8 +194,8 @@ export default {
       margin-bottom: 30px;
     }
     .launch-img {
-      width: 267px;
-      height: 230px;
+      width: 320px;
+      height:303px;
     }
   }
 
