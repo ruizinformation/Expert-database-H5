@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 11:13:30 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-14 10:41:32
+ * @Last Modified time: 2021-12-16 09:00:43
  */
 <template>
   <div>
@@ -19,7 +19,7 @@
             <img src="../../../assets/img/train-manage/phone.png" alt="" />
           {{item.mobile}}
           </div>
-          <div class="question"  @click="handleDetail(item.id)">立即咨询</div>
+          <div class="question"  @click="handleDetail(item.id,item.userId)">立即咨询</div>
         </div>
       </div>
     </div>
@@ -39,19 +39,23 @@ export default {
   },
   mounted() {},
   methods: {
-    call(){
-     window.location.href = 'tel://' + this.item.mobile
-    },
-    //  call() {
-    //     this.$bridge.phoneCall({
-    //       "corpId": this.item.mobile
-    //     }).then(res => {
-    //       console.log(res)
-    //     }).catch(err => {
-    //       console.log(err)
-    //     })
-    //   },
-    handleDetail(id) {
+    // call(){
+    //  window.location.href = 'tel://' + this.item.mobile
+    // },
+     call() {
+        this.$bridge.phoneCall({
+          "corpId": this.item.mobile
+        }).then(res => {
+          console.log(res)
+        }).catch(err => {
+          console.log(err)
+        })
+      },
+    handleDetail(id,userId) {
+       if(this.$store.state.user.userInfo.id==userId){
+         this.$toast("不能咨询自己!")
+         return;
+       }
       // 专家详情
         this.$router.push({
           name: "expert-detail",
