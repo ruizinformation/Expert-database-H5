@@ -122,17 +122,11 @@ import emptyImg from "@/assets/img/common/no_data.png";
       init() {
         // 获取政策公告前三条
         this.refreshPolicyNoticePage()
-        // 获取消息列表
-        // getMessageList({page:1,limit:999,orderField:'create_date',
-        //   order: 'desc'}).then(({records})=>{
-        //   this.messageList=records
-        // }).catch(()=>{
-        // })
         this.$cookie.set('learningActive', 0)
         this.$cookie.set('trainActive', 0)
       },
       refreshPolicyNoticePage(){
-         getPolicyNoticePage({page:1,limit:3}).then(({records})=>{
+         getPolicyNoticePage({page:1,limit:3,orderField:'create_date', order:'desc'}).then(({records})=>{
             console.log(234334,records)
             if (this.refreshing) {
               this.dataList = [];
@@ -176,7 +170,7 @@ import emptyImg from "@/assets/img/common/no_data.png";
           "certName": username,
           "certNo": idnum
         }).then(res => {
-          console.log(res)
+          console.log(77,res)
         }).catch(err => {
           console.log(err)
         })

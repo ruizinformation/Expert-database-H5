@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 11:13:30 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-14 10:41:20
+ * @Last Modified time: 2021-12-16 09:00:54
  */
 <template>
   <div>
@@ -37,18 +37,18 @@ export default {
   },
   mounted() {},
   methods: {
-    //  call() {
-    //     this.$bridge.phoneCall({
-    //       "corpId": this.item.mobile
-    //     }).then(res => {
-    //       console.log(res)
-    //     }).catch(err => {
-    //       console.log(err)
-    //     })
-    //   },
-    call(){
-     window.location.href = 'tel://' + this.item.mobile
-    },
+     call() {
+        this.$bridge.phoneCall({
+          "corpId": this.item.mobile
+        }).then(res => {
+          console.log(res)
+        }).catch(err => {
+          console.log(err)
+        })
+      },
+    // call(){
+    //  window.location.href = 'tel://' + this.item.mobile
+    // },
     handleDetail(id) {
       // 专家详情
         this.$router.push({

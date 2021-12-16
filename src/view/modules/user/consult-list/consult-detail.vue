@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-08 20:15:35 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-15 12:00:30
+ * @Last Modified time: 2021-12-16 09:03:42
  */
 
 <template>
@@ -86,19 +86,19 @@ export default {
           query:{expertId:this.expertId,toUserId:this.dataList[0].expertInfo.userId,parentId:this.dataList[this.dataList.length-1].id}
         });
     },
-   call(){
-     window.location.href = 'tel://' + this.tel
-    },
+  //  call(){
+  //    window.location.href = 'tel://' + this.tel
+  //   },
        //点击电话
-  // call() {
-  //       this.$bridge.phoneCall({
-  //         "corpId": this.tel
-  //       }).then(res => {
-  //         console.log(res)
-  //       }).catch(err => {
-  //         console.log(err)
-  //       })
-  //     },
+  call() {
+        this.$bridge.phoneCall({
+          "corpId": this.tel
+        }).then(res => {
+          console.log(res)
+        }).catch(err => {
+          console.log(err)
+        })
+      },
   },
 };
 </script>

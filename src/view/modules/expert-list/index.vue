@@ -82,19 +82,21 @@ export default {
   },
   mounted() {
     this.init()
-
   },
   methods: {
     init(){
     getTypeList().then((res) => {
     this.typeList = res.records;
     this.query.typeId=res.records[0].id
+    this.$nextTick(() => {
     this.getExpertList(res.records[0].id);
+      });
     });
+
     },
     onLoad(){
       this.query.page++
-      this.getExpertList()
+      //this.getExpertList()
     },
     // 获取专家列表
     getExpertList() {

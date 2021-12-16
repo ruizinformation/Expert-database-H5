@@ -2,7 +2,7 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 19:34:10 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-15 15:42:51
+ * @Last Modified time: 2021-12-16 08:53:46
  */
 
 <template>
@@ -74,7 +74,7 @@ export default {
         this.$router.push({ name: 'policy-announcement-detail', query:{id:this.item.policyId}})
       }else{
         console.log(1231,this.userInfo)
-        if(this.userInfo.isExpert){
+        if(!this.item.firstThisUser){
        // 回复详情
         this.$router.push({ name: 'reply-detail', query:{expertId:this.item.expertId,fromUserId:this.item.fromUserId,tel:this.item.expertInfo.mobile}})
         }else{
