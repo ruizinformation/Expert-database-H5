@@ -1,7 +1,7 @@
 /* * @Author: chensongbo 
  * @Date: 2021-12-13 14:28:44  
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-16 09:01:12
+ * @Last Modified time: 2022-01-21 09:00:34
  */
 <template>
   <div>
@@ -12,7 +12,7 @@
         </div>
         <div class="expert-info">
           <div class="name">{{ expertDetail.name }}</div>
-          <div class="address">{{ expertDetail.description }}</div>
+          <div class="address">{{ expertDetail.workspace }}</div>
           <div class="mobile">
             <div @click="call">
               <img src="~@/assets/img/train-manage/phone.png" alt="" />
