@@ -6,7 +6,7 @@
  * @Description: 文件说明
 -->
 <template>
-  <div id="app" :class="UIStyle=='normal'?'normal-mod':'elder-mod'">
+  <div id="app">
     <router-view />
   </div>
 </template>

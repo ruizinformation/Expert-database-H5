@@ -1,14 +1,14 @@
 /* * @Author: chensongbo 
  * @Date: 2021-12-13 14:28:44  
  * @Last Modified by: chensongbo
- * @Last Modified time: 2022-01-21 09:00:34
+ * @Last Modified time: 2022-02-14 10:55:04
  */
 <template>
   <div>
     <div class="expert-detail">
       <div class="expert-detail-title">
         <div class="pic">
-          <img :src="expertDetail.avatarUrl" alt="" />
+          <van-image :src="expertDetail.avatarUrl" alt="" fit="cover" />
         </div>
         <div class="expert-info">
           <div class="name">{{ expertDetail.name }}</div>

@@ -84,7 +84,6 @@ const routes = [{
       title: "video预览",
     },
   },
- 
   {
     name: "train-manage",
     component: () => import("./view/modules/train-manage/index.vue"),

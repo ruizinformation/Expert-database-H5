@@ -2,14 +2,14 @@
  * @Author: chensongbo 
  * @Date: 2021-12-06 11:13:30 
  * @Last Modified by: chensongbo
- * @Last Modified time: 2021-12-16 09:00:43
+ * @Last Modified time: 2022-02-14 10:01:25
  */
 <template>
   <div>
     <!-- 专家item -->
     <div  class="train-item">
       <div class="train-item-img">
-        <img v-if="item.avatarUrl" :src="item.avatarUrl" />
+        <van-image v-if="item.avatarUrl" :src="item.avatarUrl" fit="cover" />
       </div>
       <div class="train-item-info">
         <h1>{{ item.name }}</h1>

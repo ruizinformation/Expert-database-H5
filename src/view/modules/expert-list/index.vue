@@ -7,7 +7,7 @@
 -->
 <template>
   <div class="train-home-mod learning-mod">
-    <div v-show="!showType">
+    <!-- <div v-show="!showType">
     <div class="tab-row">
       <van-tabs
         sticky
@@ -32,39 +32,42 @@
         更多分类
         <van-icon name="arrow" />
       </div>
-    </div>
+    </div> -->
     <!-- 专家列表 -->
     <van-list @load="onLoad"  v-model="loading" :finished="finished" finished-text="没有更多了" class="train-list-wrapper">
       <ExpertItem
-        v-for="(item, index) in expertList"
+        v-for="(item, index) in dataList"
         :key="index"
         :item="item"
       />
       <van-empty
-        v-if="expertList.length == 0"
+        v-if="dataList.length == 0"
         class="empty-custom-image"
         description="暂无数据"
       />
     </van-list>
-    </div>
-     <ExpertType v-if="showType"  @handleTab="handleTab"/>
+    <!-- </div> -->
+     <!-- <ExpertType v-if="showType"  @handleTab="handleTab"/> -->
   </div>
 </template>
 
 <script>
-import { getTypeList, getExpertList } from "@/api/learning.js";
+import { getExpertList } from "@/api/learning.js";
 import ExpertItem from "@/components/list-item/expert-item/index.vue";
-import ExpertType from "../expert-list/pages/expert-subject/expertType-list.vue";
-
+// import ExpertType from "../expert-list/pages/expert-subject/expertType-list.vue";
+import listMixin from '@/mixins/list-mixin.js'
 
 export default {
+  mixins: [listMixin],
   components: {
     ExpertItem,
-    ExpertType
+    // ExpertType
   },
   computed: {},
   data() {
+    
     return {
+     getListUrl:'/expert/page',
       bannerList: [],
       msgList: [],
       expertList: [],
@@ -81,23 +84,27 @@ export default {
     };
   },
   mounted() {
-    this.init()
+     let { id } = this.$route.query ? this.$route.query : "";
+     this.searchForm.typeId = id;
+    //  this.$nextTick(() => {
+    //  this.getExpertList();
+    //   });
   },
   methods: {
-    init(){
-    getTypeList().then((res) => {
-    this.typeList = res.records;
-    this.query.typeId=res.records[0].id
-    this.$nextTick(() => {
-    this.getExpertList(res.records[0].id);
-      });
-    });
+    // init(){
+    // getTypeList().then((res) => {
+    // this.typeList = res.records;
+    // this.query.typeId=res.records[0].id
+    // this.$nextTick(() => {
+    // this.getExpertList();
+    //   });
+    // });
 
-    },
-    onLoad(){
-      this.query.page++
-      //this.getExpertList()
-    },
+    // },
+    // onLoad(){
+    //   this.query.page++
+    //   this.getExpertList()
+    // },
     // 获取专家列表
     getExpertList() {
       getExpertList(this.query).then((res) => {
@@ -128,7 +135,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .train-list-wrapper {
-  height: calc(100vh - 110px);
+  height: calc(100vh - 20px);
   overflow-y: scroll;
 }
 </style>
