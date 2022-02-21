@@ -1,15 +1,15 @@
 <!--
  * @Author: zhangmin
  * @Date: 2021-02-25 10:17:29
- * @LastEditors: wanghongying
- * @LastEditTime: 2021-10-28 14:23:55
+ * @LastEditors: zhangmin
+ * @LastEditTime: 2022-02-21 13:34:16
  * @Description: tab_01
 -->
 <template>
   <div class="tab tab_01">
     <!-- <div class="home-bg"></div> -->
     <div class="lab">
-      <div class="title">专 家 库</div>
+      <div class="title">专家服务平台</div>
       <div class="content">为企业提供免费支持</div>
     </div>
     <div>
@@ -20,16 +20,10 @@
         <div class="home-title-txt">专家咨询</div>
       </div>
       <div class="home-m">
-        <div
-          class="home-m-item"
-          :class="'item_0' + index"
-          v-for="(item, index) in typeList"
-          :key="index"
-          @click="onFunctionClick('expert-list',item.id)"
-          :style="{ background: functionList[index%9].bgColor }"
-        >
+        <div class="home-m-item" :class="'item_0' + index" v-for="(item, index) in typeList" :key="index" @click="onFunctionClick('expert-list',item.id)"
+          :style="{ background: item.bgColor }">
           <!-- <img class="home-m-item-bg" :src="item.bg" /> -->
-          <img class="home-m-item-icon" :src="functionList[index].icon" />
+          <img class="home-m-item-icon" :src="item.icon" />
           <div class="home-m-item-name">{{ item.name }}</div>
         </div>
       </div>
@@ -43,14 +37,8 @@
           </div> -->
         </div>
         <div class="home-m">
-          <div
-            class="home-m-item"
-            :class="'item_0' + index"
-            v-for="(item, index) in functionList02"
-            :key="index"
-            @click="onFunctionClick('learning-platform')"
-            :style="{ background: item.bgColor }"
-          >
+          <div class="home-m-item" :class="'item_0' + index" v-for="(item, index) in functionList02" :key="index" @click="onFunctionClick('learning-platform')"
+            :style="{ background: item.bgColor }">
             <!-- <img class="home-m-item-bg" :src="item.bg" /> -->
             <img class="home-m-item-icon" :src="item.icon" />
             <div class="home-m-item-name">{{item.name }}</div>
@@ -184,6 +172,24 @@ export default {
           route: "expert-list",
           //route: 'train-manage'
         },
+         {
+          name: "商标专利",
+          bg: require("@/assets/img/index/func-bg3.png"),
+          bgColor: "#09C0A1 ",
+          icon: require("@/assets/img/index/index_sb.png"),
+          url: "",
+          route: "expert-list",
+          //route: 'train-manage'
+        },
+         {
+          name: "保险平安",
+          bg: require("@/assets/img/index/func-bg3.png"),
+          bgColor: "#CBAE77 ",
+          icon: require("@/assets/img/index/index_bx.png"),
+          url: "",
+          route: "expert-list",
+          //route: 'train-manage'
+        },
       ],
       functionList02: [
         {
@@ -217,7 +223,18 @@ export default {
 
     getTypeList() {
       getTypeList().then((res) => {
-        this.typeList = res.records;
+        console.log('typeList',res)
+        let typeList = res.records;
+        this.typeList=[]
+        typeList.map(item=>{
+          this.functionList.map(fItem=>{
+            if(item.name==fItem.name){
+              this.typeList.push({...item,...fItem})
+            }
+          })
+        })
+        console.log('typeList',this.typeList)
+
       });
     },
     onFunctionClick(route,id) {
@@ -250,7 +267,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style scoped lang='less'>
 .index-mod .tab_01 .home-container .home-m-item {
   border-radius: 4px;
 }
@@ -272,5 +289,9 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
+}
+.lab {
+  .title {
+  }
 }
 </style>

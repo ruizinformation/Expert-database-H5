@@ -2,13 +2,13 @@
  * @Author: zhangmin
  * @Date: 2021-02-25 10:17:29
  * @LastEditors: zhangmin
- * @LastEditTime: 2021-11-26 17:22:34
+ * @LastEditTime: 2022-02-21 13:14:57
  * @Description: launch
 -->
 <template>
   <div class="launch-mod">
     <div v-if="showType==1" class="launch-content">
-      <div class="launch-title">欢迎来到专家库</div>
+      <div class="launch-title">欢迎来到专家服务平台</div>
       <img class="launch-img" src="~@/assets/img/home/welcome.png" alt="">
     </div>
     <div v-if="showType==2" class="launch-form">
@@ -104,9 +104,10 @@ export default {
   },
   methods: {
     init(){
-      //this.$cookie.set('token',"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55X2lkIjoxLCJ1c2VyX2lkIjo5LCJleHBpcmVfdGltZSI6MTY0MDc0OTE0NDczMX0.zqmnMMH6kqDyPjlHT6MpSBVAaaLwjskrt98fvMuUyUg")
+      // this.$cookie.set('token',"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55X2lkIjoxLCJ1c2VyX2lkIjozLCJleHBpcmVfdGltZSI6MTY0NjcxMjA1NDc2MH0.Gch4nU0jJjxwqFKLtnzLrgOb4fI4rlK0c7odS2IY7MY")
       //this.$cookie.set('token',"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55X2lkIjoxLCJ1c2VyX2lkIjo2LCJleHBpcmVfdGltZSI6MTY0MDc2NDQ5NzczOX0.UdqMTfAFVOU38tGPn_ogmxErF6Mv2aEX5ptqgXRcv3M")
-     // this.toGetUserInfo()
+    //  this.toGetUserInfo()
+
       this.$cookie.set('token',this.basicInfo.token)
       getToken().then(data=>{
         console.log(88,data)
@@ -191,11 +192,12 @@ export default {
     .launch-title {
       font-size: var(--font-size-bg);
       font-weight: bold;
-      margin-bottom: 30px;
+      margin-bottom: 36px;
+      color: #303030;
     }
     .launch-img {
       width: 320px;
-      height:303px;
+      height: 303px;
     }
   }
 

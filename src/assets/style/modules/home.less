@@ -10,28 +10,30 @@
   }
   .tab_01 {
     position: relative;
-    .lab{
+    .lab {
       position: absolute;
       left: 20px;
       top: 42px;
-     .title{
-    font-size: 36px;
-    font-family: PingFang SC;
-    font-weight: bold;
-    color: #1168DB;
-    line-height: 48px;
-    background: linear-gradient(151deg, #87BDFE 0%, #296CD9 100%);
-   -webkit-background-clip: text;
-   -webkit-text-fill-color: transparent;
-   }
-   .content{
-    padding-top: 5px; 
-    font-size: 15px;
-    font-family: PingFang SC;
-    font-weight: bold;
-    color: #1168DB;
-    line-height: 20px;}
-  }
+      .title {
+        font-size: 36px;
+        font-family: PingFang SC;
+        -webkit-text-stroke: 1px #61a1fe;
+        text-stroke: 1px #61a1fe;
+        font-weight: bold;
+        color: #ffffff;
+        line-height: 42px;
+      }
+      .content {
+        padding-top: 5px;
+        font-size: 18px;
+        font-family: PingFang SC;
+        font-weight: bold;
+        color: #ffffff;
+        line-height: 20px;
+        -webkit-text-stroke: 0.5px #61a1fd;
+        text-stroke: 0.5px #61a1fd;
+      }
+    }
     z-index: 0;
     .home-bg {
       position: absolute;
@@ -303,7 +305,7 @@
       //background: linear-gradient(to bottom, #4391fc, #99d2fc);
       padding: 15px 16px;
       .user-card {
-        background: linear-gradient(0deg, #288CF2, #28A8F2);
+        background: linear-gradient(0deg, #288cf2, #28a8f2);
         padding: 12px 15px;
         padding-bottom: 18px;
         border-radius: 4px;
@@ -315,12 +317,16 @@
           display: flex;
           justify-content: start;
           align-items: center;
-          img{
+          img {
             width: 67px;
             height: 67px;
             border-radius: 50%;
           }
-          .left-row{padding-left: 25px;color: #fff;font-size: 15px;}
+          .left-row {
+            padding-left: 25px;
+            color: #fff;
+            font-size: 15px;
+          }
           .left-row.username {
             font-size: var(--font-size-lg);
           }
