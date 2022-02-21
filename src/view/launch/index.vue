@@ -2,7 +2,7 @@
  * @Author: zhangmin
  * @Date: 2021-02-25 10:17:29
  * @LastEditors: zhangmin
- * @LastEditTime: 2022-02-21 13:14:57
+ * @LastEditTime: 2022-02-21 13:45:58
  * @Description: launch
 -->
 <template>
@@ -16,7 +16,7 @@
       <div class="form-content">
         <div class="form-head">
           <img class="form-head-img" src="~@/assets/img/launch/launch_form-head.png" alt="">
-          <div>开通专家库</div>
+          <div>开通专家服务平台</div>
         </div>
         <div class="form-body">
           <van-form ref="form" @submit="onSubmit">

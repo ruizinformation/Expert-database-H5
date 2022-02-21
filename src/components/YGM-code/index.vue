@@ -2,14 +2,14 @@
  * @Author: zhangmin
  * @Date: 2021-02-25 10:17:29
  * @LastEditors: zhangmin
- * @LastEditTime: 2021-10-15 13:11:50
+ * @LastEditTime: 2022-02-21 13:45:34
  * @Description: 员工码二维码弹窗
 -->
 <template>
   <div class="YGM-code-mod">
     <van-overlay :show="showYGMModal" @click="show = false">
       <div class="YGM-content" @click.stop>
-        <div class="YGM-title">专家库</div>
+        <div class="YGM-title">专家服务平台</div>
         <div class="YGM-body">
           <div class="code-content">
             <div id="qrCode" class="YGM-code" v-if="showYGMModal"></div>

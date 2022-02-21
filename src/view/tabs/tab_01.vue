@@ -2,7 +2,7 @@
  * @Author: zhangmin
  * @Date: 2021-02-25 10:17:29
  * @LastEditors: zhangmin
- * @LastEditTime: 2022-02-21 13:34:16
+ * @LastEditTime: 2022-02-21 13:46:53
  * @Description: tab_01
 -->
 <template>
@@ -128,7 +128,7 @@ export default {
           //route: 'train-manage'
         },
         {
-          name: "法律维权",
+          name: "法律咨询",
           bg: require("@/assets/img/index/func-bg3.png"),
           bgColor: "#3788FE",
           icon: require("@/assets/img/index/index_fl.png"),

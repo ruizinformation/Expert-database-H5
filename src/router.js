@@ -2,7 +2,7 @@
  * @Author: zhangmin
  * @Date: 2021-01-31 16:40:05
  * @LastEditors: zhangmin
- * @LastEditTime: 2021-11-26 17:24:26
+ * @LastEditTime: 2022-02-21 13:45:21
  * @Description: 文件说明
  */
 import Vue from "vue";
@@ -18,14 +18,14 @@ const routes = [{
     name: "launch",
     component: () => import("./view/launch/index.vue"),
     meta: {
-      title: "专家库",
+      title: "专家服务平台",
     },
   },
   {
     name: "guide-page",
     component: () => import("./view/guide-page/index.vue"),
     meta: {
-      title: "专家库",
+      title: "专家服务平台",
     },
   },
   {
@@ -195,7 +195,7 @@ const routes = [{
     name: "expert-list",
     component: () => import("./view/modules/expert-list/index.vue"),
     meta: {
-      title: "专家库",
+      title: "专家服务平台",
     }
   },
   {
