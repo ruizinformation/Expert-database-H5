@@ -2,7 +2,7 @@
  * @Author: zhangmin
  * @Date: 2021-02-25 13:32:24
  * @LastEditors: zhangmin
- * @LastEditTime: 2021-10-25 08:51:38
+ * @LastEditTime: 2022-02-21 13:38:52
  * @Description: 文件说明
  */
 
@@ -41,7 +41,7 @@ http.interceptors.response.use(response => {
   if (response.data && response.data.code === 401) { // 401, accessToken失效
     clearLoginInfo()
     Vue.prototype.$toast('请先登录')
-    if(process.env.NODE_ENV!='development')window.location.href='https://puser.zjzwfw.gov.cn/sso/mobile.do?action=oauth&scope=1&servicecode=ygm'
+    // if(process.env.NODE_ENV!='development')window.location.href='https://puser.zjzwfw.gov.cn/sso/mobile.do?action=oauth&scope=1&servicecode=ygm'
     return response
   } 
   return response
