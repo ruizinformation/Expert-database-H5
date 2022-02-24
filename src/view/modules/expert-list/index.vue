@@ -1,53 +1,23 @@
 <!--
  * @Author: zhangmin
  * @Date: 2021-02-25 10:17:29
- * @LastEditors: xuyingchao
- * @LastEditTime: 2021-10-22 12:46:06
+ * @LastEditors: zhangmin
+ * @LastEditTime: 2022-02-24 14:03:59
  * @Description: 专家咨询首页
 -->
 <template>
   <div class="train-home-mod learning-mod">
-    <!-- <div v-show="!showType">
-    <div class="tab-row">
-      <van-tabs
-        sticky
-        type="card"
-        v-model="active"
-        :ellipsis="false"
-        @click="handleTab"
-        color="#288CF2"
-        title-active-color="#FFFFFF"
-        title-inactive-color="#303030"
-      >
-        <van-tab
-          v-for="(item, index) in typeList"
-          :title="item.name"
-          :key="index"
-          ><div></div
-        ></van-tab>
-      </van-tabs>
+    <div class="banner-content">
+      <span class="banner-title">{{title}}</span>
+      <img class="banner-img" src="~@/assets/img/common/list-banner.png" alt="">
     </div>
-    <div class="learning-title">
-      <div class="view-more" @click="showMore">
-        更多分类
-        <van-icon name="arrow" />
-      </div>
-    </div> -->
     <!-- 专家列表 -->
-    <van-list @load="onLoad"  v-model="loading" :finished="finished" finished-text="没有更多了" class="train-list-wrapper">
-      <ExpertItem
-        v-for="(item, index) in dataList"
-        :key="index"
-        :item="item"
-      />
-      <van-empty
-        v-if="dataList.length == 0"
-        class="empty-custom-image"
-        description="暂无数据"
-      />
+    <van-list @load="onLoad" v-model="loading" :finished="finished" finished-text="没有更多了" class="train-list-wrapper">
+      <ExpertItem v-for="(item, index) in dataList" :key="index" :item="item" />
+      <van-empty v-if="dataList.length == 0" class="empty-custom-image" description="暂无数据" />
     </van-list>
     <!-- </div> -->
-     <!-- <ExpertType v-if="showType"  @handleTab="handleTab"/> -->
+    <!-- <ExpertType v-if="showType"  @handleTab="handleTab"/> -->
   </div>
 </template>
 
@@ -80,12 +50,14 @@ export default {
         limit: 8,
         page: 0,
         typeId: '',
-      }
+      },
+      title:''
     };
   },
   mounted() {
-     let { id } = this.$route.query ? this.$route.query : "";
+     let { id ,name} = this.$route.query ? this.$route.query : "";
      this.searchForm.typeId = id;
+     this.title=name
     //  this.$nextTick(() => {
     //  this.getExpertList();
     //   });
@@ -134,8 +106,28 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.train-home-mod {
+  .banner-content {
+    position: relative;
+    margin-bottom: 10px;
+    .banner-title {
+      position: absolute;
+      top: 52px;
+      left: 24px;
+      font-weight: bold;
+      color: #ffffff;
+      line-height: 42px;
+      -webkit-text-stroke: 1px #61a1fe;
+      text-stroke: 1px #61a1fe;
+      font-size: 32px;
+    }
+    .banner-img {
+      width: 100%;
+    }
+  }
+}
 .train-list-wrapper {
-  height: calc(100vh - 20px);
+  height: calc(100vh - 171px);
   overflow-y: scroll;
 }
 </style>

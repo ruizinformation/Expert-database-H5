@@ -7,7 +7,7 @@
 <template>
   <div>
     <!-- 专家item -->
-    <div  class="train-item">
+    <div class="train-item" @click="handleDetail(item.id,item.userId)">
       <div class="train-item-img">
         <van-image v-if="item.avatarUrl" :src="item.avatarUrl" fit="cover" />
       </div>
@@ -15,11 +15,11 @@
         <h1>{{ item.name }}</h1>
         <p>{{ item.description }}</p>
         <div class="mobile">
-          <div  @click="call">
+          <div @click="call">
             <img src="../../../assets/img/train-manage/phone.png" alt="" />
-          {{item.mobile}}
+            {{item.mobile}}
           </div>
-          <div class="question"  @click="handleDetail(item.id,item.userId)">立即咨询</div>
+          <div class="question">立即咨询</div>
         </div>
       </div>
     </div>
@@ -80,6 +80,8 @@ export default {
   padding: 12px;
   border-radius: 4px;
   position: relative;
+  box-shadow: #fff;
+  box-shadow: 2px 1px 3px #aaa;
   &-img {
     width: 110px;
     height: 98px;

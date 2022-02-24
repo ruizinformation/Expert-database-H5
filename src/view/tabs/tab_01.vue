@@ -2,7 +2,7 @@
  * @Author: zhangmin
  * @Date: 2021-02-25 10:17:29
  * @LastEditors: zhangmin
- * @LastEditTime: 2022-02-21 13:46:53
+ * @LastEditTime: 2022-02-24 13:59:30
  * @Description: tab_01
 -->
 <template>
@@ -20,8 +20,8 @@
         <div class="home-title-txt">专家咨询</div>
       </div>
       <div class="home-m">
-        <div class="home-m-item" :class="'item_0' + index" v-for="(item, index) in typeList" :key="index" @click="onFunctionClick('expert-list',item.id)"
-          :style="{ background: item.bgColor }">
+        <div class="home-m-item" :class="'item_0' + index" v-for="(item, index) in typeList" :key="index"
+          @click="onFunctionClick('expert-list',item.id,item.name)" :style="{ background: item.bgColor }">
           <!-- <img class="home-m-item-bg" :src="item.bg" /> -->
           <img class="home-m-item-icon" :src="item.icon" />
           <div class="home-m-item-name">{{ item.name }}</div>
@@ -37,8 +37,8 @@
           </div> -->
         </div>
         <div class="home-m">
-          <div class="home-m-item" :class="'item_0' + index" v-for="(item, index) in functionList02" :key="index" @click="onFunctionClick('learning-platform')"
-            :style="{ background: item.bgColor }">
+          <div class="home-m-item" :class="'item_0' + index" v-for="(item, index) in functionList02" :key="index"
+            @click="onFunctionClick('learning-platform',item.id,item.name)" :style="{ background: item.bgColor }">
             <!-- <img class="home-m-item-bg" :src="item.bg" /> -->
             <img class="home-m-item-icon" :src="item.icon" />
             <div class="home-m-item-name">{{item.name }}</div>
@@ -237,11 +237,12 @@ export default {
 
       });
     },
-    onFunctionClick(route,id) {
+    onFunctionClick(route,id,name) {
       this.$router.push({
         name: route,
           query: {
-            id: id,
+            id,
+            name
           },
       });
     },

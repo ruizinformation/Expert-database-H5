@@ -7,28 +7,33 @@
   <div>
     <div class="expert-detail">
       <div class="expert-detail-title">
-        <div class="pic">
-          <van-image :src="expertDetail.avatarUrl" alt="" fit="cover" />
-        </div>
-        <div class="expert-info">
-          <div class="name">{{ expertDetail.name }}</div>
-          <div class="address">{{ expertDetail.workspace }}</div>
-          <div class="mobile">
-            <div @click="call">
-              <img src="~@/assets/img/train-manage/phone.png" alt="" />
-              {{ expertDetail.mobile }}
+        <div class="title-content">
+          <div class="pic">
+            <van-image :src="expertDetail.avatarUrl" alt="" fit="cover" />
+          </div>
+          <div class="expert-info">
+            <div class="name">{{ expertDetail.name }}</div>
+            <div class="address">{{ expertDetail.workspace }}</div>
+            <div class="mobile">
+              <div @click="call">
+                <img src="~@/assets/img/train-manage/phone.png" alt="" />
+                {{ expertDetail.mobile }}
+              </div>
             </div>
           </div>
         </div>
+
+      </div>
+
+      <!-- 专家介绍 -->
+      <div class="intro">
+        <p>专家介绍</p>
+        <div class="content" style="">
+          {{ expertDetail.description }}
+        </div>
       </div>
     </div>
-    <!-- 专家介绍 -->
-    <div class="intro">
-      <p>专家介绍</p>
-      <div class="content" style="">
-        {{ expertDetail.description }}
-      </div>
-    </div>
+
     <div class="bootpm-btn">
       <div class="chat-btn" @click="handleChat">
         <img src="~@/assets/img/train-manage/chat.png" alt="" />
@@ -100,3 +105,38 @@ export default {
   },
 };
 </script>
+<style lang="less" scoped>
+.expert-detail {
+  background-image: url("~@/assets/img/common/detail-bg.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding-bottom: 100px;
+  height: 100vh;
+  box-sizing: border-box;
+  .expert-detail-title {
+    position: relative;
+    padding: 19px 10px;
+    width: 100%;
+    .title-content {
+      display: flex;
+      background: #fff;
+      width: 100%;
+      padding: 16px;
+      border-radius: 5px;
+      box-shadow: 2px 1px 3px #aaa;
+    }
+  }
+  .intro {
+    margin: 13px 15px;
+    background: #fff;
+    border-radius: 5px;
+    margin-top: 0px;
+    box-shadow: 2px 1px 3px #aaa;
+    height: calc(100vh - 268px);
+
+    p {
+      font-size: 18px;
+    }
+  }
+}
+</style>

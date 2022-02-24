@@ -2,7 +2,7 @@
  * @Author: zhangmin
  * @Date: 2021-02-25 10:17:29
  * @LastEditors: zhangmin
- * @LastEditTime: 2022-02-21 13:45:58
+ * @LastEditTime: 2022-02-24 13:53:10
  * @Description: launch
 -->
 <template>
@@ -104,10 +104,8 @@ export default {
   },
   methods: {
     init(){
-      // this.$cookie.set('token',"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55X2lkIjoxLCJ1c2VyX2lkIjozLCJleHBpcmVfdGltZSI6MTY0NjcxMjA1NDc2MH0.Gch4nU0jJjxwqFKLtnzLrgOb4fI4rlK0c7odS2IY7MY")
-      //this.$cookie.set('token',"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55X2lkIjoxLCJ1c2VyX2lkIjo2LCJleHBpcmVfdGltZSI6MTY0MDc2NDQ5NzczOX0.UdqMTfAFVOU38tGPn_ogmxErF6Mv2aEX5ptqgXRcv3M")
+    //   this.$cookie.set('token',"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55X2lkIjoxLCJ1c2VyX2lkIjozLCJleHBpcmVfdGltZSI6MTY0Njk3Nzg1MTY2M30.-8ndotDH2tmxm458VeX3Ng8a5J6PmSVi1bcq3w-SNgs")
     //  this.toGetUserInfo()
-
       this.$cookie.set('token',this.basicInfo.token)
       getToken().then(data=>{
         console.log(88,data)
