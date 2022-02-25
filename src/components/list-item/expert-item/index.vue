@@ -13,7 +13,7 @@
       </div>
       <div class="train-item-info">
         <h1>{{ item.name }}</h1>
-        <p>{{ item.description }}</p>
+        <p>{{ item.workspace }}</p>
         <div class="mobile">
           <div @click="call">
             <img src="../../../assets/img/train-manage/phone.png" alt="" />

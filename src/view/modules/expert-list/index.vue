@@ -2,7 +2,7 @@
  * @Author: zhangmin
  * @Date: 2021-02-25 10:17:29
  * @LastEditors: zhangmin
- * @LastEditTime: 2022-02-24 14:03:59
+ * @LastEditTime: 2022-02-24 15:01:17
  * @Description: 专家咨询首页
 -->
 <template>
@@ -117,9 +117,9 @@ export default {
       font-weight: bold;
       color: #ffffff;
       line-height: 42px;
-      -webkit-text-stroke: 1px #61a1fe;
-      text-stroke: 1px #61a1fe;
-      font-size: 32px;
+      -webkit-text-stroke: 0.5px #61a1fe;
+      text-stroke: 0.5px #61a1fe;
+      font-size: 36px;
     }
     .banner-img {
       width: 100%;
