@@ -9,8 +9,8 @@
   <div class="tab tab_01">
     <!-- <div class="home-bg"></div> -->
     <div class="lab">
-      <div class="title">专家服务平台</div>
-      <div class="content">为企业提供免费支持</div>
+      <!-- <div class="title">专家服务平台</div>
+      <div class="content">为企业提供免费支持</div> -->
     </div>
     <div>
       <img src="../../assets/img/index/banner.png" alt="" />
